@@ -2,3 +2,6 @@ node_modules
 npm-debug.log
 yarn-error.log
 wordpress/wp-content/languages/
+wordpress/wp-content/theme/twentyseventeen/
+wordpress/wp-content/theme/twentyfifteen/
+wordpress/wp-content/theme/twentysixteen/
