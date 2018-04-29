@@ -1,0 +1,1 @@
+export const Config = {apiUrl: 'http://local.ashleyhitchcock.com'}

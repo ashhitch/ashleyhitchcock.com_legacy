@@ -1,0 +1,13 @@
+{
+  "name": "headless-wp-starter",
+  "version": "1.0.0",
+  "repository": "git@github.com:postlight/headless-wp-starter.git",
+  "author": "Postlight",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "preinstall": "chmod +x install.sh && ./install.sh",
+    "postinstall": "robo wordpress:setup",
+    "start": "wp server"
+  }
+}
