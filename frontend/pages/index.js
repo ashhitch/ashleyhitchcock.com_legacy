@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 
-import { Config } from "../config.js";
-import Layout from "../components/Layout.js";
+import { Config } from "../config";
+import Hero from "../components/Hero";
+import Layout from "../components/Layout";
 import Link from "next/link";
-import Menu from "../components/Menu.js";
-import PageWrapper from "../components/PageWrapper.js";
+import Menu from "../components/Menu";
+import PageWrapper from "../components/PageWrapper";
 import fetch from "isomorphic-unfetch";
 
 const headerImageStyle = {
@@ -60,12 +61,13 @@ class Index extends Component {
         });
         return (
             <Layout>
+                <Hero />
                 <Menu menu={this.props.headerMenu} />
-                <img
+                {/* <img
                     src="/static/images/wordpress-plus-react-header.png"
                     width="815"
                     style={headerImageStyle}
-                />
+                /> */}
                 <h1>{this.props.page.title ? this.props.page.title.rendered : null}</h1>
                 <div
                     dangerouslySetInnerHTML={{

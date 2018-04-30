@@ -1,17 +1,19 @@
-import Header from "./Header";
 import Footer from "./Footer";
+import Header from "./Header";
 
 const layoutStyle = {
-    margin: 20,
-    padding: 20
+    margin: '20px',
+    backgroundColor: '#fff',
+    minHeight: '100vh',
+    padding: '20px'
 };
 
 const Layout = props => (
-    <div style={layoutStyle}>
+    <main style={layoutStyle}>
         <Header />
         {props.children}
         <Footer />
-    </div>
+    </main>
 );
 
 export default Layout;

@@ -1,10 +1,58 @@
+@import '~/normalize.css';
 @import 'theme-colors';
-$theme-font: verdana, sans-serif;
+$theme-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
 body {
-  font: $theme-font;
-  background-color: $themeColor-Light;
-  h1, h2 {
-      color: $themeColor-Dark
+  font-family: $theme-font;
+  background-color: #1c46f2;
+  margin: 0;
+  &:before,
+  &:after {
+    background: inherit;
+    content: "";
+    display: block;
+    height: 21px;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+  }
+
+  &:before {
+    top: 0;
+  }
+  &:after {
+    bottom: 0;
+  }
+
+  h1,
+  h2 {
+    color: $themeColor-Dark
   }
 }
+
+
+.knockout {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-content: center;
+  box-sizing: border-box;
+  background-image: linear-gradient(to left, #1c46f2 ,#5f5fe8);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  height: 100vh;
+  text-transform: uppercase;
+  width: 100%;
+  
+  &__text-container {
+    display: flex;
+    margin-top: auto;
+  }
+  
+  
+  text {
+    font-size: 15rem;
+    font-weight: 900;
+  }
+}
+
