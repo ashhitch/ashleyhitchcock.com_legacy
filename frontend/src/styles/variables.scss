@@ -1,0 +1,34 @@
+$colors: () !default;
+$colors: map-merge( (
+  primary: #1c46f2,
+  secondary: #5f5fe8,
+  copy: #4d4d4d,
+  link: #7384a8,
+  gray: #111111,
+  success: #4c9a50,
+  info: #5069ae,
+  warning:#fec23c,
+  error: #fe3c4e,
+  action: #f44336,
+  transparent: transparent
+),
+$colors);
+
+
+$layers: () !default;
+$layers: map-merge( (
+sub: 1,
+base: 2,
+sup: 3,
+top: 50
+),
+$layers);
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;

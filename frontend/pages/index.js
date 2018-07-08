@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { Config } from "../config";
-import Hero from "../components/Hero";
+import Hero from "../components/Hero/Hero";
 import Layout from "../components/Layout";
 import Link from "next/link";
 import Menu from "../components/Menu";
