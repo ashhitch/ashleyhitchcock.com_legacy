@@ -1,0 +1,83 @@
+
+// number of items visible in viewport without scrolling
+$numberOfMenuItems: 3;
+// base menu item height on number of menu items
+$menuItemHeight: 100 / $numberOfMenuItems;
+
+.menu {
+  position: fixed;
+  overflow-y: auto;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(#ffffff, 0.8);
+  border-top: 1px solid #5f5fe8;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0;
+  top: 0;
+  &.is-active {
+    z-index: 1;
+    transition: opacity 0.2s ease-in;
+    opacity: 1;
+  }
+  .nav,
+  .nav li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+  }
+  .nav a {
+    display: block;
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    background: transparent;
+    border-bottom: 1px solid #5f5fe8;
+    color: #111111;
+    font-size: 300%;
+    letter-spacing: 1vw;
+    line-height: $menuItemHeight + vh;
+    text-decoration: none;
+    text-transform: uppercase;
+    &:hover,
+    &:focus {
+      background: rgba(#5f5fe8, 0.9);
+      color: #ffffff;
+    }
+  }
+}
+
+.menu-toggle {
+  position: fixed;
+  z-index: 4;
+  right: 0;
+  top: 0;
+  margin: 5%;
+  > span {
+    width: 50px;
+    height: 5px;
+    background-color: #5f5fe8;
+    display: block;
+    margin: 8px auto;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.is-active span {
+    background-color: #111111;
+    &:nth-child(1),
+    &:nth-child(3) {
+      width: 40px;
+    }
+    &:nth-child(1) {
+      transform: translateX(-10px) rotate(-45deg);
+    }
+    &:nth-child(3) {
+      transform: translateX(-10px) rotate(45deg);
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { Config } from "../config";
+import Hamburger from "../components/Hamburger";
 import Hero from "../components/Hero/Hero";
 import Layout from "../components/Layout";
 import Link from "next/link";
@@ -47,20 +48,24 @@ class Index extends Component {
         });
         const pages = this.props.pages.map((page, index) => {
             return (
-                <ul key={index}>
-                    <li>
-                        <Link
-                            as={`/page/${page.slug}`}
-                            href={`/post?slug=${page.slug}&apiRoute=page`}
-                        >
-                            <a>{page.title.rendered}</a>
-                        </Link>
-                    </li>
-                </ul>
+                <nav className="menu" key={index}>
+                    <ul className="nav">
+                        <li>
+                            <Link
+                                as={`/page/${page.slug}`}
+                                href={`/post?slug=${page.slug}&apiRoute=page`}
+                            >
+                                <a>{page.title.rendered}</a>
+                            </Link>
+                        </li>
+                    </ul>
+                </nav>
             );
         });
         return (
             <Layout>
+                <Hamburger />
+                {pages}
                 <Hero />
                 <Menu menu={this.props.headerMenu} />
                 {/* <img
@@ -76,8 +81,8 @@ class Index extends Component {
                 />
                 <h2>Posts</h2>
                 {posts}
-                <h2>Pages</h2>
-                {pages}
+          
+                
             </Layout>
         );
     }

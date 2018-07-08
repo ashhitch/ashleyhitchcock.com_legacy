@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import Link from "next/link";
+
 import { Config } from "../config.js";
+import Link from "next/link";
 
 const linkStyle = {
     marginRight: 15
@@ -28,6 +29,7 @@ class Menu extends Component {
         const slug = this.getSlug(item.url);
         const actualPage = item.object === "category" ? "category" : "post";
         return (
+            
             <Link
                 as={`/${item.object}/${slug}`}
                 href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
