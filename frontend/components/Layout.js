@@ -11,7 +11,7 @@ const layoutStyle = {
 const Layout = props => (
     <main style={layoutStyle}>
         <Header />
-        {props.children}
+            {props.children}
         <Footer />
     </main>
 );

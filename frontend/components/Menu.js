@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 
 import { Config } from "../config.js";
+import {LayoutContext} from './../context/layout-context';
 import Link from "next/link";
 
 const linkStyle = {
-    marginRight: 15
+    marginRight: 0
 };
 
 class Menu extends Component {
@@ -21,33 +22,44 @@ class Menu extends Component {
       const menuItems = this.props.menu.items.map((item, index) => {
         if (item.object === "custom") {
             return (
-                <Link href={item.url} key={item.ID}>
-                    <a style={linkStyle}>{item.title}</a>
-                </Link>
+                <li>
+                    <Link href={item.url} key={item.ID}>
+                        <a style={linkStyle}>{item.title}</a>
+                    </Link>
+                </li>
             );
         }
         const slug = this.getSlug(item.url);
         const actualPage = item.object === "category" ? "category" : "post";
         return (
-            
-            <Link
-                as={`/${item.object}/${slug}`}
-                href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
-                key={item.ID}
-            >
-                <a style={linkStyle}>{item.title}</a>
-            </Link>
+            <li>
+                <Link
+                    as={`/${item.object}/${slug}`}
+                    href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
+                    key={item.ID}
+                >
+                    <a style={linkStyle}>{item.title}</a>
+                </Link>
+            </li>
         );
     });
 
 
-    return(
-      <div>
-          <Link href="/">
-              <a style={linkStyle}>Home</a>
-          </Link>
-          {menuItems}
-      </div>
+    return (
+        <LayoutContext.Consumer>
+             {({menuActive,toggleMenu}) => (
+                <nav  className={"menu " + (menuActive ? 'is-active' : '')} >
+                    <ul className="nav">
+                        <li>
+                            <Link href="/">
+                                <a style={linkStyle}>Home</a>
+                            </Link>
+                        </li>
+                        {menuItems}
+                    </ul>
+                </nav>
+            )}
+      </LayoutContext.Consumer>
     )
   }
 

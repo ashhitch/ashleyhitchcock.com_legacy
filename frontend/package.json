@@ -34,7 +34,7 @@
         "postcss-easy-import": "^3.0.0",
         "postcss-loader": "^2.0.7",
         "raw-loader": "^0.5.1",
-        "react-dom": "^16.2.0",
+        "react-dom": "^16.4.1",
         "sass-loader": "^6.0.6",
         "webpack": "^3.10.0"
     }

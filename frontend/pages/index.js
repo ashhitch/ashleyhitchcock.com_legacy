@@ -4,6 +4,7 @@ import { Config } from "../config";
 import Hamburger from "../components/Hamburger";
 import Hero from "../components/Hero/Hero";
 import Layout from "../components/Layout";
+import {LayoutContext} from './../context/layout-context';
 import Link from "next/link";
 import Menu from "../components/Menu";
 import PageWrapper from "../components/PageWrapper";
@@ -14,7 +15,28 @@ const headerImageStyle = {
     marginBottom: 50
 };
 
+
 class Index extends Component {
+
+    constructor(props) {
+        super(props);
+    
+        this.toggleMenu = () => {
+            console.log('*****test');
+          this.setState(state => ({
+            menuActive: !state.menuActive
+          }));
+        };
+    
+        // State also contains the updater function so it will
+        // be passed down into the context provider
+        this.state = {
+            menuActive: false,
+            toggleMenu: this.toggleMenu
+        };
+      }
+
+      
     static async getInitialProps(context) {
         const pageRes = await fetch(
             `${Config.apiUrl}/wp-json/postlight/v1/page?slug=welcome`
@@ -32,6 +54,7 @@ class Index extends Component {
     }
 
     render() {
+      const isActive = false;
         const posts = this.props.posts.map((post, index) => {
             return (
                 <ul key={index}>
@@ -48,41 +71,40 @@ class Index extends Component {
         });
         const pages = this.props.pages.map((page, index) => {
             return (
-                <nav className="menu" key={index}>
-                    <ul className="nav">
-                        <li>
+                <div key={index}>
+                  
                             <Link
                                 as={`/page/${page.slug}`}
                                 href={`/post?slug=${page.slug}&apiRoute=page`}
                             >
                                 <a>{page.title.rendered}</a>
                             </Link>
-                        </li>
-                    </ul>
-                </nav>
+             
+                </div>
             );
         });
         return (
             <Layout>
-                <Hamburger />
-                {pages}
-                <Hero />
-                <Menu menu={this.props.headerMenu} />
-                {/* <img
-                    src="/static/images/wordpress-plus-react-header.png"
-                    width="815"
-                    style={headerImageStyle}
-                /> */}
-                <h1>{this.props.page.title ? this.props.page.title.rendered : null}</h1>
-                <div
-                    dangerouslySetInnerHTML={{
-                        __html: this.props.page.content.rendered ? this.props.page.content.rendered : null
-                    }}
-                />
-                <h2>Posts</h2>
-                {posts}
+                <LayoutContext.Provider value={this.state}>
+                    <Hamburger />
+                    {pages}
+                    <Hero />
+                    <Menu menu={this.props.headerMenu} active={isActive} />
+                    {/* <img
+                        src="/static/images/wordpress-plus-react-header.png"
+                        width="815"
+                        style={headerImageStyle}
+                    /> */}
+                    <h1>{this.props.page.title ? this.props.page.title.rendered : null}</h1>
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: this.props.page.content.rendered ? this.props.page.content.rendered : null
+                        }}
+                    />
+                    <h2>Posts</h2>
+                    {posts}
           
-                
+                </LayoutContext.Provider>
             </Layout>
         );
     }
