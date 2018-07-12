@@ -22,7 +22,6 @@ class Index extends Component {
         super(props);
     
         this.toggleMenu = () => {
-            console.log('*****test');
           this.setState(state => ({
             menuActive: !state.menuActive
           }));
@@ -87,9 +86,8 @@ class Index extends Component {
             <Layout>
                 <LayoutContext.Provider value={this.state}>
                     <Hamburger />
-                    {pages}
-                    <Hero />
                     <Menu menu={this.props.headerMenu} active={isActive} />
+                    <Hero />
                     {/* <img
                         src="/static/images/wordpress-plus-react-header.png"
                         width="815"

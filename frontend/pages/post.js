@@ -1,10 +1,12 @@
-import Layout from "../components/Layout.js";
 import React, { Component } from "react";
-import fetch from "isomorphic-unfetch";
-import Error from "next/error";
-import PageWrapper from "../components/PageWrapper.js";
-import Menu from "../components/Menu.js";
+
 import { Config } from "../config.js";
+import Error from "next/error";
+import Hamburger from "../components/Hamburger";
+import Layout from "../components/Layout.js";
+import Menu from "../components/Menu.js";
+import PageWrapper from "../components/PageWrapper.js";
+import fetch from "isomorphic-unfetch";
 
 class Post extends Component {
     static async getInitialProps(context) {
@@ -21,6 +23,7 @@ class Post extends Component {
 
         return (
             <Layout>
+                 <Hamburger />
                 <Menu menu={this.props.headerMenu} />
                 <h1>{this.props.post.title.rendered}</h1>
                 <div

@@ -7,16 +7,21 @@ $menuItemHeight: 100 / $numberOfMenuItems;
 .menu {
   position: fixed;
   overflow-y: auto;
-  width: 100vw;
-  height: 100vh;
+  width: calc(100vw - 42px);
+  height: calc(100vh - 42px);
   background: rgba(#ffffff, 0.8);
   border-top: 1px solid #5f5fe8;
   opacity: 0;
   z-index: -1;
   transition: opacity 0;
-  top: 0;
+  top: 21px;
+  left: 21px;
+  right: 21px;
+  bottom: 21px;
+  margin: 0;
+  padding: 0;
   &.is-active {
-    z-index: 1;
+    z-index: 10;
     transition: opacity 0.2s ease-in;
     opacity: 1;
   }
@@ -50,7 +55,7 @@ $menuItemHeight: 100 / $numberOfMenuItems;
 
 .menu-toggle {
   position: fixed;
-  z-index: 4;
+  z-index: 20;
   right: 0;
   top: 0;
   margin: 5%;
