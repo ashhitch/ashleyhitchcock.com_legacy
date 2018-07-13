@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 
-import { Config } from "../config.js";
-import {LayoutContext} from './../context/layout-context';
 import Link from "next/link";
 
 class Menu extends Component {
-  constructor() {
-      super();
+  constructor(props) {
+      super(props);
   }
 
   getSlug(url) {
@@ -15,16 +13,20 @@ class Menu extends Component {
   }
 
   render() {
-      const menuItems = this.props.menu.items.map((item, index) => {
-        if (item.object === "custom") {
-            return (
-                <li key={item.ID}>
-                    <Link href={item.url}>
-                        <a>{item.title}</a>
-                    </Link>
-                </li>
-            );
-        }
+  
+          const menuItems = (!!this.props.menu && !!this.props.menu.items && this.props.menu.items.length) ?  this.props.menu.items.map((item, index) => {
+            if (item.object === "custom") {
+                return (
+                    <li key={item.ID}>
+                        <Link href={item.url}>
+                            <a>{item.title}</a>
+                        </Link>
+                    </li>
+                );
+            }
+      
+
+
         const slug = this.getSlug(item.url);
         const actualPage = item.object === "category" ? "category" : "post";
         return (
@@ -38,13 +40,13 @@ class Menu extends Component {
                 </Link>
             </li>
         );
-    });
+    }) : null;
+
 
 
     return (
-        <LayoutContext.Consumer>
-             {({menuActive,toggleMenu}) => (
-                <nav  className={"menu " + (menuActive ? 'is-active' : '')} >
+       
+                <nav  className={"menu " + (this.props.active ? 'is-active' : '')} >
                     <ul className="nav">
                         <li>
                             <Link href="/">
@@ -54,8 +56,7 @@ class Menu extends Component {
                         {menuItems}
                     </ul>
                 </nav>
-            )}
-      </LayoutContext.Consumer>
+
     )
   }
 

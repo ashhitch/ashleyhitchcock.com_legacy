@@ -1,10 +1,11 @@
-import Layout from "../components/Layout.js";
 import React, { Component } from "react";
-import fetch from "isomorphic-unfetch";
-import Error from "next/error";
-import PageWrapper from "../components/PageWrapper.js";
-import Menu from "../components/Menu.js";
+
 import { Config } from "../config.js";
+import Error from "next/error";
+import Layout from "../components/Layout.js";
+import Menu from "../components/Menu.js";
+import PageWrapper from "../components/PageWrapper.js";
+import fetch from "isomorphic-unfetch";
 
 class Preview extends Component {
     constructor() {
@@ -40,7 +41,7 @@ class Preview extends Component {
 
         return (
             <Layout>
-                <Menu menu={this.props.headerMenu} />
+               
                 <h1>{this.state.post ? this.state.post.title.rendered : ""}</h1>
                 <div
                     dangerouslySetInnerHTML={{

@@ -2,9 +2,7 @@ import React, { Component } from "react";
 
 import { Config } from "../config.js";
 import Error from "next/error";
-import Hamburger from "../components/Hamburger";
 import Layout from "../components/Layout.js";
-import Menu from "../components/Menu.js";
 import PageWrapper from "../components/PageWrapper.js";
 import fetch from "isomorphic-unfetch";
 
@@ -23,8 +21,7 @@ class Post extends Component {
 
         return (
             <Layout>
-                 <Hamburger />
-                <Menu menu={this.props.headerMenu} />
+              
                 <h1>{this.props.post.title.rendered}</h1>
                 <div
                     dangerouslySetInnerHTML={{

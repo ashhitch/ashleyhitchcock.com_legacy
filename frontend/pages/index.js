@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 
 import { Config } from "../config";
-import Hamburger from "../components/Hamburger";
+import Grid from "../components/Grid";
 import Hero from "../components/Hero/Hero";
+import Intro from '../components/Intro';
 import Layout from "../components/Layout";
-import {LayoutContext} from './../context/layout-context';
 import Link from "next/link";
-import Menu from "../components/Menu";
 import PageWrapper from "../components/PageWrapper";
 import fetch from "isomorphic-unfetch";
 
@@ -15,27 +14,8 @@ const headerImageStyle = {
     marginBottom: 50
 };
 
-
 class Index extends Component {
 
-    constructor(props) {
-        super(props);
-    
-        this.toggleMenu = () => {
-          this.setState(state => ({
-            menuActive: !state.menuActive
-          }));
-        };
-    
-        // State also contains the updater function so it will
-        // be passed down into the context provider
-        this.state = {
-            menuActive: false,
-            toggleMenu: this.toggleMenu
-        };
-      }
-
-      
     static async getInitialProps(context) {
         const pageRes = await fetch(
             `${Config.apiUrl}/wp-json/postlight/v1/page?slug=welcome`
@@ -84,25 +64,18 @@ class Index extends Component {
         });
         return (
             <Layout>
-                <LayoutContext.Provider value={this.state}>
-                    <Hamburger />
-                    <Menu menu={this.props.headerMenu} active={isActive} />
+                
                     <Hero />
-                    {/* <img
-                        src="/static/images/wordpress-plus-react-header.png"
-                        width="815"
-                        style={headerImageStyle}
-                    /> */}
                     <h1>{this.props.page.title ? this.props.page.title.rendered : null}</h1>
                     <div
                         dangerouslySetInnerHTML={{
                             __html: this.props.page.content.rendered ? this.props.page.content.rendered : null
                         }}
                     />
-                    <h2>Posts</h2>
-                    {posts}
+                    <h2>From the blog</h2>
+                    <Grid cards={this.props.posts} linkType="post"/>
           
-                </LayoutContext.Provider>
+               
             </Layout>
         );
     }
