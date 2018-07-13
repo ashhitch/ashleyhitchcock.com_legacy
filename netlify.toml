@@ -7,5 +7,5 @@
 
 [build]
   base    = "frontend"
-  publish = ".next"
+  publish = "frontend/.next"
   command = "yarn build"
