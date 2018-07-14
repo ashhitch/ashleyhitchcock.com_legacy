@@ -61,4 +61,10 @@
     color: #444;
     font-weight: 600;
   }
+
+  &__tag {
+    & + & {
+      margin-left: 10px;
+    }
+  }
 }
