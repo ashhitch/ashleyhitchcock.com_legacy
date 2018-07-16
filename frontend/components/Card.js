@@ -24,7 +24,7 @@ const Card = props => {
               <div className="card__content">
               <h2 className="card__title">
                 <Link
-                        as={`/page/${props.slug}`}
+                        as={`/${props.linkType ? props.linkType : 'page'}/${props.slug}`}
                         href={`/post?slug=${props.slug}&apiRoute=${props.linkType ? props.linkType : 'page'}`}
                     >
                 <a>{props.title ? props.title.rendered : null}</a>
