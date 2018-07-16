@@ -5,8 +5,6 @@ import {LayoutContext} from './../context/layout-context';
 import Menu from "./Menu.js";
 
 const layoutStyle = {
-    margin: '20px',
-    backgroundColor: '#fff',
     minHeight: '100vh',
     padding: '20px'
 };

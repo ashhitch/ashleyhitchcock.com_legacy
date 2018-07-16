@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import Link from "next/link";
-import Head from "next/head";
-import Menu from "./Menu.js";
+
 import { Config } from "../config.js";
+import Head from "next/head";
+import Link from "next/link";
+import Menu from "./Menu.js";
 import stylesheet from '../src/styles/style.scss'
 
 class Header extends Component {
@@ -13,7 +14,7 @@ class Header extends Component {
     render() {
 
         return (
-            <div>
+            <React.Fragment>
                 <Head>
                     <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
                     <meta
@@ -22,10 +23,10 @@ class Header extends Component {
                     />
                     <meta charSet="utf-8" />
                     <title>
-                        WordPress + React Starter Kit Frontend by Postlight
+                        Ashley Hitchcock | Frontend Development Director
                     </title>
                 </Head>
-            </div>
+            </React.Fragment>
         );
     }
 }

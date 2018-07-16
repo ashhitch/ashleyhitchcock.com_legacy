@@ -20,7 +20,8 @@
   background-color: #f2f2f2;
   text-decoration: none;
   color: #333;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  
   transition: transform 0.2s ease-in;
   display: flex;
   flex-direction: column;
@@ -28,7 +29,7 @@
 
   &:hover,
   &:focus {
-    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.6);
     transform: scale(1.01);
   }
 
@@ -49,6 +50,11 @@
 
   &__title {
     margin: 0;
+
+    &__link {
+      color: #333;
+      text-decoration: none;
+    }
   }
 
   &__body {

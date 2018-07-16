@@ -21,9 +21,9 @@ class Index extends Component {
             `${Config.apiUrl}/wp-json/postlight/v1/page?slug=welcome`
         );
         const page = await pageRes.json();
-        console.log(`${Config.apiUrl}/wp-json/wp/v2/posts?_embed&filter[posts_per_page]=9`);
+        console.log(`${Config.apiUrl}/wp-json/wp/v2/posts?_embed&per_page=9`);
         const postsRes = await fetch(
-            `${Config.apiUrl}/wp-json/wp/v2/posts?_embed`
+            `${Config.apiUrl}/wp-json/wp/v2/posts?_embed&per_page=9`
         );
         const posts = await postsRes.json();
         // const pagesRes = await fetch(
@@ -67,21 +67,9 @@ class Index extends Component {
             <Layout>
                 
                     <Hero />
-                    <h1>{this.props.page.title ? this.props.page.title.rendered : null}</h1>
-                    <div  className="content">
-                    <div
-                        dangerouslySetInnerHTML={{
-                            __html: this.props.page.content.rendered ? this.props.page.content.rendered : null
-                        }}
-                    />
-                     <Link
-                        as={`/page/about`}
-                        href={`/post?slug=about&apiRoute=page`}
-                    >
-                    <a>Read more</a>
-                    </Link>
-                    </div>
-                    <h2>From the blog</h2>
+                    <Intro  title={this.props.page.title ? this.props.page.title.rendered : null} content={this.props.page.content.rendered ? this.props.page.content.rendered : null}/>
+             
+                    <h2>Latest from the blog</h2>
                     <Grid cards={this.props.posts} linkType="post"/>
           
                

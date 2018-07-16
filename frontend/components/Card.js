@@ -2,9 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 const Card = props => {
-  console.log(props.tag_names);
-  //console.log(props.featured_media ? props._embedded['wp:featuredmedia'][0].media_details.sizes.medium_large.file : null);
-  
+
   const tags = props.tag_names.map((tag, index)=> {
     return (
       <span className="card__tag" key={index}>
@@ -27,7 +25,7 @@ const Card = props => {
                         as={`/${props.linkType ? props.linkType : 'page'}/${props.slug}`}
                         href={`/post?slug=${props.slug}&apiRoute=${props.linkType ? props.linkType : 'page'}`}
                     >
-                <a>{props.title ? props.title.rendered : null}</a>
+                <a className="card__title__link">{props.title ? props.title.rendered : null}</a>
                 </Link>
               </h2>
             
@@ -37,7 +35,7 @@ const Card = props => {
                         }}
                     />
               <div className="card__footer" hidden={props.tag_names.length ? false : true}>
-                in {tags}
+                {tags}
               </div>
               </div>
             </article>

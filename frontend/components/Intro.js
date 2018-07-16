@@ -1,10 +1,24 @@
+import Link from "next/link";
 import React from 'react';
 
-const Intro = () => {
+const Intro = (props) => {
 
   return(
-    <div>
-      <p>This is the intro</p>
+    <div className="intro">
+      <h1>{props.title }</h1>
+        <div  className="content">
+        <div
+            dangerouslySetInnerHTML={{
+                __html: props.content
+            }}
+        />
+          <Link
+            as={`/page/about`}
+            href={`/post?slug=about&apiRoute=page`}
+        >
+        <a>Read more</a>
+        </Link>
+        </div>
     </div>
   )
 }
