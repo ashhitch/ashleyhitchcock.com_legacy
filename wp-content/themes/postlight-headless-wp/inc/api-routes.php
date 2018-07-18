@@ -21,6 +21,13 @@ add_action( 'rest_api_init', function () {
 			'slug' => array_merge( $post_slug_arg, array( 'required' => true ) ),
 		)
 	) );
+	register_rest_route( 'postlight/v1', '/work', array(
+		'methods'  => 'GET',
+		'callback' => 'rest_get_work',
+		'args' => array(
+			'slug' => array_merge( $work_slug_arg, array( 'required' => true ) ),
+		)
+	) );
 
 	register_rest_route( 'postlight/v1', '/page', array(
 		'methods'  => 'GET',
@@ -58,6 +65,15 @@ function rest_get_post( WP_REST_Request $request ) {
 	return rest_get_content( $request, 'post', __FUNCTION__ );
 }
 
+/**
+ * Respond to a REST API request to get work data.
+ *
+ * @param WP_REST_Request $request
+ * @return WP_REST_Response
+ */
+function rest_get_work( WP_REST_Request $request ) {
+	return rest_get_content( $request, 'work', __FUNCTION__ );
+}
 /**
  * Respond to a REST API request to get page data.
  *
@@ -113,7 +129,7 @@ function rest_get_content( WP_REST_Request $request, $type, $function_name ) {
  * @return Post
  */
 function get_content_by_slug( $slug, $type = 'post' ) {
-	if ( ! in_array( $type, array ( 'post', 'page' ) ) ) {
+	if ( ! in_array( $type, array ( 'post', 'page', 'work' ) ) ) {
 		$type = 'post';
 	}
 	$args = array(

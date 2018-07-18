@@ -16,8 +16,12 @@ const Card = props => {
          
             <article className="card">
               <div className="card__image">
-             
-<img className="card__image__src" src={props.featured_media ? props._embedded['wp:featuredmedia'][0].media_details.sizes.medium_large.source_url : 'http://lorempixel.com/600/400/transport/?1'} alt="Image" />
+              <Link
+                        as={`/${props.linkType ? props.linkType : 'page'}/${props.slug}`}
+                        href={`/post?slug=${props.slug}&apiRoute=${props.linkType ? props.linkType : 'page'}`}
+                    >
+                <img className="card__image__src" src={props.featured_media ? props._embedded['wp:featuredmedia'][0].media_details.sizes.medium_large.source_url : 'http://lorempixel.com/600/400/transport/?1'} alt="Image" />
+                </Link>
               </div>
               <div className="card__content">
               <h2 className="card__title">

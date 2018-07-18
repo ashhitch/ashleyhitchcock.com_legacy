@@ -6,7 +6,6 @@ const hrStyle = {
 
 const Footer = () => (
     <footer>
-        <hr style={hrStyle} />
     </footer>
 );
 

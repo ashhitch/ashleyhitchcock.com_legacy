@@ -21,7 +21,7 @@ const Layout = props => (
             )}
          </LayoutContext.Consumer>
             {props.children}
-        <Footer />
+        {/* <Footer /> */}
     </main>
 );
 

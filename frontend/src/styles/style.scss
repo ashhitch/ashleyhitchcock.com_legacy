@@ -29,6 +29,9 @@ body {
   h2 {
     color: $themeColor-Dark
   }
+  &.menu-open {
+    position: fixed;
+  }
 }
 
 
@@ -111,4 +114,5 @@ a {
 
 @import "components/menu";
 @import "components/intro";
+@import "components/post";
 @import "components/grid";

@@ -9,9 +9,12 @@ const PageWrapper = Comp => (
       super(props);
   
       this.toggleMenu = () => {
+        ;
         this.setState(state => ({
           menuActive: !state.menuActive
         }));
+
+        this.state.menuActive ? document.body.classList.remove('menu-open') : document.body.classList.add('menu-open');
       };
   
       // State also contains the updater function so it will

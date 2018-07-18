@@ -16,6 +16,12 @@ app
             app.render(req, res, actualPage, queryParams);
         });
 
+        server.get("/work/:slug", (req, res) => {
+            const actualPage = "/post";
+            const queryParams = { slug: req.params.slug, apiRoute: "work" };
+            app.render(req, res, actualPage, queryParams);
+        });
+
         server.get("/page/:slug", (req, res) => {
             const actualPage = "/post";
             const queryParams = { slug: req.params.slug, apiRoute: "page" };

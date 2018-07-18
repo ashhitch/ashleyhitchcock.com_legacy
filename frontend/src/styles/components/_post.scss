@@ -1,0 +1,26 @@
+.post {
+  display: flex;
+  flex-direction:  column;
+  height: 100%;
+  &__banner {
+    height: 300px;
+    width: 100%;
+    background-color: #bada55;
+  }
+
+  &__heading {
+    background-color: #fff;
+    margin: -90px 6rem 0 6rem;
+    padding: 1.5rem 3rem;
+
+    h1 {
+      margin: 0;
+    }
+  }
+
+  &__content {
+    background-color: #fff;
+    padding: 3rem;
+    flex-grow: 1;
+  }
+}

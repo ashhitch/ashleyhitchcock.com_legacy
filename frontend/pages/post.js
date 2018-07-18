@@ -21,13 +21,21 @@ class Post extends Component {
 
         return (
             <Layout>
-              
+              <div  className="post">
+              <banner  className="post__banner">
+              banner image here
+              </banner>
+              <header  className="post__heading">
                 <h1>{this.props.post.title.rendered}</h1>
-                <div
+              </header>
+     
+            
+                <div className="post__content content"
                     dangerouslySetInnerHTML={{
                         __html: this.props.post.content.rendered
                     }}
                 />
+                </div>
             </Layout>
         );
     }
