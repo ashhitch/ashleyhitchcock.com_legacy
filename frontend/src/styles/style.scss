@@ -36,6 +36,7 @@ body {
 
 
 .knockout {
+  position: relative;
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
@@ -48,6 +49,28 @@ body {
   width: 100%;
   animation: backgroundAni 8s ease infinite;
   background-size: 400% 400%;
+
+  &__more {
+    position: absolute;
+    bottom: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    border: 0;
+    padding: 0;
+    border-radius: 50%;
+    margin: 0;
+    background-image: linear-gradient(to left, #1c46f2 ,#6a6ae8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__icon {
+      width: 30px;
+      height: auto;
+    }
+  }
   
   &__text-container {
     display: flex;
