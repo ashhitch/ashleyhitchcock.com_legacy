@@ -22,9 +22,9 @@ class Post extends Component {
         return (
             <Layout>
               <div  className="post">
-              <banner  className="post__banner">
+              <div  className="post__banner">
                 <img className="post__banner__src" src="http://via.placeholder.com/1800x500" alt={this.props.post.title.rendered} />
-              </banner>
+              </div>
               <header  className="post__heading">
                 <h1>{this.props.post.title.rendered}</h1>
               </header>

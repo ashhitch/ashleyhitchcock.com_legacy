@@ -1,15 +1,19 @@
+import React, { Component } from "react";
+
 import Link from "next/link";
-import React from 'react';
 
-const Intro = (props) => {
-
+class Intro extends Component  {
+  constructor(props) {
+    super(props);
+  }
+  render() {
   return(
     <div className="intro">
-      <h1>{props.title }</h1>
+      <h1>{this.props.title }</h1>
         <div  className="content">
         <div
             dangerouslySetInnerHTML={{
-                __html: props.content
+                __html: this.props.content
             }}
         />
           <Link
@@ -21,6 +25,7 @@ const Intro = (props) => {
         </div>
     </div>
   )
+}
 }
 
 export default Intro;

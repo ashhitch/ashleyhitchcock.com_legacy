@@ -16,6 +16,10 @@ const headerImageStyle = {
 
 class Index extends Component {
 
+    constructor(props) {
+        super(props);
+        this.scrollToIntro = this.scrollToIntro.bind(this)
+    }
     static async getInitialProps(context) {
         const pageRes = await fetch(
             `${Config.apiUrl}/wp-json/postlight/v1/page?slug=welcome`
@@ -31,6 +35,10 @@ class Index extends Component {
         // );
         // const pages = await pagesRes.json();
         return { page, posts };
+    }
+    scrollToIntro() {
+        console.log(this.IntroSection);
+        scrollToComponent(this.IntroSection, { offset: 0, align: 'top', duration: 1500});
     }
 
     render() {
@@ -66,9 +74,8 @@ class Index extends Component {
         return (
             <Layout>
                 
-                    <Hero />
-                    <Intro  title={this.props.page.title ? this.props.page.title.rendered : null} content={this.props.page.content.rendered ? this.props.page.content.rendered : null}/>
-             
+                    <Hero linkTo={this.IntroSection} />
+                    <Intro ref={(section) => { this.IntroSection = section; }} title={this.props.page.title ? this.props.page.title.rendered : null} content={this.props.page.content.rendered ? this.props.page.content.rendered : null}/>
                     <h2>Latest from the blog</h2>
                     <Grid cards={this.props.posts} linkType="post"/>
           

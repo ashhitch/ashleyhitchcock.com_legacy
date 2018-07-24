@@ -22,7 +22,9 @@
         "express": "^4.16.2",
         "isomorphic-unfetch": "^2.0.0",
         "next": "latest",
-        "react": "^16.4.1"
+        "react": "^16.4.1",
+        "react-scroll-to-component": "^1.0.2",
+        "react-scroll-to-component-ssr": "^1.0.0"
     },
     "devDependencies": {
         "autoprefixer": "7.1.5",
