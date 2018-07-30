@@ -2,7 +2,7 @@ import Footer from "./Footer";
 import Hamburger from "./Hamburger";
 import Header from "./Header";
 import {LayoutContext} from './../context/layout-context';
-import Menu from "./Menu.js";
+import Menu from "./Menu";
 
 const layoutStyle = {
     minHeight: '100vh',

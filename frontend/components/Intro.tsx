@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Link from "next/link";
 
 class Intro extends Component  {
+  props: any;
   constructor(props) {
     super(props);
   }

@@ -1,10 +1,5 @@
-import Link from "next/link";
 import React from "react";
 import scrollToComponent from 'react-scroll-to-component-ssr';
-
-const hrStyle = {
-    marginTop: 75
-};
 
 const Hero = (props) => (
     <div className="knockout">

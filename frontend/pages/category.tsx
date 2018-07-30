@@ -1,13 +1,15 @@
-import Layout from "../components/Layout.js";
 import React, { Component } from "react";
-import Link from "next/link";
-import fetch from "isomorphic-unfetch";
+
+import { Config } from "../config";
 import Error from "next/error";
-import PageWrapper from "../components/PageWrapper.js";
-import Menu from "../components/Menu.js";
-import { Config } from "../config.js";
+import Layout from "../components/Layout";
+import Link from "next/link";
+import Menu from "../components/Menu";
+import PageWrapper from "../components/PageWrapper";
+import fetch from "isomorphic-unfetch";
 
 class Category extends Component {
+    props: any;
     static async getInitialProps(context) {
         const { slug } = context.query;
         const categoriesRes = await fetch(

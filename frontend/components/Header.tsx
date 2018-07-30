@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 
-import { Config } from "../config.js";
+// import { Config } from "../config";
 import Head from "next/head";
-import Link from "next/link";
-import Menu from "./Menu.js";
 import stylesheet from '../src/styles/style.scss'
 
 class Header extends Component {

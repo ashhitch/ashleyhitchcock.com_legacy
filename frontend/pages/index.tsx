@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { Config } from "../config";
 import Grid from "../components/Grid";
-import Hero from "../components/Hero/Hero";
+import Hero from "../components/Hero";
 import Intro from '../components/Intro';
 import Layout from "../components/Layout";
 import Link from "next/link";
@@ -15,6 +15,8 @@ const headerImageStyle = {
 };
 
 class Index extends Component {
+    IntroSection: any;
+    props: any;
 
     constructor(props) {
         super(props);

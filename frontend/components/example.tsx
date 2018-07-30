@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 class Example extends Component {
+  props: any;
     constructor(props) {
         super(props);
       ////  this.state = { active: false };
@@ -14,17 +15,17 @@ class Example extends Component {
     //  this.setState({active: !current});
     // }
 
-    componentDidMount() {
-      // ThemeContext value is this.props.theme
-      //console.log(this.props);
-    }
+    // componentDidMount() {
+    //   // ThemeContext value is this.props.theme
+    //   //console.log(this.props);
+    // }
   
-    componentDidUpdate(prevProps, prevState) {
-      // Previous ThemeContext value is prevProps.theme
-      // New ThemeContext value is this.props.theme
-     // console.log(prevProps, prevState);
+    // componentDidUpdate(prevProps, prevState) {
+    //   // Previous ThemeContext value is prevProps.theme
+    //   // New ThemeContext value is this.props.theme
+    //  // console.log(prevProps, prevState);
       
-    }
+    // }
 
     render() {
 

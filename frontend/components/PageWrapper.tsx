@@ -1,9 +1,13 @@
-import { Config } from "../config.js";
+import { Config } from "../config";
 import {LayoutContext} from './../context/layout-context';
 import React from "react";
 
 const PageWrapper = Comp => (
   class extends React.Component {
+    toggleMenu: () => void;
+    
+    state: any;
+    props: any;
 
     constructor(props) {
       super(props);
