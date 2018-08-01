@@ -4,7 +4,6 @@ import React from "react";
 
 const PageWrapper = Comp => (
   class extends React.Component {
-    toggleMenu: () => void;
     
     state: any;
     props: any;
@@ -12,31 +11,39 @@ const PageWrapper = Comp => (
     constructor(props) {
       super(props);
   
-      this.toggleMenu = () => {
-        ;
-        this.setState(state => ({
-          menuActive: !state.menuActive
-        }));
-
-        this.state.menuActive ? document.body.classList.remove('menu-open') : document.body.classList.add('menu-open');
-      };
-  
       // State also contains the updater function so it will
       // be passed down into the context provider
       this.state = {
           menuActive: false,
           toggleMenu: this.toggleMenu,
+          closeMenu: this.closeMenu,
           menuItems: []
       };
       this.getMenu();
     }
+
+    toggleMenu = () => {
+      
+      this.setState(state => ({
+        menuActive: !state.menuActive
+      }));
+
+      this.state.menuActive ? document.body.classList.remove('menu-open') : document.body.classList.add('menu-open');
+    };
+    closeMenu = () => {
+      
+      this.setState(state => ({
+        menuActive: false
+      }));
+
+      document.body.classList.remove('menu-open');
+    };
 
     async getMenu() {
       const headerMenuRes = await fetch(
         `${Config.apiUrl}/wp-json/menus/v1/menus/header-menu`
       );
       const headerMenu = await headerMenuRes.json();
-      console.log(headerMenu);
       this.setState({
         menuItems: headerMenu
       });

@@ -8,6 +8,7 @@ import Layout from "../components/Layout";
 import Link from "next/link";
 import PageWrapper from "../components/PageWrapper";
 import fetch from "isomorphic-unfetch";
+import scrollToComponent from  'react-scroll-to-component-ssr';
 
 const headerImageStyle = {
     marginTop: 50,
@@ -20,7 +21,6 @@ class Index extends Component {
 
     constructor(props) {
         super(props);
-        this.scrollToIntro = this.scrollToIntro.bind(this)
     }
     static async getInitialProps(context) {
         const pageRes = await fetch(
@@ -38,13 +38,13 @@ class Index extends Component {
         // const pages = await pagesRes.json();
         return { page, posts };
     }
-    scrollToIntro() {
+
+    scrollToIntro = () => {
         console.log(this.IntroSection);
-        scrollToComponent(this.IntroSection, { offset: 0, align: 'top', duration: 1500});
+        scrollToComponent(this.IntroSection, { offset: 0, align: 'top', duration: 1500 });
     }
 
     render() {
-      const isActive = false;
         const posts = this.props.posts.map((post, index) => {
             return (
                 <ul key={index}>

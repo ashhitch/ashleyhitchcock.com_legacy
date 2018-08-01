@@ -6,13 +6,13 @@ const Grid = props => (
   <section className="grid">
 
 
-    {props.cards.map((card, index) => {
+    {!!props.cards && props.cards.length ? props.cards.map((card, index) => {
       return (
         <div key={index} className="grid__item">
           <Card {...card} linkType={props.linkType} />
         </div>
       ) 
-    })}
+    }): null}
 
 
   </section>    

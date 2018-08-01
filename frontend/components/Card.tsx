@@ -3,13 +3,13 @@ import React from "react";
 
 const Card = props => {
 
-  const tags = props.tag_names.map((tag, index)=> {
+  const tags = !!props.tag_names && props.tag_names.length ?  props.tag_names.map((tag, index)=> {
     return (
       <span className="card__tag" key={index}>
         {tag}
       </span>
     );
-  });
+  }): null;
 
 
   return (
@@ -20,7 +20,7 @@ const Card = props => {
                         as={`/${props.linkType ? props.linkType : 'page'}/${props.slug}`}
                         href={`/post?slug=${props.slug}&apiRoute=${props.linkType ? props.linkType : 'page'}`}
                     >
-                <img className="card__image__src" src={props.featured_media ? props._embedded['wp:featuredmedia'][0].media_details.sizes.medium_large.source_url : 'http://lorempixel.com/600/400/transport/?1'} alt="Image" />
+                <img className="card__image__src" src={props.featured_media ? props._embedded['wp:featuredmedia'][0].media_details.sizes.medium_large.source_url : '/static/images/placeholder.jpg'} alt="Image" />
                 </Link>
               </div>
               <div className="card__content">
@@ -38,7 +38,7 @@ const Card = props => {
                             __html: props.excerpt.rendered ? props.excerpt.rendered : null
                         }}
                     />
-              <div className="card__footer" hidden={props.tag_names.length ? false : true}>
+              <div className="card__footer" hidden={!!props.tag_names && props.tag_names.length ? false : true}>
                 {tags}
               </div>
               </div>
