@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Link from "next/link";
 
 class Menu extends Component {
+    props: any;
   constructor(props) {
       super(props);
   }
@@ -34,9 +35,9 @@ class Menu extends Component {
                 <Link
                     as={`/${item.object}/${slug}`}
                     href={`/${actualPage}?slug=${slug}&apiRoute=${item.object}`}
-                   
+                    
                 >
-                    <a>{item.title}</a>
+                    <a onClick={this.props.close}>{item.title}</a>
                 </Link>
             </li>
         );
@@ -49,8 +50,8 @@ class Menu extends Component {
                 <nav  className={"menu " + (this.props.active ? 'is-active' : '')} >
                     <ul className="nav">
                         <li>
-                            <Link href="/">
-                                <a>Home</a>
+                            <Link href="/" >
+                                <a onClick={this.props.close}>Home</a>
                             </Link>
                         </li>
                         {menuItems}

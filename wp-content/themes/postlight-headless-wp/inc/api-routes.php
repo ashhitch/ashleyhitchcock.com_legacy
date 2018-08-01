@@ -96,7 +96,7 @@ function rest_get_page( WP_REST_Request $request ) {
  * @return WP_REST_Response
  */
 function rest_get_content( WP_REST_Request $request, $type, $function_name ) {
-	if ( ! in_array( $type, array ( 'post', 'page' ) ) ) {
+	if ( ! in_array( $type, array ( 'post', 'page','work' ) ) ) {
 		$type = 'post';
 	}
 	$slug = $request->get_param( 'slug');

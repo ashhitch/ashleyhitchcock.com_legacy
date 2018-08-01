@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 
-import { Config } from "../config.js";
+import { Config } from "../config";
 import Error from "next/error";
-import Layout from "../components/Layout.js";
-import PageWrapper from "../components/PageWrapper.js";
+import Layout from "../components/Layout";
+import PageWrapper from "../components/PageWrapper";
 import fetch from "isomorphic-unfetch";
 
 class Post extends Component {
+    props: any;
     static async getInitialProps(context) {
         const { slug, apiRoute } = context.query;
         const res = await fetch(

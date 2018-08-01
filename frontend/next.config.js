@@ -1,7 +1,9 @@
 const path = require('path')
 const glob = require('glob')
+const withTypescript = require('@zeit/next-typescript');
+// module.exports = withTypescript()
 
-module.exports = {
+module.exports = withTypescript({
   webpack: (config, { dev }) => {
     config.module.rules.push(
       {
@@ -33,4 +35,4 @@ module.exports = {
     )
     return config
   }
-}
+})

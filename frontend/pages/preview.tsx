@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 
-import { Config } from "../config.js";
+import { Config } from "../config";
 import Error from "next/error";
-import Layout from "../components/Layout.js";
-import Menu from "../components/Menu.js";
-import PageWrapper from "../components/PageWrapper.js";
+import Layout from "../components/Layout";
+import Menu from "../components/Menu";
+import PageWrapper from "../components/PageWrapper";
 import fetch from "isomorphic-unfetch";
 
 class Preview extends Component {
+    state: { post: any; };
+    props: any;
+    
     constructor() {
         super();
         this.state = {
