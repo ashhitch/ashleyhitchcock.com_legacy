@@ -1,10 +1,10 @@
 import React from 'react';
 
-interface HamburgerProps {
+interface IHamburgerProps {
   active: boolean;
   toggle: () => {};
 }
-const Header = (props: HamburgerProps) => (
+const Header = (props: IHamburgerProps) => (
   <a href="#" className={'menu-toggle ' + (props.active ? 'is-active' : '')} onClick={props.toggle}>
     <span />
     <span />

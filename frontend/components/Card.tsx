@@ -1,23 +1,23 @@
 import Link from 'next/link';
 import React from 'react';
 
-interface CardTitleProps {
+interface ICardTitleProps {
   rendered: string;
 }
-interface CardExcerptProps {
+interface ICardExcerptProps {
   rendered: string;
 }
-interface CardProps {
+interface ICardProps {
   tag_names: [];
   linkType: string;
   slug: string;
   _embedded: any;
   featured_media: boolean;
-  title: CardTitleProps;
-  excerpt: CardExcerptProps;
+  title: ICardTitleProps;
+  excerpt: ICardExcerptProps;
 }
 
-const Card = (props: CardProps) => {
+const Card = (props: ICardProps) => {
   const tags =
     !!props.tag_names && props.tag_names.length
       ? props.tag_names.map((tag, index) => {

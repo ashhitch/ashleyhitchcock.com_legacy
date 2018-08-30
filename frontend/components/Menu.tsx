@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 
 import Link from 'next/link';
 
-interface MenuProps {
-  menu: ItemsProps;
+interface IMenuProps {
+  menu: IItemsProps;
   close: () => void;
   active: boolean;
 }
-interface ItemsProps {
+interface IItemsProps {
   items: [{ ID: number; url: string; title: string; object: string }];
 }
 class Menu extends Component {
-  props: MenuProps;
+  props: IMenuProps;
   constructor(props) {
     super(props);
   }
