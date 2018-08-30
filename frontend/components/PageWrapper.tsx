@@ -2,10 +2,19 @@ import { Config } from "../config";
 import {LayoutContext} from './../context/layout-context';
 import React from "react";
 
+interface IState {
+  menuActive: boolean;
+  toggleMenu: () => void;
+  closeMenu: () => void;
+  menuItems: [];
+}
+
 const PageWrapper = Comp => (
+
+
   class extends React.Component {
     
-    state: any;
+    state: IState;
     props: any;
 
     constructor(props) {

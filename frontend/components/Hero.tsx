@@ -1,7 +1,11 @@
 import React from "react";
 import scrollToComponent from 'react-scroll-to-component-ssr';
 
-const Hero = (props) => (
+interface IHeroProps {
+    title: string;
+    linkTo: string;
+}
+const Hero = (props: IHeroProps) => (
     <div className="knockout">
   
         <svg className="knockout__text-container" width="100%" height="100%">
@@ -11,7 +15,7 @@ const Hero = (props) => (
             <text x="50%" y="50%" fill="#000" textAnchor="middle">{props.title ? props.title : 'Hello!'}</text>
             </mask>
         </svg>
-
+    
         {props.linkTo ? <button type="button" className="knockout__more"  onClick={() => scrollToComponent(props.linkTo, { offset: 0, align: 'top', duration: 1500})}>
             <svg className="knockout__more__icon" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 129 129" enableBackground="new 0 0 129 129" width="512px" height="512px">
             <g>
