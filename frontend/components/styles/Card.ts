@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const CardArticle = styled.article`
-background-color: #f2f2f2;
+background-color: ${props => props.theme.white};
 text-decoration: none;
 color: #333;
 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);

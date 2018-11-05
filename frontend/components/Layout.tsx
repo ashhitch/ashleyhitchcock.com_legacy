@@ -10,6 +10,7 @@ const theme = {
   grey: '#3A3A3A',
   lightgrey: '#E1E1E1',
   offWhite: '#EDEDED',
+  white: '#f2f2f2',
   maxWidth: '1000px',
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
   font:
@@ -20,7 +21,7 @@ const StyledPage = styled.main`
   background: white;
   color: ${theme.black};
   min-height: 100vh;
-  padding: 20px;
+  padding: 20px 20px 30px 20px;
 `;
 
 const GlobalStyle  = createGlobalStyle`
@@ -34,7 +35,7 @@ const GlobalStyle  = createGlobalStyle`
     padding: 0;
     margin: 0;
     font-size: 1rem;
-    line-height: 2;
+    line-height: 1.25;
     background-color: white;
     font-family: ${theme.font};
 

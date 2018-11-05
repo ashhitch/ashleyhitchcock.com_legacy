@@ -6,10 +6,10 @@ import styled from 'styled-components';
 
 const StyledLogo = styled.span`
   font-size: 3rem;
-  margin-left: 2rem;
   position: relative;
   z-index: 2;
-  transform: skew(-7deg);
+  transform: skew(-9deg);
+  margin-left: 2px;
   font-weight: 700;
   
   a {

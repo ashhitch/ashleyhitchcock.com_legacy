@@ -16,21 +16,21 @@ const StyledMenu = styled.div`
 .menu {
   position: fixed;
   overflow-y: auto;
-  width: calc(100vw - 42px);
-  height: calc(100vh - 42px);
-  background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  height: 100%;
+  background: ${props => props.theme.blue};
   border-top: 1px solid #5f5fe8;
   opacity: 0;
   z-index: -1;
   transition: opacity 0;
-  top: 21px;
-  left: 21px;
-  right: 21px;
-  bottom: 21px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   margin: 0;
   padding: 0;
   &.is-active {
-    z-index: 10;
+    z-index: 100;
     transition: opacity 0.2s ease-in;
     opacity: 1;
   }
@@ -47,11 +47,11 @@ const StyledMenu = styled.div`
     z-index: 3;
     width: 100%;
     background: transparent;
-    border-bottom: 1px solid #5f5fe8;
-    color: #111111;
+    border-bottom: 1px solid ${props => props.theme.white};
+    color: ${props => props.theme.white};
     font-size: 300%;
     letter-spacing: 1vw;
-  line-height: ${100 / 4}vh;
+    line-height: ${100 / 4}vh;
     text-decoration: none;
     text-transform: uppercase;
     &:hover,
