@@ -1,10 +1,12 @@
+import StyledContent from './styles/Content';
 import styled from 'styled-components';
 
-const StyledPost = styled.div`
+const StyledPost = styled.article`
 .post {
   display: flex;
   flex-direction:  column;
   min-height: calc(100vh - 40px);
+  
   &__banner {
     height: 300px;
     width: 100%;
@@ -57,12 +59,13 @@ const SinglePost = (post) => {
             alt={post.title.rendered}
           />
         </div>
+
         <header className="post__heading">
           <h1>{post.title.rendered}</h1>
         </header>
 
-        <div
-          className="post__content content"
+        <StyledContent
+          className="post__content"
           dangerouslySetInnerHTML={{
             __html: post.content.rendered
           }}

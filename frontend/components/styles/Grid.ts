@@ -5,6 +5,7 @@ export const GridWrapper = styled.section`
   width: 100%;
   padding: 0;
   list-style-type: none;
+  /* grid-template-columns: 1fr 1fr; */
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 2rem;
 `;

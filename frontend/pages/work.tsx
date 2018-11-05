@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import { Config } from "../config";
 import Grid from "../components/Grid";
-import Hero from "../components/Hero";
 import Layout from "../components/Layout";
 import PageWrapper from "../components/PageWrapper";
 import fetch from "isomorphic-unfetch";
@@ -24,16 +23,13 @@ class Work extends Component {
         return {work};
     }
 
-
     render() {
-
 
         return (
             <Layout>
-                <Hero title="work" />
                 
-                    <h2>Latest work</h2>
-                    <Grid cards={this.props.work} linkType="work"/>
+                <h2>Latest work</h2>
+                <Grid cards={this.props.work} linkType="work"/>
                
             </Layout>
         );
@@ -41,4 +37,3 @@ class Work extends Component {
 }
 
 export default PageWrapper(Work);
-
