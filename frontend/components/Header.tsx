@@ -30,9 +30,9 @@ const StyledHeader = styled.header`
 const Header = () => {
   <StyledHeader>
     <div className="bar">
-    <Logo>
+      <Logo>
         <Link href="/">
-          <a>AH</a>
+          <a>AH.</a>
         </Link>
       </Logo>
       <LayoutContext.Consumer>
@@ -43,7 +43,6 @@ const Header = () => {
           </div>
         )}
       </LayoutContext.Consumer>
-
     </div>
   </StyledHeader>
 }

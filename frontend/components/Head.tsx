@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
 import Head from "next/head";
-import stylesheet from '../src/styles/style.scss'
+
+//import stylesheet from '../src/styles/style.scss'
 
 // import { Config } from "../config";
 
@@ -17,7 +18,7 @@ class PageHead extends Component {
         return (
             <React.Fragment>
                 <Head>
-                    <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
+                    {/* <style dangerouslySetInnerHTML={{ __html: stylesheet }} /> */}
                     <meta
                         name="viewport"
                         content="width=device-width, initial-scale=1"

@@ -69,7 +69,7 @@ injectGlobal`
 
   h1,
   h2 {
-      color: ${props => props.theme.black};
+      color: ${theme.black};
   }
 `;
 
