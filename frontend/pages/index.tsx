@@ -27,7 +27,7 @@ class Index extends Component {
             `${Config.apiUrl}/wp-json/postlight/v1/page?slug=welcome`
         );
         const page = await pageRes.json();
-        console.log(`${Config.apiUrl}/wp-json/wp/v2/posts?_embed&per_page=9`);
+       // console.log(`${Config.apiUrl}/wp-json/wp/v2/posts?_embed&per_page=4`);
         const postsRes = await fetch(
             `${Config.apiUrl}/wp-json/wp/v2/posts?_embed&per_page=9`
         );
@@ -42,6 +42,15 @@ class Index extends Component {
     scrollToIntro = () => {
         console.log(this.IntroSection);
         scrollToComponent(this.IntroSection, { offset: 0, align: 'top', duration: 1500 });
+    }
+
+    componentDidMount = () => {
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/sw.js")
+                .catch(err => console.error("Service worker registration failed", err));
+        } else {
+            console.log("Service worker not supported");
+        }
     }
 
     render() {

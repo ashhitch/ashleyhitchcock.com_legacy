@@ -4,6 +4,7 @@ const next = require("next");
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
+const { createReadStream } = require('fs');
 
 app
     .prepare()
@@ -38,6 +39,12 @@ app
             const actualPage = "/preview";
             const queryParams = { id: req.params.id, wpnonce: req.params.wpnonce };
             app.render(req, res, actualPage, queryParams);
+        });
+
+        server.get("/sw.js", (req, res) => {
+            res.setHeader('content-type', 'text/javascript');
+            createReadStream('./sw/sw.js').pipe(res)
+
         });
 
         server.get("*", (req, res) => {

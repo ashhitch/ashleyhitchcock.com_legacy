@@ -1,3 +1,4 @@
+import CardArticle from './styles/Card';
 import Link from 'next/link';
 import React from 'react';
 
@@ -30,7 +31,7 @@ const Card = (props: ICardProps) => {
       : null;
 
   return (
-    <article className="card">
+    <CardArticle className="card">
       <div className="card__image">
         <Link
           as={`/${props.linkType ? props.linkType : 'page'}/${props.slug}`}
@@ -67,7 +68,7 @@ const Card = (props: ICardProps) => {
           {tags}
         </div>
       </div>
-    </article>
+    </CardArticle>
   );
 };
 export default Card;

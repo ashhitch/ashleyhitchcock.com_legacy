@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import IntroWrap from "./styles/Intro";
 import Link from "next/link";
 
 class Intro extends Component  {
@@ -9,7 +10,7 @@ class Intro extends Component  {
   }
   render() {
   return(
-    <div className="intro">
+    <IntroWrap>
       <h1>{this.props.title }</h1>
         <div  className="content">
         <div
@@ -24,7 +25,7 @@ class Intro extends Component  {
         <a>Read more</a>
         </Link>
         </div>
-    </div>
+    </IntroWrap>
   )
 }
 }

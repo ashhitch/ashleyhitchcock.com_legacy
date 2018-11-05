@@ -1,21 +1,23 @@
+import { GridItem, GridWrapper } from 'components/styles/Grid';
+
 import Card from './Card';
 import React from "react";
 
 const Grid = props => (
          
-  <section className="grid">
+  <GridWrapper>
 
 
     {!!props.cards && props.cards.length ? props.cards.map((card, index) => {
       return (
-        <div key={index} className="grid__item">
+        <GridItem key={index}>
           <Card {...card} linkType={props.linkType} />
-        </div>
+        </GridItem>
       ) 
     }): null}
 
 
-  </section>    
+  </GridWrapper>    
         );
  
 
