@@ -1,4 +1,4 @@
-import styled, { ThemeProvider, injectGlobal } from 'styled-components';
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 import Header from './Header';
 import PageHead from './Head';
@@ -18,12 +18,12 @@ const theme = {
 
 const StyledPage = styled.main`
   background: white;
-  color: ${props => props.theme.black};
-  min-height: '100vh';
-  padding: '20px';
+  color: ${theme.black};
+  min-height: 100vh;
+  padding: 20px;
 `;
 
-injectGlobal`
+const GlobalStyle  = createGlobalStyle`
   html {
     box-sizing: border-box;
   }
@@ -36,6 +36,7 @@ injectGlobal`
     font-size: 1rem;
     line-height: 2;
     background-color: white;
+    font-family: ${theme.font};
 
     &:before,
     &:after {
@@ -75,13 +76,15 @@ injectGlobal`
 
 const Layout = props => (
   <ThemeProvider theme={theme}>
+  <div>
+    <GlobalStyle />
     <StyledPage>
       <PageHead />
       <Header />
       {props.children}
-      {/* <Footer /> */}
     </StyledPage>
-  </ThemeProvider>
+  </div>
+</ThemeProvider>
 );
 
 export default Layout;

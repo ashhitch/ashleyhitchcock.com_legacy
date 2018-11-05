@@ -31,7 +31,8 @@ const Card = (props: ICardProps) => {
       : null;
 
   return (
-    <CardArticle className="card">
+    <CardArticle>
+      <div className="card">
       <div className="card__image">
         <Link
           as={`/${props.linkType ? props.linkType : 'page'}/${props.slug}`}
@@ -67,6 +68,7 @@ const Card = (props: ICardProps) => {
         <div className="card__footer" hidden={!!props.tag_names && props.tag_names.length ? false : true}>
           {tags}
         </div>
+      </div>
       </div>
     </CardArticle>
   );

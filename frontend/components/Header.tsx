@@ -4,15 +4,17 @@ import Link from 'next/link';
 import Menu from './Menu';
 import styled from 'styled-components';
 
-const Logo = styled.span`
-font-size: 4rem;
+const StyledLogo = styled.span`
+  font-size: 3rem;
   margin-left: 2rem;
   position: relative;
   z-index: 2;
   transform: skew(-7deg);
+  font-weight: 700;
+  
   a {
     padding: 0.5rem 1rem;
-    background: ${props => props.theme.blues};
+    background: ${props => props.theme.blue};
     color: white;
     text-transform: uppercase;
     text-decoration: none;
@@ -25,16 +27,15 @@ const StyledHeader = styled.header`
     justify-content: space-between;
     align-items: stretch;
   }
-
 `;
-const Header = () => {
+const Header = () => (
   <StyledHeader>
     <div className="bar">
-      <Logo>
+      <StyledLogo>
         <Link href="/">
           <a>AH.</a>
         </Link>
-      </Logo>
+      </StyledLogo>
       <LayoutContext.Consumer>
         {({ menuItems, menuActive, toggleMenu, closeMenu }) => (
           <div>
@@ -45,6 +46,6 @@ const Header = () => {
       </LayoutContext.Consumer>
     </div>
   </StyledHeader>
-}
+);
 
 export default Header;

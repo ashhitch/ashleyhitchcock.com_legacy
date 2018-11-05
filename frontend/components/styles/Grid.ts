@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const GridWrapper = styled.section`
+const GridWrapper = styled.section`
   display: grid;
   width: 100%;
   padding: 0;
@@ -11,17 +11,21 @@ export const GridWrapper = styled.section`
 `;
 
 
-export const GridItem = styled.div`
+const GridItem = styled.div`
   @media (min-width: 768px) {
     &:first-child {
       grid-column: span 2;
     }
-  
   }
+
   @media (min-width: 1200px) {
     &:first-child {
       grid-column: span 3;
     }
-  
   }
-`;
+`; 
+
+export {
+  GridWrapper,
+  GridItem
+}

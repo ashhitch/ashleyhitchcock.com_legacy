@@ -84,12 +84,9 @@ class Index extends Component {
         // });
         return (
             <Layout>
-        
-                    <Intro ref={(section) => { this.IntroSection = section; }} title={this.props.page.title ? this.props.page.title.rendered : null} content={this.props.page.content.rendered ? this.props.page.content.rendered : null}/>
-                    <h2>Latest from the blog</h2>
-                    <Grid cards={this.props.posts} linkType="post"/>
-          
-               
+                <Intro ref={(section) => { this.IntroSection = section; }} title={this.props.page.title ? this.props.page.title.rendered : null} content={this.props.page.content.rendered ? this.props.page.content.rendered : null} />
+                <h2>Latest from the blog</h2>
+                <Grid cards={this.props.posts} linkType="post"/>
             </Layout>
         );
     }

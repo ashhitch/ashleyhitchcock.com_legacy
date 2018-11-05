@@ -25,7 +25,6 @@ class Intro extends Component  {
         >
         <a>Read more</a>
         </Link>
->
         </StyledContent>
     </IntroWrap>
   )

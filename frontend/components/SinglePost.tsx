@@ -48,7 +48,8 @@ const StyledPost = styled.article`
 }
 `;
 const SinglePost = (post) => {
-
+  const title = !!post && post.title ? post.title.rendered : null;
+  const content = !!post && post.content ? post.content.rendered : null;
   return (
     <StyledPost>
       <div className="post">
@@ -56,18 +57,18 @@ const SinglePost = (post) => {
           <img
             className="post__banner__src"
             src="http://via.placeholder.com/1800x500"
-            alt={post.title.rendered}
+            alt={title}
           />
         </div>
 
         <header className="post__heading">
-          <h1>{post.title.rendered}</h1>
+          <h1>{title}</h1>
         </header>
 
         <StyledContent
           className="post__content"
           dangerouslySetInnerHTML={{
-            __html: post.content.rendered
+            __html: content
           }}
         />
       </div>

@@ -17,10 +17,9 @@ class Post extends Component {
                 `${Config.apiUrl}/wp-json/postlight/v1/${apiRoute}?slug=${slug}`
             );
         const post = await res.json();
+        console.log(post);
          return { post };
-         
     
-
     }
 
     render() {
