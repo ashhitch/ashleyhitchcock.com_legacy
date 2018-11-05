@@ -2,39 +2,6 @@
 @import 'theme-colors';
 $theme-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
-body {
-  font-family: $theme-font;
-  background-color: #1c46f2;
-  margin: 0;
-  &:before,
-  &:after {
-    background: inherit;
-    content: "";
-    display: block;
-    height: 21px;
-    left: 0;
-    position: fixed;
-    width: 100%;
-    z-index: 80;
-  }
-
-  &:before {
-    top: 0;
-  }
-  &:after {
-    bottom: 0;
-  }
-
-  h1,
-  h2 {
-    color: $themeColor-Dark
-  }
-  &.menu-open {
-    position: fixed;
-  }
-}
-
-
 .knockout {
   position: relative;
   display: flex;
@@ -99,43 +66,3 @@ body {
   100%{background-position:0% 50%}
 }
 
-.content {
-  
-a {
-  color: #111111;
-  position: relative;
-  display: inline-block;
-  text-decoration: none;
-  z-index: 1;
-  padding: 0 5px;
-
-  &:after {
-    display: block;
-    content: "";
-    background: #bada55;
-    height: 20px;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 10px;
-    z-index: -1;
-    transition: all 0.2s ease-in-out;
-    bottom: 0;
-    transform: rotate(2deg);
-  }
-
-  &:hover:after {
-    transform: rotate(4deg);
-    bottom: 0;
-  }
-  &:nth-child(odd):hover:after {
-    transform: rotate(-4deg);
-  }
-}
-
-}
-
-@import "components/menu";
-@import "components/intro";
-@import "components/post";
-@import "components/grid";

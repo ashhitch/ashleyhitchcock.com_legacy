@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import IntroWrap from "./styles/Intro";
 import Link from "next/link";
+import StyledContent from "./styles/Content";
 
 class Intro extends Component  {
   props: any;
@@ -12,7 +13,7 @@ class Intro extends Component  {
   return(
     <IntroWrap>
       <h1>{this.props.title }</h1>
-        <div  className="content">
+      <StyledContent>
         <div
             dangerouslySetInnerHTML={{
                 __html: this.props.content
@@ -24,7 +25,8 @@ class Intro extends Component  {
         >
         <a>Read more</a>
         </Link>
-        </div>
+>
+        </StyledContent>
     </IntroWrap>
   )
 }
