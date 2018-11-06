@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import { Config } from "../config";
 import Grid from "../components/Grid";
-import Hero from "../components/Hero";
 import Intro from '../components/Intro';
 import Layout from "../components/Layout";
 import Link from "next/link";
@@ -29,7 +28,7 @@ class Index extends Component {
         const page = await pageRes.json();
        // console.log(`${Config.apiUrl}/wp-json/wp/v2/posts?_embed&per_page=4`);
         const postsRes = await fetch(
-            `${Config.apiUrl}/wp-json/wp/v2/posts?_embed&per_page=9`
+            `${Config.apiUrl}/wp-json/wp/v2/posts?_embed&per_page=4`
         );
         const posts = await postsRes.json();
         // const pagesRes = await fetch(

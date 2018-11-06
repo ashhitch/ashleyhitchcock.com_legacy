@@ -24,11 +24,10 @@ class Post extends Component {
 
     render() {
      
-        // if (!post.title) return <Error statusCode={404} />;
-       // console.log('this',this.props.post);
+        if (!this.props.post.title) return <Error statusCode={404} />;
         return (
             <Layout>
-              {this.props.post ? <SinglePost post={this.props.post} /> : null}
+              <SinglePost post={this.props.post} />
             </Layout>
         );
     }

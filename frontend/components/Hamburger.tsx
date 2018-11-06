@@ -7,15 +7,15 @@ interface IHamburgerProps {
 
 const StyledHamburger = styled.div`
 .menu-toggle {
-  position: fixed;
-  z-index: 20;
-  right: 0;
-  top: 0;
-  margin: 5%;
+  position: absolute;
+  z-index: 110;
+  right: 20px;
+  top: 20px;
+  margin: 0;
   > span {
     width: 50px;
     height: 5px;
-    background-color: #5f5fe8;
+    background-color: ${props => props.theme.blue};
     display: block;
     margin: 8px auto;
     transition: all 0.3s ease-in-out;
@@ -26,7 +26,7 @@ const StyledHamburger = styled.div`
   }
 
   &.is-active span {
-    background-color: #111111;
+    background-color: ${props => props.theme.white};
     &:nth-child(1),
     &:nth-child(3) {
       width: 40px;

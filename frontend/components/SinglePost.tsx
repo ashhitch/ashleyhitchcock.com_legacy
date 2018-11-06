@@ -47,7 +47,7 @@ const StyledPost = styled.article`
   }
 }
 `;
-const SinglePost = (post) => {
+const SinglePost = ({post}) => {
   const title = !!post && post.title ? post.title.rendered : null;
   const content = !!post && post.content ? post.content.rendered : null;
   return (

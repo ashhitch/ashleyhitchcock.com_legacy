@@ -7,7 +7,7 @@ const IntroWrap = styled.div`
   margin-top: 30px;
   
   @media(min-width: 768px) {
-    padding: 3rem;
+    padding: 2rem 0;
   }
 
   `;
