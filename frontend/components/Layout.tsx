@@ -1,6 +1,8 @@
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
+import Footer from './Footer';
 import Header from './Header';
+import { MaxWidthLayout } from './styles/Layout';
 import PageHead from './Head';
 
 const theme = {
@@ -73,6 +75,7 @@ const GlobalStyle  = createGlobalStyle`
   h2 {
       color: ${theme.black};
   }
+
 `;
 
 const Layout = props => (
@@ -82,7 +85,10 @@ const Layout = props => (
     <StyledPage>
       <PageHead />
       <Header />
-      {props.children}
+      <MaxWidthLayout>
+        {props.children}
+      </MaxWidthLayout>
+      <Footer />
     </StyledPage>
   </div>
 </ThemeProvider>
