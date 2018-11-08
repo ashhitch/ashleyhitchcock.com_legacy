@@ -31,6 +31,15 @@ const StyledContent = styled.div`
   &:nth-child(odd):hover:after {
     transform: rotate(-4deg);
   }
+
+}
+
+p {
+  margin: 0 0 1rem 0;
+}
+
+& > *:last-child {
+  margin-bottom: 0;
 }
 
 `;

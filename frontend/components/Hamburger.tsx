@@ -9,27 +9,40 @@ const StyledHamburger = styled.div`
 .menu-toggle {
   position: absolute;
   z-index: 110;
-  right: 20px;
+  right: 0;
   top: 20px;
   margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+
   > span {
-    width: 50px;
-    height: 5px;
+    width: 40px;
+    height: 4px;
     background-color: ${props => props.theme.blue};
     display: block;
-    margin: 8px auto;
+    margin: 6px auto;
     transition: all 0.3s ease-in-out;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &:hover {
     cursor: pointer;
   }
 
+
   &.is-active span {
     background-color: ${props => props.theme.white};
     &:nth-child(1),
     &:nth-child(3) {
-      width: 40px;
+      width: 25px;
     }
     &:nth-child(1) {
       transform: translateX(-10px) rotate(-45deg);
@@ -42,11 +55,11 @@ const StyledHamburger = styled.div`
 `;
 const Hamburger = (props: IHamburgerProps) => (
   <StyledHamburger>
-  <a href="#" className={'menu-toggle ' + (props.active ? 'is-active' : '')} onClick={props.toggle}>
+  <button className={'menu-toggle ' + (props.active ? 'is-active' : '')} onClick={props.toggle}>
     <span />
     <span />
     <span />
-  </a>
+  </button>
   </StyledHamburger>
 );
 

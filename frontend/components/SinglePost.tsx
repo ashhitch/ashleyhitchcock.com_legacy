@@ -9,9 +9,10 @@ const StyledPost = styled.article`
   
   &__banner {
     height: 300px;
-    width: 100%;
     background-color: #bada55;
     position: relative;
+    margin-left: -1rem;
+    margin-right: -1rem;
     
     &__src {
       width: 100%;
@@ -28,8 +29,8 @@ const StyledPost = styled.article`
 
   &__heading {
     background-color: #fff;
-    margin: -90px 6rem 0 6rem;
-    padding: 1.5rem 3rem;
+    margin: -60px 0 0 0;
+    padding: 1rem;
     z-index: 5;
     
     h1 {
@@ -40,10 +41,10 @@ const StyledPost = styled.article`
   
   &__content {
     background-color: #fff;
-    padding: 3rem;
     flex-grow: 1;
     height: 100%;
     z-index: 5;
+    padding-top: 1rem;
   }
 }
 `;
