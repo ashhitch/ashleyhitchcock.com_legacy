@@ -18,7 +18,7 @@ const StyledMenu = styled.div`
   overflow-y: auto;
   width: 100%;
   height: 100%;
-  background: ${props => props.theme.blue};
+  background: ${props => props.theme.primary};
   border-top: 1px solid #5f5fe8;
   opacity: 0;
   z-index: -1;

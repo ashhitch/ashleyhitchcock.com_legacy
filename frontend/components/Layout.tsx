@@ -7,6 +7,7 @@ import { Normalize } from 'styled-normalize'
 import PageHead from './Head';
 
 const theme = {
+  primary: '#000',
   blue: '#1c46f2',
   red: '#FF0000',
   black: '#393939',
@@ -14,12 +15,14 @@ const theme = {
   lightgrey: '#E1E1E1',
   offWhite: '#EDEDED',
   white: '#ffffff',
-  maxWidth: '1000px',
+  maxWidth: '1190px',
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
-  fade: 'linear-gradient(to left, #1c46f2, #5f5fe8)',
+  fadeBlue: 'linear-gradient(to left, #1c46f2, #5f5fe8)',
+  fade: 'linear-gradient(to left, #000, #000)',
   bgAni: 'backgroundAni 5s ease infinite',
   font:
     '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+    headingFont: '"Cardo", serif',
     backgroundAni: `
       0%{background-position:0% 50%}
       50%{background-position:100% 50%}
@@ -31,6 +34,7 @@ const theme = {
 const backgroundAni = keyframes`${theme.backgroundAni}`;
 
 const StyledPage = styled.main`
+  position: relative;
   background: ${theme.white};
   color: ${theme.black};
   min-height: 100vh;
@@ -39,7 +43,7 @@ const StyledPage = styled.main`
 `;
 
 const GlobalStyle = createGlobalStyle`
-
+  @import url('https://fonts.googleapis.com/css?family=Cardo');
   html {
     box-sizing: border-box;
   }
@@ -56,6 +60,7 @@ const GlobalStyle = createGlobalStyle`
     background-size: 400% 400%;
     animation: ${backgroundAni} 5s ease infinite;
     font-family: ${theme.font};
+    width: 100%;
 
     &:before,
     &:after {
@@ -89,8 +94,19 @@ const GlobalStyle = createGlobalStyle`
   button {  }
 
   h1,
-  h2 {
+  h2,
+  h3 {
       color: ${theme.black};
+      font-family: ${theme.headingFont};
+      font-weight: 400;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2, h3 {
+    font-size: 1.5rem;
   }
 
 `;
@@ -98,7 +114,7 @@ const GlobalStyle = createGlobalStyle`
 const Layout = props => (
   <ThemeProvider theme={theme}>
     <>
-    <Normalize />
+      <Normalize />
       <GlobalStyle />
       <StyledPage>
         <PageHead />

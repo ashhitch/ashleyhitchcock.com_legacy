@@ -10,7 +10,8 @@ const StyledHamburger = styled.div`
   position: absolute;
   z-index: 110;
   right: 0;
-  top: 20px;
+  top: 50%;
+  transform: translateY(-50%);
   margin: 0;
   padding: 0;
   border: 0;
@@ -19,7 +20,7 @@ const StyledHamburger = styled.div`
   > span {
     width: 40px;
     height: 4px;
-    background-color: ${props => props.theme.blue};
+    background-color: ${props => props.theme.primary};
     display: block;
     margin: 6px auto;
     transition: all 0.3s ease-in-out;

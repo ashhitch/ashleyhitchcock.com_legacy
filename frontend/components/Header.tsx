@@ -1,6 +1,7 @@
 import styled, {keyframes} from 'styled-components';
 
 import Hamburger from './Hamburger';
+import Headroom from 'react-headroom';
 import { LayoutContext } from './../context/layout-context';
 import Link from 'next/link';
 import Menu from './Menu';
@@ -27,14 +28,14 @@ const StyledLogo = styled.span`
   a {
     padding: 0 12px 0 0;
     background: ${props => props.theme.white};
-    color: ${props => props.theme.blue};
+    color: ${props => props.theme.primary};
     text-transform: uppercase;
     text-decoration: none;
     position: relative;
 
 
     // &:hover {
-    //   background: ${props => props.theme.blue};
+    //   background: ${props => props.theme.primary};
     //   color: ${props => props.theme.white};
     // }
 
@@ -66,27 +67,33 @@ const StyledHeader = styled.header`
     grid-template-columns: auto 1fr;
     justify-content: space-between;
     align-items: stretch;
-    padding: 15px 0;
+    padding: 1rem 0;
+
+    @media (min-width: 992px) {
+      padding: 2rem 0;
+    }
   }
 `;
 const Header = () => (
-  <StyledHeader>
-    <div className="bar">
-      <StyledLogo>
-        <Link href="/">
-          <a>AH<span>.</span></a>
-        </Link>
-      </StyledLogo>
-      <LayoutContext.Consumer>
-        {({ menuItems, menuActive, toggleMenu, closeMenu }) => (
-          <div>
-            <Hamburger active={menuActive} toggle={toggleMenu} />
-            <Menu menu={menuItems} active={menuActive} close={closeMenu} />
-          </div>
-        )}
-      </LayoutContext.Consumer>
-    </div>
-  </StyledHeader>
+  <Headroom>
+    <StyledHeader>
+      <div className="bar">
+        <StyledLogo>
+          <Link href="/">
+            <a>AH<span>.</span></a>
+          </Link>
+        </StyledLogo>
+        <LayoutContext.Consumer>
+          {({ menuItems, menuActive, toggleMenu, closeMenu }) => (
+            <div>
+              <Hamburger active={menuActive} toggle={toggleMenu} />
+              <Menu menu={menuItems} active={menuActive} close={closeMenu} />
+            </div>
+          )}
+        </LayoutContext.Consumer>
+      </div>
+    </StyledHeader>
+  </Headroom>
 );
 
 export default Header;
