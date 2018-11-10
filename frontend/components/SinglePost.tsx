@@ -1,3 +1,4 @@
+import Head from "next/head";
 import StyledContent from './styles/Content';
 import styled from 'styled-components';
 
@@ -52,12 +53,16 @@ const SinglePost = ({post}) => {
   const title = !!post && post.title ? post.title.rendered : null;
   const content = !!post && post.content ? post.content.rendered : null;
   return (
+    <>
+    <Head>
+      <title>{title}</title>
+    </Head>
     <StyledPost>
       <div className="post">
         <div className="post__banner">
           <img
             className="post__banner__src"
-            src="http://via.placeholder.com/1800x500"
+            src="http://via.placeholder.com/1200x400"
             alt={title}
           />
         </div>
@@ -74,6 +79,7 @@ const SinglePost = ({post}) => {
         />
       </div>
     </StyledPost>
+    </>
   );
 };
 

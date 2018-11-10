@@ -16,7 +16,7 @@ class PageHead extends Component {
     render() {
 
         return (
-            <React.Fragment>
+            <>
                 <Head>
                     {/* <style dangerouslySetInnerHTML={{ __html: stylesheet }} /> */}
                     <meta
@@ -28,7 +28,7 @@ class PageHead extends Component {
                         Ashley Hitchcock | Frontend Developer
                     </title>
                 </Head>
-            </React.Fragment>
+            </>
         );
     }
 }

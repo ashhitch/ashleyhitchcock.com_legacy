@@ -34,3 +34,5 @@ function send_email($request) {
       wp_mail($request['email'], $request['subject'], $request['message']);
     return rest_ensure_response( 'Hello World! This is my first REST API' );
 }
+
+add_image_size( 'hero', 1200, 400, true );
