@@ -1,3 +1,4 @@
+import React, { Component } from "react";
 import styled, { ThemeProvider, createGlobalStyle, keyframes } from 'styled-components';
 
 import Footer from './Footer';
@@ -6,8 +7,11 @@ import { MaxWidthLayout } from './styles/Layout';
 import { Normalize } from 'styled-normalize'
 import PageHead from './Head';
 
+const mq = (typeof window !== 'undefined') ? window.matchMedia( "(prefers-color-scheme: dark)" ): null;
+
 const theme = {
-  primary: '#000',
+  primary: mq && mq.matches ? '#fff' : '#000',
+  secondary: mq && mq.matches ? '#000' : '#fff',
   blue: '#1c46f2',
   red: '#FF0000',
   black: '#393939',
@@ -33,10 +37,11 @@ const theme = {
 
 const backgroundAni = keyframes`${theme.backgroundAni}`;
 
+
 const StyledPage = styled.main`
   position: relative;
-  background: ${theme.white};
-  color: ${theme.black};
+  background: ${theme.secondary};
+  color: ${theme.primary};
   min-height: 100vh;
   padding: 1rem 1rem 20px 1rem;
   margin: 0 1rem;
@@ -55,8 +60,8 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-size: 1rem;
     line-height: 1.25;
-    background-color: ${theme.white};
-    background-image: ${theme.fade};
+    background-color: ${theme.primary};
+    color: ${theme.primary};
     background-size: 400% 400%;
     animation: ${backgroundAni} 5s ease infinite;
     font-family: ${theme.font};
@@ -89,14 +94,14 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
     text-decoration: none;
-    color: ${theme.black};
+    color: ${theme.primary};
   }
   button {  }
 
   h1,
   h2,
   h3 {
-      color: ${theme.black};
+      color: ${theme.primary};
       font-family: ${theme.headingFont};
       font-weight: 400;
   }
@@ -110,6 +115,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
 `;
+
 
 const Layout = props => (
   <ThemeProvider theme={theme}>

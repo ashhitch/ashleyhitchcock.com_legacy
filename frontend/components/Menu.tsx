@@ -19,7 +19,7 @@ const StyledMenu = styled.div`
   width: 100%;
   height: 100%;
   background: ${props => props.theme.primary};
-  border-top: 1px solid #5f5fe8;
+  border-top: 1px solid ${props => props.theme.secondary};
   opacity: 0;
   z-index: -1;
   transition: opacity 0;
@@ -47,8 +47,8 @@ const StyledMenu = styled.div`
     z-index: 3;
     width: 100%;
     background: transparent;
-    border-bottom: 1px solid ${props => props.theme.white};
-    color: ${props => props.theme.white};
+    border-bottom: 1px solid ${props => props.theme.secondary};
+    color: ${props => props.theme.secondary};
     font-size: 300%;
     letter-spacing: 1vw;
     line-height: ${100 / 4}vh;
@@ -56,8 +56,8 @@ const StyledMenu = styled.div`
     text-transform: uppercase;
     &:hover,
     &:focus {
-      background: rgba(#5f5fe8, 0.9);
-      color: #ffffff;
+      background: ${props => props.theme.primary};
+      color: ${props => props.theme.secondary};
     }
   }
 }

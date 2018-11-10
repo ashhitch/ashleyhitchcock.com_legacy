@@ -1,4 +1,4 @@
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import Hamburger from './Hamburger';
 import Headroom from 'react-headroom';
@@ -27,7 +27,7 @@ const StyledLogo = styled.span`
   
   a {
     padding: 0 12px 0 0;
-    background: ${props => props.theme.white};
+    background: ${props => props.theme.secondary};
     color: ${props => props.theme.primary};
     text-transform: uppercase;
     text-decoration: none;
@@ -36,7 +36,7 @@ const StyledLogo = styled.span`
 
     // &:hover {
     //   background: ${props => props.theme.primary};
-    //   color: ${props => props.theme.white};
+    //   color: ${props => props.theme.secondary};
     // }
 
     span {
@@ -61,7 +61,7 @@ const StyledHeader = styled.header`
   position: relative;
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
-  
+
   .bar {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -75,25 +75,36 @@ const StyledHeader = styled.header`
   }
 `;
 const Header = () => (
-  <Headroom>
-    <StyledHeader>
-      <div className="bar">
-        <StyledLogo>
-          <Link href="/">
-            <a>AH<span>.</span></a>
-          </Link>
-        </StyledLogo>
-        <LayoutContext.Consumer>
-          {({ menuItems, menuActive, toggleMenu, closeMenu }) => (
-            <div>
-              <Hamburger active={menuActive} toggle={toggleMenu} />
-              <Menu menu={menuItems} active={menuActive} close={closeMenu} />
-            </div>
-          )}
-        </LayoutContext.Consumer>
-      </div>
-    </StyledHeader>
-  </Headroom>
+  <>
+    <Headroom>
+      <StyledHeader>
+        <div className="bar">
+          <StyledLogo>
+            <Link href="/">
+              <a>
+                AH
+                <span>.</span>
+              </a>
+            </Link>
+          </StyledLogo>
+          <LayoutContext.Consumer>
+            {({ menuActive, toggleMenu }) => (
+              <>
+                <Hamburger active={menuActive} toggle={toggleMenu} />
+              </>
+            )}
+          </LayoutContext.Consumer>
+        </div>
+      </StyledHeader>
+    </Headroom>
+    <LayoutContext.Consumer>
+      {({ menuItems, menuActive, closeMenu }) => (
+        <>
+          <Menu menu={menuItems} active={menuActive} close={closeMenu} />
+        </>
+      )}
+    </LayoutContext.Consumer>
+  </>
 );
 
 export default Header;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const CardArticle = styled.article`
-background-color: ${props => props.theme.white};
+background-color: ${props => props.theme.secondary};
 text-decoration: none;
 color: #333;
 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
@@ -34,7 +34,7 @@ min-height: 100%;
   margin: 0;
 
   &__link {
-    color: #333;
+    color: ${props => props.theme.primary};
     text-decoration: none;
   }
 }

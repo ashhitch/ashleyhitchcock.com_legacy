@@ -28,7 +28,7 @@ const StyledPost = styled.article`
   }
 
   &__heading {
-    background-color: #fff;
+    background-color: ${props => props.theme.secondary};
     margin: -60px 0 0 0;
     padding: 1rem;
     z-index: 5;
@@ -40,7 +40,7 @@ const StyledPost = styled.article`
   }
   
   &__content {
-    background-color: #fff;
+    background-color: ${props => props.theme.secondary};
     flex-grow: 1;
     height: 100%;
     z-index: 5;

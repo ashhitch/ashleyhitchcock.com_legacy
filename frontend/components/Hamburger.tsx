@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 interface IHamburgerProps {
   active: boolean;
   toggle: () => {};
@@ -40,7 +41,7 @@ const StyledHamburger = styled.div`
 
 
   &.is-active span {
-    background-color: ${props => props.theme.white};
+    background-color: ${props => props.theme.secondary};
     &:nth-child(1),
     &:nth-child(3) {
       width: 25px;
