@@ -1,3 +1,4 @@
+import React, { Component } from "react";
 import styled, { ThemeProvider, createGlobalStyle, keyframes } from 'styled-components';
 
 import Footer from './Footer';
@@ -6,7 +7,11 @@ import { MaxWidthLayout } from './styles/Layout';
 import { Normalize } from 'styled-normalize'
 import PageHead from './Head';
 
+const mq = (typeof window !== 'undefined') ? window.matchMedia( "(prefers-color-scheme: dark)" ): null;
+
 const theme = {
+  primary: mq && mq.matches ? '#fff' : '#000',
+  secondary: mq && mq.matches ? '#000' : '#fff',
   blue: '#1c46f2',
   red: '#FF0000',
   black: '#393939',
@@ -14,12 +19,14 @@ const theme = {
   lightgrey: '#E1E1E1',
   offWhite: '#EDEDED',
   white: '#ffffff',
-  maxWidth: '1000px',
+  maxWidth: '1190px',
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
-  fade: 'linear-gradient(to left, #1c46f2, #5f5fe8)',
+  fadeBlue: 'linear-gradient(to left, #1c46f2, #5f5fe8)',
+  fade: 'linear-gradient(to left, #000, #000)',
   bgAni: 'backgroundAni 5s ease infinite',
   font:
     '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+    headingFont: '"Cardo", serif',
     backgroundAni: `
       0%{background-position:0% 50%}
       50%{background-position:100% 50%}
@@ -30,16 +37,18 @@ const theme = {
 
 const backgroundAni = keyframes`${theme.backgroundAni}`;
 
+
 const StyledPage = styled.main`
-  background: ${theme.white};
-  color: ${theme.black};
+  position: relative;
+  background: ${theme.secondary};
+  color: ${theme.primary};
   min-height: 100vh;
   padding: 1rem 1rem 20px 1rem;
   margin: 0 1rem;
 `;
 
 const GlobalStyle = createGlobalStyle`
-
+  @import url('https://fonts.googleapis.com/css?family=Cardo');
   html {
     box-sizing: border-box;
   }
@@ -51,11 +60,12 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-size: 1rem;
     line-height: 1.25;
-    background-color: ${theme.white};
-    background-image: ${theme.fade};
+    background-color: ${theme.primary};
+    color: ${theme.primary};
     background-size: 400% 400%;
     animation: ${backgroundAni} 5s ease infinite;
     font-family: ${theme.font};
+    width: 100%;
 
     &:before,
     &:after {
@@ -84,21 +94,33 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
     text-decoration: none;
-    color: ${theme.black};
+    color: ${theme.primary};
   }
   button {  }
 
   h1,
-  h2 {
-      color: ${theme.black};
+  h2,
+  h3 {
+      color: ${theme.primary};
+      font-family: ${theme.headingFont};
+      font-weight: 400;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2, h3 {
+    font-size: 1.5rem;
   }
 
 `;
 
+
 const Layout = props => (
   <ThemeProvider theme={theme}>
     <>
-    <Normalize />
+      <Normalize />
       <GlobalStyle />
       <StyledPage>
         <PageHead />
