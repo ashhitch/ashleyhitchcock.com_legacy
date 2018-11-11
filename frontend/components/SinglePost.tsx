@@ -52,6 +52,8 @@ const StyledPost = styled.article`
 const SinglePost = ({post}) => {
   const title = !!post && post.title ? post.title.rendered : null;
   const content = !!post && post.content ? post.content.rendered : null;
+  const hero = !!post && post.acf ? post.acf.hero_image.sizes.hero : null;
+  console.log(post);
   return (
     <>
     <Head>
@@ -62,7 +64,7 @@ const SinglePost = ({post}) => {
         <div className="post__banner">
           <img
             className="post__banner__src"
-            src="http://via.placeholder.com/1200x400"
+            src={hero}
             alt={title}
           />
         </div>
