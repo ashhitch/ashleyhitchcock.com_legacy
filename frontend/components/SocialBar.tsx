@@ -29,6 +29,9 @@ const SocialStyle = styled.nav`
 
       a svg {
         transition: transform 0.2s ease-in;
+        path {
+          transition: background 0.2s ease-in;
+        }
       }
       a:hover svg {
         transform: scale(1.1);

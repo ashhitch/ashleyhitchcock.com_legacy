@@ -7,7 +7,7 @@ const StyledContent = styled.div`
   display: inline-block;
   text-decoration: none;
   z-index: 1;
-  padding: 0 5px;
+  padding: 2px 5px;
 
   &:after {
     display: block;
@@ -21,15 +21,15 @@ const StyledContent = styled.div`
     z-index: -1;
     transition: all 0.2s ease-in-out;
     bottom: 0;
-    transform: rotate(2deg);
+    transform: rotate(4deg);
   }
 
   &:hover:after {
-    transform: rotate(4deg);
+    transform: rotate(6deg);
     bottom: 0;
   }
   &:nth-child(odd):hover:after {
-    transform: rotate(-4deg);
+    transform: rotate(-6deg);
   }
 
 }

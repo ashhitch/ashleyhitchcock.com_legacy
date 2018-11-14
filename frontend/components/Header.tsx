@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
 import Hamburger from './Hamburger';
-import Headroom from 'react-headroom';
+// import Headroom from 'react-headroom';
 import { LayoutContext } from './../context/layout-context';
 import Link from 'next/link';
 import Menu from './Menu';
@@ -76,7 +76,6 @@ const StyledHeader = styled.header`
 `;
 const Header = () => (
   <>
-    <Headroom>
       <StyledHeader>
         <div className="bar">
           <StyledLogo>
@@ -96,7 +95,6 @@ const Header = () => (
           </LayoutContext.Consumer>
         </div>
       </StyledHeader>
-    </Headroom>
     <LayoutContext.Consumer>
       {({ menuItems, menuActive, closeMenu }) => (
         <>
