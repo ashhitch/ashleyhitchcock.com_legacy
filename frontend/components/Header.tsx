@@ -5,6 +5,18 @@ import Hamburger from './Hamburger';
 import { LayoutContext } from './../context/layout-context';
 import Link from 'next/link';
 import Menu from './Menu';
+import Router from 'next/router';
+
+Router.onRouteChangeStart = () => {
+ console.log('start route');
+};
+Router.onRouteChangeComplete = () => {
+  console.log('end route');
+};
+
+Router.onRouteChangeError = () => {
+  console.log('error route');
+};
 
 const bounce = keyframes`
 0%, 100%, 20%, 50%, 80% {
@@ -74,6 +86,7 @@ const StyledHeader = styled.header`
     }
   }
 `;
+
 const Header = () => (
   <>
       <StyledHeader>

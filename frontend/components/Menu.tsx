@@ -18,7 +18,7 @@ const StyledMenu = styled.div`
   overflow-y: auto;
   width: 100%;
   height: 100%;
-  background: ${props => props.theme.primary};
+  background: transparent;
   border-top: 1px solid ${props => props.theme.secondary};
   opacity: 0;
   z-index: -1;
@@ -46,7 +46,7 @@ const StyledMenu = styled.div`
     position: relative;
     z-index: 3;
     width: 100%;
-    background: transparent;
+    background-color: ${props => props.theme.primary};
     border-bottom: 1px solid ${props => props.theme.secondary};
     color: ${props => props.theme.secondary};
     font-size: 300%;
@@ -56,8 +56,8 @@ const StyledMenu = styled.div`
     text-transform: uppercase;
     &:hover,
     &:focus {
-      background: ${props => props.theme.primary};
-      color: ${props => props.theme.secondary};
+      background-color: ${props => props.theme.secondary};
+      color: ${props => props.theme.primary};
     }
   }
 }
