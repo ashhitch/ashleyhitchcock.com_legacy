@@ -6,6 +6,7 @@ import Intro from '../components/Intro';
 import Layout from "../components/Layout";
 import Link from "next/link";
 import PageWrapper from "../components/PageWrapper";
+import Techstack from "../components/Techstack";
 import fetch from "isomorphic-unfetch";
 import scrollToComponent from  'react-scroll-to-component-ssr';
 
@@ -84,6 +85,7 @@ class Index extends Component {
         return (
             <Layout>
                 <Intro ref={(section) => { this.IntroSection = section; }} title={this.props.page.title ? this.props.page.title.rendered : null} content={this.props.page.content.rendered ? this.props.page.content.rendered : null} />
+                <Techstack />
                 <h2>Latest from the blog</h2>
                 <Grid cards={this.props.posts} linkType="post"/>
             </Layout>
