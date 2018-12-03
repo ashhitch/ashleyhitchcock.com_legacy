@@ -26,9 +26,18 @@ const IconGridStyle = styled.div`
     max-width: 230px;
     height: auto;
   }
-  &:hover svg path {
-    fill: ${props => props.brandbg};
+  svg {
+    transition: transform 0.2s ease-in;
+
+    path, circle {
+      fill: ${props => props.theme.primary};
+      transition: fill 0.2s ease-in;
+    }
   }
+  &:hover svg {
+    transform: scale(1.1);
+  }
+  &:hover svg path,
   &:hover svg circle {
     fill: ${props => props.brandbg};
   }
