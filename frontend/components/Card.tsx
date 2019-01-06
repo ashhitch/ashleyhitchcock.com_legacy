@@ -43,7 +43,7 @@ const Card = (props: ICardProps) => {
             src={
               props.featured_media
                 ? props._embedded['wp:featuredmedia'][0].media_details.sizes.medium_large.source_url
-                : '/static/images/placeholder.jpg'
+                : '/static/images/placeholder.svg'
             }
             alt="Image"
           />
@@ -55,14 +55,14 @@ const Card = (props: ICardProps) => {
             as={`/${props.linkType ? props.linkType : 'page'}/${props.slug}`}
             href={`/post?slug=${props.slug}&apiRoute=${props.linkType ? props.linkType : 'page'}`}
           >
-            <a className="card__title__link">{props.title ? props.title.rendered : null}</a>
+            <a className="card__title__link">{props.title ? props.title : null}</a>
           </Link>
         </h2>
 
         <div
           className="card__body"
           dangerouslySetInnerHTML={{
-            __html: props.excerpt.rendered ? props.excerpt.rendered : null
+            __html: props.excerpt ? props.excerpt : null
           }}
         />
         <div className="card__footer" hidden={!!props.tag_names && props.tag_names.length ? false : true}>

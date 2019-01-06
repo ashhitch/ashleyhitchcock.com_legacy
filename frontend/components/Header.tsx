@@ -46,11 +46,6 @@ const StyledLogo = styled.span`
     position: relative;
 
 
-    // &:hover {
-    //   background: ${props => props.theme.primary};
-    //   color: ${props => props.theme.secondary};
-    // }
-
     span {
       position: absolute;
       right: 0;

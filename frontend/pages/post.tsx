@@ -1,36 +1,54 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import { Config } from "../config";
-import Error from "next/error";
-import Layout from "../components/Layout";
-import PageWrapper from "../components/PageWrapper";
-import SinglePost from "../components/SinglePost";
-import fetch from "isomorphic-unfetch";
+import Error from 'next/error';
+import ErrorMessage from '../components/ErrorMessage';
+import Layout from '../components/Layout';
+import Loader from '../components/Loader';
+import PageWrapper from '../components/PageWrapper';
+import { Query } from 'react-apollo';
+import SinglePost from '../components/SinglePost';
+import gql from 'graphql-tag';
+
+export const SINGLE_ITEM_QUERY = gql`
+  query postBy($slug: String!) {
+    postBy(uri: $slug) {
+      id
+      title
+      slug
+      date
+      content
+    }
+  }
+`;
 
 class Post extends Component {
-    props: any;
-    static async getInitialProps(context) {
-        const { slug, apiRoute } = context.query;
-        
-       //console.log(`/wp-json/postlight/v1/${apiRoute}?slug=${slug}`);
-            const res = await fetch(
-                `${Config.apiUrl}/wp-json/postlight/v1/${apiRoute}?slug=${slug}`
-            );
-        const post = await res.json();
-        console.log(post);
-         return { post };
-    
-    }
+  props: any;
+  static async getInitialProps({ query: { slug } }) {
+    return { slug };
+  }
 
-    render() {
-     
-        if (!this.props.post.title) return <Error statusCode={404} />;
-        return (
-            <Layout>
-              <SinglePost post={this.props.post} />
-            </Layout>
-        );
-    }
+  render() {
+    
+    return (
+      <Layout>
+        <Query
+          query={SINGLE_ITEM_QUERY}
+          variables={{
+            slug: this.props.slug
+          }}
+        >
+          {({ error, loading, data }) => {
+            if (error) return <ErrorMessage error={error} />;
+            if (loading) return <Loader />;
+            if (!data.postBy) return <Error statusCode={404} />;
+            const item = data.postBy;
+
+            return <SinglePost post={item} />;
+          }}
+        </Query>
+      </Layout>
+    );
+  }
 }
 
 export default PageWrapper(Post);

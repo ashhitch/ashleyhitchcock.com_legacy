@@ -52,7 +52,7 @@ const StyledPost = styled.article`
 const SinglePost = ({post}) => {
   const title = !!post && post.title ? post.title.rendered : null;
   const content = !!post && post.content ? post.content.rendered : null;
-  const hero = !!post && post.acf ? post.acf.hero_image.sizes.hero : null;
+  const hero = !!post && post.acf ? post.acf.hero_image.sizes.hero : '/static/images/hero-placeholder.svg';
   console.log(post);
   return (
     <>

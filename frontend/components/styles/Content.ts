@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StyledContent = styled.div`
   a {
-  color: ${props => props.theme.primary};
+  color: ${props => props.theme.black};
   position: relative;
   display: inline-block;
   text-decoration: none;
