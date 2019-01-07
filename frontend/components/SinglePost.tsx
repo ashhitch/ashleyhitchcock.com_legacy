@@ -1,5 +1,6 @@
 import Head from "next/head";
 import StyledContent from './styles/Content';
+import renderHTML from 'react-render-html';
 import styled from 'styled-components';
 
 const StyledPost = styled.article`
@@ -50,14 +51,14 @@ const StyledPost = styled.article`
 }
 `;
 const SinglePost = ({post}) => {
-  const title = !!post && post.title ? post.title.rendered : null;
-  const content = !!post && post.content ? post.content.rendered : null;
-  const hero = !!post && post.acf ? post.acf.hero_image.sizes.hero : '/static/images/hero-placeholder.svg';
-  console.log(post);
+
+  const {title, content} = post;
+  const hero = '/static/images/hero-placeholder.svg';
+  console.log({title, content});
   return (
     <>
     <Head>
-      <title>{title}</title>
+      <title>{!!title ? title : 'post'}</title>
     </Head>
     <StyledPost>
       <div className="post">
@@ -73,12 +74,9 @@ const SinglePost = ({post}) => {
           <h1>{title}</h1>
         </header>
 
-        <StyledContent
-          className="post__content"
-          dangerouslySetInnerHTML={{
-            __html: content
-          }}
-        />
+        <StyledContent className="post__content">
+          {!!content ? renderHTML(content) : null}
+        </StyledContent>
       </div>
     </StyledPost>
     </>
@@ -86,3 +84,4 @@ const SinglePost = ({post}) => {
 };
 
 export default SinglePost;
+x
