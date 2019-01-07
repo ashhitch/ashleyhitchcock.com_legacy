@@ -54,7 +54,6 @@ const SinglePost = ({post}) => {
 
   const {title, content} = post;
   const hero = '/static/images/hero-placeholder.svg';
-  console.log({title, content});
   return (
     <>
     <Head>
@@ -84,4 +83,3 @@ const SinglePost = ({post}) => {
 };
 
 export default SinglePost;
-x

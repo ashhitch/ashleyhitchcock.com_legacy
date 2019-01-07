@@ -9,9 +9,31 @@ import { Query } from 'react-apollo';
 import SinglePost from '../components/SinglePost';
 import gql from 'graphql-tag';
 
-export const SINGLE_ITEM_QUERY = gql`
+export const SINGLE_POST_QUERY = gql`
   query postBy($slug: String!) {
-    postBy(uri: $slug) {
+    item: postBy(uri: $slug) {
+      id
+      title
+      slug
+      date
+      content
+    }
+  }
+`;
+export const SINGLE_PAGE_QUERY = gql`
+  query pageBy($slug: String!) {
+    item: pageBy(uri: $slug) {
+      id
+      title
+      slug
+      date
+      content
+    }
+  }
+`;
+export const SINGLE_WORK_QUERY = gql`
+  query workBy($slug: String!) {
+    item: workBy(uri: $slug) {
       id
       title
       slug
@@ -23,16 +45,26 @@ export const SINGLE_ITEM_QUERY = gql`
 
 class Post extends Component {
   props: any;
-  static async getInitialProps({ query: { slug } }) {
-    return { slug };
+  static async getInitialProps({ query: { slug, apiRoute} }) {
+
+       // Query depending on post type
+       let queryGQL = SINGLE_POST_QUERY;
+       if (apiRoute === 'work') {
+        queryGQL = SINGLE_WORK_QUERY;
+       } else if (apiRoute === 'page') {
+        queryGQL = SINGLE_PAGE_QUERY;
+   
+       }
+    
+    return { slug,  queryGQL};
   }
 
   render() {
-    
+
     return (
       <Layout>
         <Query
-          query={SINGLE_ITEM_QUERY}
+          query={this.props.queryGQL}
           variables={{
             slug: this.props.slug
           }}
@@ -40,8 +72,8 @@ class Post extends Component {
           {({ error, loading, data }) => {
             if (error) return <ErrorMessage error={error} />;
             if (loading) return <Loader />;
-            if (!data.postBy) return <Error statusCode={404} />;
-            const item = data.postBy;
+            if (!data.item) return <Error statusCode={404} />;
+            const item = data.item;
 
             return <SinglePost post={item} />;
           }}

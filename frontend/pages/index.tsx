@@ -10,7 +10,6 @@ import Loader from '../components/Loader';
 import PageWrapper from "../components/PageWrapper";
 import { Query } from 'react-apollo';
 import Techstack from "../components/Techstack";
-import fetch from "isomorphic-unfetch";
 import gql from 'graphql-tag';
 import scrollToComponent from  'react-scroll-to-component-ssr';
 
