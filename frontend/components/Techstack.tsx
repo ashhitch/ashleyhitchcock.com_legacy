@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import AngularIcon from '../static/images/icons/angular.svg';
 import CssIcon from '../static/images/icons/css.svg';
 import IntroWrap from './styles/Intro';
-import JavascriptIcon from '../static/images/icons/javascript.svg';
+import JavascriptIcon from './../static/images/icons/javascript.svg';
 import Link from 'next/link';
 import NodeIcon from '../static/images/icons/node.svg';
 import ReactIcon from '../static/images/icons/react.svg';
