@@ -36,3 +36,15 @@ function send_email($request) {
 }
 
 add_image_size( 'hero', 1200, 400, true );
+
+add_filter( 'register_post_type_args', function( $args, $post_type ) {
+
+	if ( 'work' === $post_type ) {
+		$args['show_in_graphql'] = true;
+		$args['graphql_single_name'] = 'Work';
+		$args['graphql_plural_name'] = 'Works';
+	}
+
+	return $args;
+
+}, 10, 2 );
