@@ -23,7 +23,7 @@ const IconGridStyle = styled.div`
   
   svg {
     width: 100%;
-    max-width: 230px;
+    max-width: 180px;
     height: auto;
   }
   svg {
