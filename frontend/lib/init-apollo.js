@@ -1,8 +1,9 @@
 import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost'
+import { endpoint, prodEndpoint } from './../config';
 
 import fetch from 'isomorphic-unfetch'
 
-let apolloClient = null
+let apolloClient = null;
 
 // Polyfill fetch() on the server (used by apollo-client)
 if (!process.browser) {
@@ -15,8 +16,8 @@ function create (initialState) {
     connectToDevTools: process.browser,
     ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
     link: new HttpLink({
-      uri: 'http://api.ashleyhitchcock.com/graphql', // Server URL (must be absolute)
-      credentials: 'same-origin' // Additional fetch() options like `credentials` or `headers`
+      uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint, // Server URL (must be absolute)
+      credentials: 'same-origin' // Additional fetch() options like `credentials` or `headers` same-origin
     }),
     cache: new InMemoryCache().restore(initialState || {})
   })

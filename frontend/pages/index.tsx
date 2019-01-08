@@ -38,7 +38,15 @@ query home($slug: String!) {
                 slug
                 date
                 content
-              	excerpt
+                excerpt
+                featuredImage {
+                mediaDetails {
+                    sizes {
+                    name
+                    file
+                    }
+                }
+                }
               tags {
                 nodes{
                   name
@@ -78,20 +86,6 @@ class Index extends Component {
           const postItems = data.posts.edges;
           const page = data.pageBy;
 
-        //   const posts = postItems.map(({node}, index) =>  {
-        //     return (
-        //         <ul key={index}>
-        //             <li>
-        //                 <Link
-        //                     as={`/post/${node.slug}`}
-        //                     href={`/post?slug=${node.slug}&apiRoute=post`}
-        //                 >
-        //                     <a>{node.title}</a>
-        //                 </Link>
-        //             </li>
-        //         </ul>
-        //     );
-        // });
 
 
         return (

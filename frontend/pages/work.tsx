@@ -1,39 +1,53 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import { Config } from "../config";
-import Grid from "../components/Grid";
-import Layout from "../components/Layout";
-import PageWrapper from "../components/PageWrapper";
-import fetch from "isomorphic-unfetch";
+import ErrorMessage from '../components/ErrorMessage';
+import Grid from '../components/Grid';
+import Layout from '../components/Layout';
+import Loader from '../components/Loader';
+import PageWrapper from '../components/PageWrapper';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 
+export const WORK_ITEMS_QUERY = gql`
+  {
+    posts: works(first: 4) {
+      edges {
+        node {
+          id
+          title
+          link
+          slug
+          date
+          content
+          excerpt
+        }
+      }
+    }
+  }
+`;
 class Work extends Component {
-    IntroSection: any;
-    props: any;
-    constructor(props) {
-        super(props);
-    }
+  render() {
+    return (
+      <>
+        <Query query={WORK_ITEMS_QUERY}>
+          {({ error, loading, data }) => {
+            if (error) return <ErrorMessage error={error} />;
+            if (loading) return <Loader />;
+            if (!data.posts) return <p>No Data returned</p>;
 
-    static async getInitialProps(context) {
-        console.log(context);
-        const postsRes = await fetch(
-            `${Config.apiUrl}/wp-json/wp/v2/work?_embed&per_page=9`
-        );
-        const work = await postsRes.json();
-        console.log(work);
-        return {work};
-    }
+            const posts = data.posts.edges;
 
-    render() {
-
-        return (
-            <Layout>
-                
-                <h2>Latest work</h2>
-                <Grid cards={this.props.work} linkType="work"/>
-               
-            </Layout>
-        );
-    }
+            return (
+              <Layout>
+                <h2>My Work</h2>
+                <Grid cards={posts} />
+              </Layout>
+            );
+          }}
+        </Query>
+      </>
+    );
+  }
 }
 
 export default PageWrapper(Work);

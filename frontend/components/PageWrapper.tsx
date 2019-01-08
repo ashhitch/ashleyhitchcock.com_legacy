@@ -1,6 +1,6 @@
-import { Config } from "../config";
 import {LayoutContext} from './../context/layout-context';
 import React from "react";
+import { endpoint } from "../config";
 
 interface IState {
   menuActive: boolean;
@@ -10,7 +10,6 @@ interface IState {
 }
 
 const PageWrapper = Comp => (
-
 
   class extends React.Component {
     
@@ -28,7 +27,7 @@ const PageWrapper = Comp => (
           closeMenu: this.closeMenu,
           menuItems: []
       };
-      this.getMenu();
+
     }
 
     toggleMenu = () => {
@@ -48,25 +47,8 @@ const PageWrapper = Comp => (
       document.body.classList.remove('menu-open');
     };
 
-    async getMenu() {
-      const headerMenuRes = await fetch(
-        `${Config.apiUrl}/wp-json/menus/v1/menus/header-menu`
-      );
-      const headerMenu = await headerMenuRes.json();
-      this.setState({
-        menuItems: headerMenu
-      });
-      
-    }
 
     static async getInitialProps(args) {
-      // const headerMenuRes = await fetch(
-      //   `${Config.apiUrl}/wp-json/menus/v1/menus/header-menu`
-      // );
-      // const headerMenu = await headerMenuRes.json();
-      // this.setState({
-      //   menuItems: headerMenu
-      // });
 
       return {
         // headerMenu,

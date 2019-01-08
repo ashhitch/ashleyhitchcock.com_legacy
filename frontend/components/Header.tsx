@@ -8,7 +8,7 @@ import Menu from './Menu';
 import Router from 'next/router';
 
 Router.onRouteChangeStart = () => {
- console.log('start route');
+  console.log('start route');
 };
 Router.onRouteChangeComplete = () => {
   console.log('end route');
@@ -36,7 +36,7 @@ const StyledLogo = styled.span`
   transform: skew(-9deg);
   margin-left: 2px;
   font-weight: 700;
-  
+
   a {
     padding: 0 12px 0 0;
     background: ${props => props.theme.secondary};
@@ -44,7 +44,6 @@ const StyledLogo = styled.span`
     text-transform: uppercase;
     text-decoration: none;
     position: relative;
-
 
     span {
       position: absolute;
@@ -84,29 +83,29 @@ const StyledHeader = styled.header`
 
 const Header = () => (
   <>
-      <StyledHeader>
-        <div className="bar">
-          <StyledLogo>
-            <Link href="/">
-              <a>
-                AH
-                <span>.</span>
-              </a>
-            </Link>
-          </StyledLogo>
-          <LayoutContext.Consumer>
-            {({ menuActive, toggleMenu }) => (
-              <>
-                <Hamburger active={menuActive} toggle={toggleMenu} />
-              </>
-            )}
-          </LayoutContext.Consumer>
-        </div>
-      </StyledHeader>
+    <StyledHeader>
+      <div className="bar">
+        <StyledLogo>
+          <Link href="/">
+            <a>
+              AH
+              <span>.</span>
+            </a>
+          </Link>
+        </StyledLogo>
+        <LayoutContext.Consumer>
+          {({ menuActive, toggleMenu }) => (
+            <>
+              <Hamburger active={menuActive} toggle={toggleMenu} />
+            </>
+          )}
+        </LayoutContext.Consumer>
+      </div>
+    </StyledHeader>
     <LayoutContext.Consumer>
-      {({ menuItems, menuActive, closeMenu }) => (
+      {({ menuActive, closeMenu }) => (
         <>
-          <Menu menu={menuItems} active={menuActive} close={closeMenu} />
+          <Menu active={menuActive} close={closeMenu} />
         </>
       )}
     </LayoutContext.Consumer>

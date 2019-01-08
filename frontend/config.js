@@ -1,1 +1,0 @@
-export const Config = {apiUrl: 'http://api.ashleyhitchcock.com'}
