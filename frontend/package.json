@@ -13,21 +13,23 @@
         "docker:stop": "docker stop frontend",
         "docker:start": "docker start frontend && yarn run docker:logs",
         "docker:logs": "docker logs -f frontend",
-        "deploy": "yarn run docker:build && yarn run docker:clean && yarn run docker:run"
+        "deploy": "yarn run docker:build && yarn run docker:clean && yarn run docker:run",
+        "now-build": "next build"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@zeit/next-typescript": "^1.1.0",
+        "@zeit/next-typescript": "^1.1.1",
         "apollo-boost": "^0.1.23",
+        "apollo-client": "^2.4.8",
         "express": "^4.16.3",
         "graphql": "^14.0.2",
         "isomorphic-unfetch": "^3.0.0",
-        "next": "latest",
-        "react": "16.7.0-alpha.0 - next",
+        "next": "^8.0.0-canary.3",
+        "react": "16.7.0",
         "react-apollo": "^2.3.3",
-        "react-dom": "16.7.0-alpha.0 - next",
+        "react-dom": "16.7.0",
         "react-headroom": "^2.2.4",
         "react-render-html": "^0.6.0",
         "react-scroll-to-component": "^1.0.2",
@@ -36,6 +38,7 @@
         "styled-normalize": "^8.0.3"
     },
     "devDependencies": {
+        "@babel/core": "^7.2.2",
         "@babel/plugin-proposal-optional-chaining": "^7.0.0",
         "autoprefixer": "7.1.5",
         "babel-plugin-inline-react-svg": "^1.0.1",
@@ -49,7 +52,6 @@
         "postcss-easy-import": "^3.0.0",
         "postcss-loader": "^2.0.7",
         "raw-loader": "^0.5.1",
-        "react-dom": "^16.4.1",
         "sass-loader": "^6.0.6",
         "webpack": "^3.10.0"
     }

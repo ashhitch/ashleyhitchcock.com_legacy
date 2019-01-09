@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Config } from "../config";
+import { endpoint as Config } from "../config";
 import Error from "next/error";
 import Layout from "../components/Layout";
 import Link from "next/link";

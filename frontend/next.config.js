@@ -4,6 +4,7 @@ const withTypescript = require('@zeit/next-typescript');
 // module.exports = withTypescript()
 
 module.exports = withTypescript({
+  target: 'serverless',
   webpack: (config, { dev }) => {
     config.module.rules.push(
       {
