@@ -15,8 +15,10 @@ const IconGridStyle = styled.div`
   width: 100%;
   padding: 0;
   list-style-type: none;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  grid-gap: 4rem;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-gap: 2rem;
+  ${media.md`grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));  grid-gap: 4rem;`}
+  ${media.lg`grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));`}
   `;
   const IconGridItemStyle = styled.div`
   text-align: center;
@@ -25,7 +27,6 @@ const IconGridStyle = styled.div`
     width: 100%;
     max-width: 140px;
     height: auto;
-    ${console.log(media.md)}
     ${media.md`max-width: 180px;`}
   }
   svg {

@@ -10,7 +10,6 @@ import { Query } from 'react-apollo';
 import StyledSection from './../components/styles/Section';
 import Techstack from './../components/Techstack';
 import gql from 'graphql-tag';
-import scrollToComponent from 'react-scroll-to-component-ssr';
 
 const headerImageStyle = {
   marginTop: 50,
@@ -60,9 +59,6 @@ class Index extends Component {
   IntroSection: any;
   props: any;
 
-  scrollToIntro = () => {
-    scrollToComponent(this.IntroSection, { offset: 0, align: 'top', duration: 1500 });
-  };
 
   render() {
     return (

@@ -32,8 +32,6 @@
         "react-dom": "16.7.0",
         "react-headroom": "^2.2.4",
         "react-render-html": "^0.6.0",
-        "react-scroll-to-component": "^1.0.2",
-        "react-scroll-to-component-ssr": "^1.0.0",
         "styled-components": "^4.0.3",
         "styled-normalize": "^8.0.3"
     },
