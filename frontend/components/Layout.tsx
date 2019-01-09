@@ -11,6 +11,7 @@ const theme = {
   darkMode: false,
   primary: 'var(--primary-color, #000)',
   secondary: 'var(--secondary-color, #fff)',
+  highlight: '#BADA55',
   blue: '#1c46f2',
   red: '#FF0000',
   black: '#393939',

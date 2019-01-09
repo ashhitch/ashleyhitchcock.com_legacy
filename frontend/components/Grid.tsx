@@ -10,6 +10,7 @@ const Grid = props => (
       {!!props.cards && props.cards.length ? props.cards.map((card, index) => {
         
         return (
+
           <GridItem key={index}>
             <Card {...card.node} linkType={props.linkType} />
           </GridItem>

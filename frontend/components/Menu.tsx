@@ -89,8 +89,8 @@ const StyledMenu = styled.div`
       text-transform: uppercase;
       &:hover,
       &:focus {
-        background-color: ${props => props.theme.secondary};
-        color: ${props => props.theme.primary};
+        background-color: ${props => props.theme.highlight};
+        color: ${props => props.theme.black};
       }
     }
   }

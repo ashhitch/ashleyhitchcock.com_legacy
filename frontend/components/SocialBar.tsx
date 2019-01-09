@@ -1,8 +1,9 @@
-import Github from '../static/images/icons/github.svg';
-import Instagram from '../static/images/icons/instagram.svg';
-import Linkedin from '../static/images/icons/linkedin.svg';
+import Github from './icons/github.svg';
+import Instagram from './icons/instagram.svg';
+import Linkedin from './icons/linkedin.svg';
 import React from 'react';
-import Twitter from '../static/images/icons/twitter.svg';
+import Twitter from './icons/twitter.svg';
+import media from './styles/media';
 // import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -15,13 +16,13 @@ const SocialStyle = styled.nav`
     margin: 0 0 1rem 0;
 
     li + li {
-      margin-left: 1rem;
+      margin-left: 1.5rem;
     }
 
     li {
       text-align: center;
-      width: 1rem;
-
+      width: 1.5rem;
+      ${media.md`width: 1.8rem;`}
       svg {
         max-width: 100%;
         height: auto;
