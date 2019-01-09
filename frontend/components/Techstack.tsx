@@ -6,6 +6,7 @@ import IntroWrap from './styles/Intro';
 import JavascriptIcon from '././icons/javascript.svg';
 import NodeIcon from './icons/node.svg';
 import ReactIcon from './icons/react.svg';
+import { SubHeading } from './styles/Headings';
 import WordPressIcon from './icons/wordpress.svg';
 import media from './styles/media';
 import styled from 'styled-components';
@@ -18,7 +19,7 @@ const IconGridStyle = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   grid-gap: 2rem;
   ${media.md`grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));  grid-gap: 4rem;`}
-  ${media.lg`grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));`}
+  ${media.lg`grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));`}
   `;
   const IconGridItemStyle = styled.div`
   text-align: center;
@@ -50,7 +51,7 @@ const IconGridStyle = styled.div`
 const Techstack = () => {
   return (
     <IntroWrap>
-      <h2>Technologies I love...</h2>
+      <SubHeading>Technologies I love...</SubHeading>
       <IconGridStyle>
         <IconGridItemStyle brandbg="#F7DF1E">
           <JavascriptIcon />

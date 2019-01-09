@@ -1,6 +1,5 @@
-import {LayoutContext} from './../context/layout-context';
-import React from "react";
-import { endpoint } from "../config";
+import { LayoutContext } from './../context/layout-context';
+import React from 'react';
 
 interface IState {
   menuActive: boolean;
@@ -9,29 +8,25 @@ interface IState {
   menuItems: [];
 }
 
-const PageWrapper = Comp => (
-
+const PageWrapper = Comp =>
   class extends React.Component {
-    
     state: IState;
     props: any;
 
     constructor(props) {
       super(props);
-  
+
       // State also contains the updater function so it will
       // be passed down into the context provider
       this.state = {
-          menuActive: false,
-          toggleMenu: this.toggleMenu,
-          closeMenu: this.closeMenu,
-          menuItems: []
+        menuActive: false,
+        toggleMenu: this.toggleMenu,
+        closeMenu: this.closeMenu,
+        menuItems: []
       };
-
     }
 
     toggleMenu = () => {
-      
       this.setState(state => ({
         menuActive: !state.menuActive
       }));
@@ -39,7 +34,6 @@ const PageWrapper = Comp => (
       this.state.menuActive ? document.body.classList.remove('menu-open') : document.body.classList.add('menu-open');
     };
     closeMenu = () => {
-      
       this.setState(state => ({
         menuActive: false
       }));
@@ -47,12 +41,10 @@ const PageWrapper = Comp => (
       document.body.classList.remove('menu-open');
     };
 
-
     static async getInitialProps(args) {
-
       return {
         // headerMenu,
-        ...(Comp.getInitialProps ? await Comp.getInitialProps(args) : null),
+        ...(Comp.getInitialProps ? await Comp.getInitialProps(args) : null)
       };
     }
 
@@ -61,9 +53,8 @@ const PageWrapper = Comp => (
         <LayoutContext.Provider value={this.state}>
           <Comp {...this.props} />
         </LayoutContext.Provider>
-      )
+      );
     }
-  }
-)
+  };
 
 export default PageWrapper;

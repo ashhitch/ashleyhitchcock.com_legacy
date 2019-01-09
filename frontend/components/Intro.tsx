@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import { Heading } from "./styles/Headings";
 import IntroWrap from "./styles/Intro";
 import Link from "next/link";
 import StyledContent from "./styles/Content";
@@ -12,7 +13,7 @@ class Intro extends Component  {
   render() {
   return(
     <IntroWrap>
-      <h1>{this.props.title }</h1>
+      <Heading>{this.props.title }</Heading>
       <StyledContent>
         <div
             dangerouslySetInnerHTML={{

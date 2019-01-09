@@ -45,7 +45,7 @@ class Work extends Component {
             return (
               <Layout>
                 <h2>The blog</h2>
-                <Grid cards={posts} />
+                <Grid cards={posts} linkType="post" />
               </Layout>
             );
           }}

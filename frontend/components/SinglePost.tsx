@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { Heading } from "./styles/Headings";
 import StyledContent from './styles/Content';
 import renderHTML from 'react-render-html';
 import styled from 'styled-components';
@@ -70,7 +71,7 @@ const SinglePost = ({post}) => {
         </div>
 
         <header className="post__heading">
-          <h1>{title}</h1>
+          <Heading>{title}</Heading>
         </header>
 
         <StyledContent className="post__content">

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
-import ErrorMessage from '../components/ErrorMessage';
-import Grid from '../components/Grid';
-import Layout from '../components/Layout';
-import Loader from '../components/Loader';
-import PageWrapper from '../components/PageWrapper';
+import ErrorMessage from './../components/ErrorMessage';
+import Grid from './../components/Grid';
+import { Heading } from './../components/styles/Headings';
+import Layout from './../components/Layout';
+import Loader from './../components/Loader';
+import PageWrapper from './../components/PageWrapper';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -28,7 +29,6 @@ export const WORK_ITEMS_QUERY = gql`
 class Work extends Component {
   render() {
     return (
-      <>
         <Query query={WORK_ITEMS_QUERY}>
           {({ error, loading, data }) => {
             if (error) return <ErrorMessage error={error} />;
@@ -39,13 +39,12 @@ class Work extends Component {
 
             return (
               <Layout>
-                <h2>My Work</h2>
-                <Grid cards={posts} />
+                <Heading>My Work</Heading>
+                <Grid cards={posts} linkType="work" />
               </Layout>
             );
           }}
         </Query>
-      </>
     );
   }
 }
