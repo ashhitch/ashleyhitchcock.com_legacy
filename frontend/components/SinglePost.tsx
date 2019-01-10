@@ -1,5 +1,5 @@
-import Head from "next/head";
-import { Heading } from "./styles/Headings";
+import Head from 'next/head';
+import { Heading } from './styles/Headings';
 import StyledContent from './styles/Content';
 import renderHTML from 'react-render-html';
 import styled from 'styled-components';
@@ -53,12 +53,13 @@ const StyledPost = styled.article`
 `;
 const SinglePost = ({post}) => {
 
-  const {title, content} = post;
+  const {title, content, seotitle, seometadesc} = post;
   const hero = '/static/images/hero-placeholder.svg';
   return (
     <>
     <Head>
-      <title>{!!title ? title : 'post'}</title>
+      <title>{!!seotitle ? seotitle : title}</title>
+   
     </Head>
     <StyledPost>
       <div className="post">

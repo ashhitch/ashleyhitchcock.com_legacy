@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Head from 'next/head';
 import Error from 'next/error';
 import ErrorMessage from '../components/ErrorMessage';
 import Layout from '../components/Layout';
@@ -17,6 +17,8 @@ export const SINGLE_POST_QUERY = gql`
       slug
       date
       content
+      seotitle
+      seometadesc
     }
   }
 `;
@@ -28,6 +30,8 @@ export const SINGLE_PAGE_QUERY = gql`
       slug
       date
       content
+      seotitle
+      seometadesc
     }
   }
 `;
@@ -39,6 +43,8 @@ export const SINGLE_WORK_QUERY = gql`
       slug
       date
       content
+      seotitle
+      seometadesc
     }
   }
 `;
