@@ -1,5 +1,7 @@
 export default ({ error }) => (
   <aside>
-    <p>{error}</p>
+    <p>{error.map(err => (
+      <div>{err.category} - {err.message}</div>
+    ))}</p>
   </aside>
 )
