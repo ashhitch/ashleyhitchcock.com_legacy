@@ -48,3 +48,45 @@ add_filter( 'register_post_type_args', function( $args, $post_type ) {
 	return $args;
 
 }, 10, 2 );
+
+
+
+  add_action( 'graphql_register_types', function() {
+  
+    $post_types = \WPGraphQL::$allowed_post_types;
+    
+    if ( ! empty( $post_types ) && is_array( $post_types ) ) {
+      foreach ( $post_types as $post_type ) {
+         $post_type_object = get_post_type_object( $post_type );
+
+
+        //  register_graphql_field( $post_type_object->graphql_single_name, 'hero', [
+        //     'type' => 'mediaItem',
+        //     'description' => __( 'Hero Image '.$post_type_object->graphql_single_name, 'wp-graphql' ),
+        //     'resolve' => function( $post ) {
+        //       $hero = get_field(  'hero_image',$post->ID );
+        //       return ! empty( $hero ) ? $hero : null;
+        //     }
+        //  ]);
+
+         
+        register_graphql_field( $post_type_object->graphql_single_name, 'seotitle', [
+            'type' => 'String',
+            'description' => __( 'The Yoast SEO Title of the '.$post_type_object->graphql_single_name, 'wp-graphql' ),
+            'resolve' => function( $post ) {
+              $title = get_post_meta( $post->ID, '_yoast_wpseo_title', true );
+              return ! empty( $title ) ? $title : null;
+            }
+         ]);
+         register_graphql_field( $post_type_object->graphql_single_name, 'seometadesc', [
+            'type' => 'String',
+            'description' => __( 'The Yoast SEO Description of the '.$post_type_object->graphql_single_name, 'wp-graphql' ),
+            'resolve' => function( $post ) {
+              $desc = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
+              return ! empty( $desc ) ? $desc : null;
+            }
+         ]);
+  
+      } 
+    }
+  });
