@@ -14,8 +14,8 @@ display: inline-block;
 
   &:after {
     content: '';
-    width: 1ex;
-    height: 1ex;
+    width: 0.8ex;
+    height: 0.8ex;
     display: block;
     position: absolute;
     bottom: 0;
