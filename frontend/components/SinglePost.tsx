@@ -12,7 +12,7 @@ const StyledPost = styled.article`
   
   &__banner {
     height: 300px;
-    background-color: #bada55;
+    background-color: ${props => props.theme.highlight};
     position: relative;
     margin-left: -1rem;
     margin-right: -1rem;
@@ -47,7 +47,7 @@ const StyledPost = styled.article`
     flex-grow: 1;
     height: 100%;
     z-index: 5;
-    padding-top: 1rem;
+    padding: 1rem 1.5rem;
   }
 }
 `;

@@ -1,34 +1,30 @@
 import React, { Component } from 'react';
 
-import ErrorMessage from '../components/ErrorMessage';
-import Grid from '../components/Grid';
-import Layout from '../components/Layout';
-import Loader from '../components/Loader';
-import PageWrapper from '../components/PageWrapper';
+import ErrorMessage from './../components/ErrorMessage';
+import Grid from './../components/Grid';
+import { Heading } from './../components/styles/Headings';
+import Layout from './../components/Layout';
+import Loader from './../components/Loader';
+import PageWrapper from './../components/PageWrapper';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
 export const BLOG_QUERY = gql`
-  query home($slug: String!) {
-    posts(first: 4) {
-      edges {
-        node {
-          id
-          title
-          link
-          slug
-          date
-          content
-          excerpt
-          tags {
-            nodes {
-              name
-            }
-          }
-        }
+{
+  posts: posts(first: 7) {
+    edges {
+      node {
+        id
+        title
+        link
+        slug
+        date
+        content
+        excerpt
       }
     }
   }
+}
 `;
 class Work extends Component {
   render() {
@@ -44,7 +40,7 @@ class Work extends Component {
 
             return (
               <Layout>
-                <h2>The blog</h2>
+                <Heading>The blog</Heading>
                 <Grid cards={posts} linkType="post" />
               </Layout>
             );

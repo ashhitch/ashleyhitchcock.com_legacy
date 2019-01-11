@@ -5,8 +5,9 @@ import Hamburger from './Hamburger';
 import { LayoutContext } from './../context/layout-context';
 import Link from 'next/link';
 import Menu from './Menu';
-import Router from 'next/router';
-import { useState } from 'react';
+
+// import Router from 'next/router';
+// import { useState } from 'react';
 
 const bounce = keyframes`
 0%, 100%, 20%, 50%, 80% {
@@ -72,29 +73,17 @@ const StyledHeader = styled.header`
 `;
 
 const Header = () => {
-  const loading = false;
+
   // const [loading, setLoading] = useState(false);
-
-  // Router.onRouteChangeStart = () => {
-  //   // console.log('start route');
-  //   setLoading(true);
-  // };
-  // Router.onRouteChangeComplete = () => {
-  //   setLoading(false);
-  //   // console.log('end route');
-  // };
-  
-  // Router.onRouteChangeError = () => {
-  //   setLoading(false);
-  //  //  console.log('error route');
-  // };
-
 
   return (
   <>
     <StyledHeader>
       <div className="bar">
-        <StyledLogo className={loading ? 'is-loading': 'is-loaded'} >
+        <LayoutContext.Consumer>
+          {({ menuActive, toggleMenu, globalLoading }) => (
+            <>
+        <StyledLogo className={globalLoading ? 'is-loading': 'is-loaded'} >
           <Link href="/">
             <a>
               AH
@@ -102,9 +91,6 @@ const Header = () => {
             </a>
           </Link>
         </StyledLogo>
-        <LayoutContext.Consumer>
-          {({ menuActive, toggleMenu }) => (
-            <>
               <Hamburger active={menuActive} toggle={toggleMenu} />
             </>
           )}

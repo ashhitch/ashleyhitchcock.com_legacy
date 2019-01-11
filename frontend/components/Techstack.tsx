@@ -18,6 +18,8 @@ const IconGridStyle = styled.div`
   list-style-type: none;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   grid-gap: 2rem;
+  justify-items: center;
+  align-items: center;
   ${media.md`grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));  grid-gap: 4rem;`}
   ${media.lg`grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));`}
   `;

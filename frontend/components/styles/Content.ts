@@ -12,7 +12,7 @@ const StyledContent = styled.div`
   &:after {
     display: block;
     content: "";
-    background: #bada55;
+    background: ${props => props.theme.highlight};
     height: 20px;
     width: 100%;
     position: absolute;

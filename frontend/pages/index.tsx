@@ -8,6 +8,7 @@ import Loader from './../components/Loader';
 import PageWrapper from '../components/PageWrapper';
 import { Query } from 'react-apollo';
 import StyledSection from './../components/styles/Section';
+import { SubHeading } from './../components/styles/Headings';
 import Techstack from './../components/Techstack';
 import gql from 'graphql-tag';
 
@@ -92,7 +93,7 @@ class Index extends Component {
                   <Techstack />
                 </StyledSection>
                 <StyledSection>
-                  <h2>Latest from the blog</h2>
+                  <SubHeading>Latest from the blog</SubHeading>
                   <Grid cards={postItems} linkType="post" />
                 </StyledSection>
               </Layout>

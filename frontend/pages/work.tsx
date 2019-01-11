@@ -11,7 +11,7 @@ import gql from 'graphql-tag';
 
 export const WORK_ITEMS_QUERY = gql`
   {
-    posts: works(first: 4) {
+    posts: works(first: 7) {
       edges {
         node {
           id
