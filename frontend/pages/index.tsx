@@ -4,9 +4,11 @@ import ErrorMessage from './../components/ErrorMessage';
 import Grid from './../components/Grid';
 import Intro from './../components/Intro';
 import Layout from './../components/Layout';
+import Link from 'next/link';
 import Loader from './../components/Loader';
 import PageWrapper from '../components/PageWrapper';
 import { Query } from 'react-apollo';
+import StyledButton from './../components/styles/Button';
 import StyledSection from './../components/styles/Section';
 import { SubHeading } from './../components/styles/Headings';
 import Techstack from './../components/Techstack';
@@ -95,6 +97,11 @@ class Index extends Component {
                 <StyledSection>
                   <SubHeading>Latest from the blog</SubHeading>
                   <Grid cards={postItems} linkType="post" />
+                  <div className="actions">
+                    <Link href={`/blog`}>
+                      <StyledButton>Read more</StyledButton>
+                    </Link>
+                  </div>
                 </StyledSection>
               </Layout>
             );

@@ -53,7 +53,7 @@ const IconGridStyle = styled.div`
 const Techstack = () => {
   return (
     <IntroWrap>
-      <SubHeading>Technologies I love...</SubHeading>
+      <SubHeading>Technologies I love</SubHeading>
       <IconGridStyle>
         <IconGridItemStyle brandbg="#F7DF1E">
           <JavascriptIcon />
