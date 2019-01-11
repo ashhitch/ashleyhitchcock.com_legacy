@@ -7,13 +7,13 @@ import styled from 'styled-components';
 const StyledFooter = styled.footer`
     padding: 2rem 0 1rem 0;
 `;
-
+const dt: Date = new Date();
 const Footer = () => (
     <StyledFooter>
         <MaxWidthLayout>
             <Center>
                 <SocialBar></SocialBar>
-                <p>© 2018 Ashley Hitchcock</p>
+                <p>© {dt.getFullYear()} Ashley Hitchcock</p>
             </Center>
         </MaxWidthLayout>
     </StyledFooter>
