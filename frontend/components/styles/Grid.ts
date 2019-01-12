@@ -14,7 +14,7 @@ const GridWrapper = styled.section`
 const GridItem = styled.div`
   @media (min-width: 768px) {
     &:first-child {
-      grid-column: span 2;
+      grid-column: span 3;
     }
   }
 

@@ -60,14 +60,14 @@ add_filter( 'register_post_type_args', function( $args, $post_type ) {
          $post_type_object = get_post_type_object( $post_type );
 
 
-        //  register_graphql_field( $post_type_object->graphql_single_name, 'hero', [
-        //     'type' => 'mediaItem',
-        //     'description' => __( 'Hero Image '.$post_type_object->graphql_single_name, 'wp-graphql' ),
-        //     'resolve' => function( $post ) {
-        //       $hero = get_field(  'hero_image',$post->ID );
-        //       return ! empty( $hero ) ? $hero : null;
-        //     }
-        //  ]);
+         register_graphql_field( $post_type_object->graphql_single_name, 'hero', [
+            'type' => 'mediaItem',
+            'description' => __( 'Hero Image '.$post_type_object->graphql_single_name, 'wp-graphql' ),
+            'resolve' => function( $post ) {
+              $hero = get_field(  'hero_image',$post->ID );
+              return ! empty( $hero ) ? $hero : null;
+            }
+         ]);
 
          
         register_graphql_field( $post_type_object->graphql_single_name, 'seotitle', [
