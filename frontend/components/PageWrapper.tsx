@@ -1,9 +1,11 @@
 import { LayoutContext } from './../context/layout-context';
 import React from 'react';
-
+import Router from 'next/router';
 interface IState {
   menuActive: boolean;
+  globalLoading: boolean;
   toggleMenu: () => void;
+  setLoading: (boolean) => void;
   closeMenu: () => void;
   menuItems: [];
 }
@@ -20,11 +22,34 @@ const PageWrapper = Comp =>
       // be passed down into the context provider
       this.state = {
         menuActive: false,
+        globalLoading: false,
         toggleMenu: this.toggleMenu,
         closeMenu: this.closeMenu,
+        setLoading: this.setLoading,
         menuItems: []
       };
+
+      Router.onRouteChangeStart = () => {
+        console.log('start route');
+        this.setLoading(true);
+      };
+      Router.onRouteChangeComplete = () => {
+        console.log('end route');
+        setTimeout(() => this.setLoading(false), 500);
+      };
+
+      Router.onRouteChangeError = () => {
+        console.log('error route');
+        this.setLoading(false);
+      };
     }
+
+    setLoading = (loading: boolean) => {
+      console.log({ loading });
+      this.setState(() => ({
+        globalLoading: loading
+      }));
+    };
 
     toggleMenu = () => {
       this.setState(state => ({

@@ -4,14 +4,16 @@ import ErrorMessage from './../components/ErrorMessage';
 import Grid from './../components/Grid';
 import { Heading } from './../components/styles/Headings';
 import Layout from './../components/Layout';
+import LoadMore from './../components/LoadMore';
 import Loader from './../components/Loader';
 import PageWrapper from './../components/PageWrapper';
 import { Query } from 'react-apollo';
+import StyledSection from './../components/styles/Section';
 import gql from 'graphql-tag';
 
 export const WORK_ITEMS_QUERY = gql`
   {
-    posts: works(first: 4) {
+    work: works(first: 7) {
       edges {
         node {
           id
@@ -30,17 +32,22 @@ class Work extends Component {
   render() {
     return (
         <Query query={WORK_ITEMS_QUERY}>
-          {({ error, loading, data }) => {
+          {({ error, loading, data, fetchMore }) => {
             if (error) return <ErrorMessage error={error} />;
             if (loading) return <Loader />;
-            if (!data.posts) return <p>No Data returned</p>;
+            if (!data.work) return <p>No Data returned</p>;
 
-            const posts = data.posts.edges;
+            const { edges: work, pageInfo } = data.work;
 
             return (
               <Layout>
+                <StyledSection>
                 <Heading>My Work</Heading>
-                <Grid cards={posts} linkType="work" />
+                <Grid cards={work} linkType="work" />
+                <div className="actions">
+                  <LoadMore fetchMore={fetchMore} endCursor={pageInfo.endCursor} hasNextPage={pageInfo.hasNextPage} query="work">Load More</LoadMore>
+                </div>
+                </StyledSection>
               </Layout>
             );
           }}
