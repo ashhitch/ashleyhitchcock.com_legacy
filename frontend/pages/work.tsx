@@ -12,17 +12,29 @@ import StyledSection from './../components/styles/Section';
 import gql from 'graphql-tag';
 
 export const WORK_ITEMS_QUERY = gql`
-  {
-    work: works(first: 7) {
+  query works($cursor: String) {
+    works: works(first: 7, after: $cursor) {
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
       edges {
+        cursor
         node {
           id
           title
-          link
           slug
-          date
-          content
           excerpt
+          featuredImage {
+            mediaDetails {
+              sizes {
+                name
+                file
+              }
+            }
+          }
         }
       }
     }
@@ -35,17 +47,17 @@ class Work extends Component {
           {({ error, loading, data, fetchMore }) => {
             if (error) return <ErrorMessage error={error} />;
             if (loading) return <Loader />;
-            if (!data.work) return <p>No Data returned</p>;
+            if (!data.works) return <p>No Data returned</p>;
 
-            const { edges: work, pageInfo } = data.work;
+            const { edges: works, pageInfo } = data.works;
 
             return (
               <Layout>
                 <StyledSection>
                 <Heading>My Work</Heading>
-                <Grid cards={work} linkType="work" />
+                <Grid cards={works} linkType="work" />
                 <div className="actions">
-                  <LoadMore fetchMore={fetchMore} endCursor={pageInfo.endCursor} hasNextPage={pageInfo.hasNextPage} query="work">Load More</LoadMore>
+                  <LoadMore fetchMore={fetchMore} endCursor={pageInfo.endCursor} hasNextPage={pageInfo.hasNextPage} query="works">Load More</LoadMore>
                 </div>
                 </StyledSection>
               </Layout>
