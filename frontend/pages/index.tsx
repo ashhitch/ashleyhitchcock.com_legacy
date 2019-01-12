@@ -8,7 +8,7 @@ import Link from 'next/link';
 import Loader from './../components/Loader';
 import PageWrapper from '../components/PageWrapper';
 import { Query } from 'react-apollo';
-import StyledButton from './../components/styles/Button';
+import StyledLink from './../components/styles/Button';
 import StyledSection from './../components/styles/Section';
 import { SubHeading } from './../components/styles/Headings';
 import Techstack from './../components/Techstack';
@@ -99,7 +99,7 @@ class Index extends Component {
                   <Grid cards={postItems} linkType="post" />
                   <div className="actions">
                     <Link href={`/blog`}>
-                      <StyledButton>Read more</StyledButton>
+                      <StyledLink>Read more</StyledLink>
                     </Link>
                   </div>
                 </StyledSection>

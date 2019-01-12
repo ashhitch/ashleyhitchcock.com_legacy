@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const StyledButton = styled.a`
-  color: ${props => props.theme.black};
+const BaseLink = css`
+color: ${props => props.theme.black};
   position: relative;
   display: inline-block;
   text-decoration: none;
@@ -28,5 +28,15 @@ const StyledButton = styled.a`
     bottom: 0;
   }
 `;
+export const StyledLink = styled.a`
+  ${BaseLink}
+`;
+export const StyledButton = styled.button`
+  ${BaseLink}
+  border: 0;
+  background-color: transparent;
+`;
 
-export default StyledButton;
+
+
+export default StyledLink;
