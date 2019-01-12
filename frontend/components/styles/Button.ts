@@ -1,8 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const StyledContent = styled.div`
-  a {
-  color: ${props => props.theme.black};
+const BaseLink = css`
+color: ${props => props.theme.black};
   position: relative;
   display: inline-block;
   text-decoration: none;
@@ -11,7 +10,7 @@ const StyledContent = styled.div`
 
   &:after {
     display: block;
-    content: "";
+    content: '';
     background: ${props => props.theme.highlight};
     height: 20px;
     width: 100%;
@@ -28,20 +27,16 @@ const StyledContent = styled.div`
     transform: rotate(6deg);
     bottom: 0;
   }
-  &:nth-child(odd):hover:after {
-    transform: rotate(-6deg);
-  }
-
-}
-
-p {
-  margin: 0 0 1rem 0;
-}
-
-& > *:last-child {
-  margin-bottom: 0;
-}
-
+`;
+export const StyledLink = styled.a`
+  ${BaseLink}
+`;
+export const StyledButton = styled.button`
+  ${BaseLink}
+  border: 0;
+  background-color: transparent;
 `;
 
-export default StyledContent;
+
+
+export default StyledLink;

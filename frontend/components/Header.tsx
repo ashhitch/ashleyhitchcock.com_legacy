@@ -5,30 +5,33 @@ import Hamburger from './Hamburger';
 import { LayoutContext } from './../context/layout-context';
 import Link from 'next/link';
 import Menu from './Menu';
-import Router from 'next/router';
-import { useState } from 'react';
+
+// import Router from 'next/router';
+// import { useState } from 'react';
 
 const bounce = keyframes`
-0%, 100%, 20%, 50%, 80% {
-  transform: translateY(0);
+0%, 100% {
+  transform: translateY(0) rotate(0.35turn);
+}
+20%, 50%, 80% {
+  transform: translateY(0) rotate(0.50turn);
 }
 40% {
-  transform: translateY(-20px);
+  transform: translateY(-20px) rotate(0.35turn);
 }
 60% {
-  transform: translateY(-12px);
+  transform: translateY(-12px) rotate(0.75turn);
 }
 `;
 const StyledLogo = styled.span`
   font-size: 2.8rem;
   position: relative;
   z-index: 2;
-  transform: skew(-9deg);
   margin-left: 2px;
   font-weight: 700;
 
   a {
-    padding: 0 12px 0 0;
+    padding: 0 0.5ex 0 0;
     background: ${props => props.theme.secondary};
     color: ${props => props.theme.primary};
     text-transform: uppercase;
@@ -38,14 +41,18 @@ const StyledLogo = styled.span`
     span {
       position: absolute;
       right: 0;
-      bottom: 0;
-      display: inline-block;
+      bottom: 4px;
+      display: block;
       transition: all 0.2s ease-in;
-      transform: translateY(0);
+      transform: translateY(0) rotate(0.35turn);
       animation-duration: 1.2s;
       animation-fill-mode: both;
       animation-timing-function: ease-in-out;
       animation-iteration-count: infinite;
+      width: .5ex;
+      height: .5ex;
+      display: block;
+      background-color: ${props => props.theme.highlight};
     }
 
     &:hover span,.is-loading span {
@@ -72,39 +79,24 @@ const StyledHeader = styled.header`
 `;
 
 const Header = () => {
-  const loading = false;
+
   // const [loading, setLoading] = useState(false);
-
-  // Router.onRouteChangeStart = () => {
-  //   // console.log('start route');
-  //   setLoading(true);
-  // };
-  // Router.onRouteChangeComplete = () => {
-  //   setLoading(false);
-  //   // console.log('end route');
-  // };
-  
-  // Router.onRouteChangeError = () => {
-  //   setLoading(false);
-  //  //  console.log('error route');
-  // };
-
 
   return (
   <>
     <StyledHeader>
       <div className="bar">
-        <StyledLogo className={loading ? 'is-loading': 'is-loaded'} >
+        <LayoutContext.Consumer>
+          {({ menuActive, toggleMenu, globalLoading }) => (
+            <>
+        <StyledLogo className={globalLoading ? 'is-loading': 'is-loaded'} >
           <Link href="/">
             <a>
               AH
-              <span>.</span>
+              <span></span>
             </a>
           </Link>
         </StyledLogo>
-        <LayoutContext.Consumer>
-          {({ menuActive, toggleMenu }) => (
-            <>
               <Hamburger active={menuActive} toggle={toggleMenu} />
             </>
           )}
