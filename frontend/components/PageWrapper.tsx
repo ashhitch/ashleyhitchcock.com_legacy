@@ -30,22 +30,21 @@ const PageWrapper = Comp =>
       };
 
       Router.onRouteChangeStart = () => {
-        console.log('start route');
+        // console.log('start route');
         this.setLoading(true);
       };
       Router.onRouteChangeComplete = () => {
-        console.log('end route');
-        setTimeout(() => this.setLoading(false), 500);
+        //console.log('end route');
+        setTimeout(() => this.setLoading(false), 1500);
       };
 
       Router.onRouteChangeError = () => {
-        console.log('error route');
+        // console.log('error route');
         this.setLoading(false);
       };
     }
 
     setLoading = (loading: boolean) => {
-      console.log({ loading });
       this.setState(() => ({
         globalLoading: loading
       }));
