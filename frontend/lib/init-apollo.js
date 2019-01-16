@@ -3,6 +3,7 @@ import {
   HttpLink,
   InMemoryCache
 } from 'apollo-boost'
+import { defaults, resolvers, typeDefs } from './../state/resolvers';
 import {
   endpoint,
   prodEndpoint
@@ -17,6 +18,9 @@ if (!process.browser) {
   global.fetch = fetch
 }
 
+
+// const link = withClientState({ resolvers, defaults, cache, typeDefs });
+
 function create(initialState) {
   // Check out https://github.com/zeit/next.js/pull/4611 if you want to use the AWSAppSyncClient
   return new ApolloClient({
@@ -26,8 +30,14 @@ function create(initialState) {
       uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint, // Server URL (must be absolute)
       credentials: 'same-origin' // Additional fetch() options like `credentials` or `headers` same-origin
     }),
-    cache: new InMemoryCache().restore(initialState || {})
-  })
+    cache: new InMemoryCache().restore(initialState || {}),
+    clientState: {
+      resolvers,
+      defaults,
+      typeDefs
+    }
+  }
+  )
 }
 
 export default function initApollo(initialState) {
