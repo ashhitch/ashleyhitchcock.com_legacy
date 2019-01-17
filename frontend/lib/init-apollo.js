@@ -23,7 +23,9 @@ if (!process.browser) {
 
 function create(initialState) {
   // Check out https://github.com/zeit/next.js/pull/4611 if you want to use the AWSAppSyncClient
-  return new ApolloClient({
+  return new ApolloClient(
+    {
+    //uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint,
     connectToDevTools: process.browser,
     ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
     link: new HttpLink({
