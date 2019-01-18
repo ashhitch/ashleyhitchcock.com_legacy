@@ -6,19 +6,19 @@ export const defaults = {
 
 export const LOCAL_STATE_QUERY = gql`
   query {
-    menuActive
+    menuActive @client
   }
 `;
 
 export const TOGGLE_MENU_MUTATION = gql`
   mutation {
-    menuActive
+    menuActive @client
   }
 `;
 
 export const CLOSE_MENU_MUTATION = gql`
   mutation {
-    menuActive
+    menuActive @client
   }
 `;
 
@@ -33,6 +33,7 @@ export const resolvers = {
   Mutation: {
     toggleMenu(_, variables, { cache }) {
       // read the cartOpen value from the cache
+      console.log('toggle menu');
       const { menuActive } = cache.readQuery({
         query: LOCAL_STATE_QUERY,
       });
