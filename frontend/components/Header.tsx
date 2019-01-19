@@ -95,7 +95,6 @@ const Header = () => {
       <Composed>
         {({ closeMenu, localState, contextState }) => {
           const { globalLoading } = contextState;
-          const { client } = localState;
           const { menuActive } = localState.data;
           // Set the active class 
           // @TODO this can't be done here
