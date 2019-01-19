@@ -32,21 +32,21 @@ export const typeDefs = `
 export const resolvers = {
   Mutation: {
     toggleMenu(_, variables, { cache }) {
-      // read the cartOpen value from the cache
+      // read the menuActive value from the cache
       const { menuActive } = cache.readQuery({
         query: LOCAL_STATE_QUERY,
       });
-      // Write the cart State to the opposite
+      // Write the menu State to the opposite
       const data = {
         data: { menuActive: !menuActive },
       };
-      !menuActive ? document.body.classList.remove('menu-open') : document.body.classList.add('menu-open');
+      
       cache.writeData(data);
       return data;
     },
     closeMenu(_, variables, { cache }) {
 
-      // Write the cart State to false
+      // Write the menu State to false
       const data = {
         data: { menuActive: false },
       };

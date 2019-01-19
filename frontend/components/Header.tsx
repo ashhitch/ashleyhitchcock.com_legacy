@@ -96,7 +96,9 @@ const Header = () => {
         {({ closeMenu, localState, contextState }) => {
           const { globalLoading } = contextState;
           const { menuActive } = localState.data;
-   
+          // Set the active class 
+          menuActive ? document.body.classList.remove('menu-open') : document.body.classList.add('menu-open'); 
+          
           return (
             <>
               <StyledHeader>

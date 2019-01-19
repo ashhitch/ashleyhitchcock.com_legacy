@@ -32,7 +32,7 @@ function create({
     },
     credentials: 'same-origin'
   };
-  console.log(client);
+
   return new ApolloClient(client)
 }
 
