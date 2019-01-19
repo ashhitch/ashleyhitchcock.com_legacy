@@ -1,12 +1,26 @@
 import gql from 'graphql-tag';
 
 export const defaults = {
-  menuActive: false
+  menuActive: false,
+  isLoading: false
 };
 
 export const LOCAL_STATE_QUERY = gql`
   query LayoutState {
     menuActive @client
+    isLoading @client
+  }
+`;
+
+export const LOADING_MUTATION = gql`
+  mutation SetLoading {
+    setLoading @client
+  }
+`;
+
+export const NOT_LOADING_MUTATION = gql`
+  mutation SetNotLoading {
+    setNotLoading @client
   }
 `;
 
@@ -25,13 +39,17 @@ export const CLOSE_MENU_MUTATION = gql`
 export const typeDefs = `
   type Layout {
     menuActive: Boolean!
+    isLoading: Boolean!
   }
   type Mutation {
     toggleMenu: Layout
     closeMenu: Layout
+    setLoading: Layout
+    setNotLoading: Layout
   }
   type Query {
-    menuActive: Boolean!;
+    menuActive: Boolean!
+    isLoading: Boolean!
   }
 `;
 
@@ -56,7 +74,25 @@ export const resolvers = {
       const data = {
         data: { menuActive: false }
       };
-      document.body.classList.remove('menu-open');
+     
+      cache.writeData(data);
+      return data;
+    },
+    setLoading(_, variables, { cache }) {
+      // Write the menu State to false
+      const data = {
+        data: { isLoading: true }
+      };
+     
+      cache.writeData(data);
+      return data;
+    },
+    setNotLoading(_, variables, { cache }) {
+      // Write the menu State to false
+      const data = {
+        data: { isLoading: false }
+      };
+     
       cache.writeData(data);
       return data;
     }

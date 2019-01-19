@@ -1,15 +1,17 @@
 // import Router from 'next/router';
 // import { useState } from 'react';
+
 import { CLOSE_MENU_MUTATION, LOCAL_STATE_QUERY } from './../state/resolvers';
 import { Mutation, Query } from 'react-apollo';
 import styled, { keyframes } from 'styled-components';
 
 import Hamburger from './Hamburger';
-// import Headroom from 'react-headroom';
-import { LayoutContext } from './../context/layout-context';
 import Link from 'next/link';
 import Menu from './Menu';
 import { adopt } from 'react-adopt';
+
+// import Headroom from 'react-headroom';
+
 
 const bounce = keyframes`
   0%, 100% {
@@ -83,8 +85,7 @@ const StyledHeader = styled.header`
 
 const Composed = adopt({
   closeMenu: ({ render }) => <Mutation mutation={CLOSE_MENU_MUTATION}>{render}</Mutation>,
-  localState: ({ render }) => <Query query={LOCAL_STATE_QUERY}>{render}</Query>,
-  contextState: ({ render }) => <LayoutContext.Consumer>{render}</LayoutContext.Consumer>
+  localState: ({ render }) => <Query query={LOCAL_STATE_QUERY}>{render}</Query>
 });
 
 const Header = () => {
@@ -93,9 +94,10 @@ const Header = () => {
   return (
     <>
       <Composed>
-        {({ closeMenu, localState, contextState }) => {
-          const { globalLoading } = contextState;
-          const { menuActive } = localState.data;
+        {({ closeMenu, localState }) => {
+
+          const { menuActive, isLoading } = localState.data;
+      
           // Set the active class 
           // @TODO this can't be done here
          // menuActive ? document.body.classList.remove('menu-open') : document.body.classList.add('menu-open'); 
@@ -104,7 +106,7 @@ const Header = () => {
             <>
               <StyledHeader>
                 <div className="bar">
-                  <StyledLogo className={globalLoading ? 'is-loading' : 'is-loaded'}>
+                  <StyledLogo className={isLoading ? 'is-loading' : 'is-loaded'}>
                     <Link href="/">
                       <a>
                         AH
