@@ -97,7 +97,8 @@ const Header = () => {
           const { globalLoading } = contextState;
           const { menuActive } = localState.data;
           // Set the active class 
-          menuActive ? document.body.classList.remove('menu-open') : document.body.classList.add('menu-open'); 
+          // @TODO this can't be done here
+         // menuActive ? document.body.classList.remove('menu-open') : document.body.classList.add('menu-open'); 
           
           return (
             <>
