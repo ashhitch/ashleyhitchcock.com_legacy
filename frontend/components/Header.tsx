@@ -95,11 +95,12 @@ const Header = () => {
       <Composed>
         {({ closeMenu, localState, contextState }) => {
           const { globalLoading } = contextState;
+          const { client } = localState;
           const { menuActive } = localState.data;
           // Set the active class 
           // @TODO this can't be done here
          // menuActive ? document.body.classList.remove('menu-open') : document.body.classList.add('menu-open'); 
-          
+          //  onClick={() => client.writeData({data: { menuActive: !menuActive }})}
           return (
             <>
               <StyledHeader>
@@ -112,7 +113,7 @@ const Header = () => {
                       </a>
                     </Link>
                   </StyledLogo>
-                  <Hamburger active={menuActive} />
+                  <Hamburger active={menuActive}  />
                 </div>
               </StyledHeader>
 
