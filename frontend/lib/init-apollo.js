@@ -1,4 +1,8 @@
-import { defaults, resolvers, typeDefs } from './../state/resolvers';
+import {
+  defaults,
+  resolvers,
+  typeDefs
+} from './../state/resolvers';
 import {
   endpoint,
   prodEndpoint
@@ -16,15 +20,20 @@ if (!process.browser) {
 }
 
 
-function create({ headers }) {
-
-  return new ApolloClient(
-    {
+function create({
+  headers
+}) {
+  const client = {
     uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint,
-    clientState: { resolvers, defaults, typeDefs },
+    clientState: {
+      resolvers,
+      defaults,
+      typeDefs
+    },
     credentials: 'same-origin'
-  }
-  )
+  };
+  console.log(client);
+  return new ApolloClient(client)
 }
 
 export default withApollo(create);

@@ -1,6 +1,6 @@
 // import Router from 'next/router';
 // import { useState } from 'react';
-import { CLOSE_MENU_MUTATION, LOCAL_STATE_QUERY, TOGGLE_MENU_MUTATION } from './../state/resolvers';
+import { CLOSE_MENU_MUTATION, LOCAL_STATE_QUERY } from './../state/resolvers';
 import { Mutation, Query } from 'react-apollo';
 import styled, { keyframes } from 'styled-components';
 
@@ -82,7 +82,6 @@ const StyledHeader = styled.header`
 `;
 
 const Composed = adopt({
-  toggleMenu: ({ render }) => <Mutation mutation={TOGGLE_MENU_MUTATION}>{render}</Mutation>,
   closeMenu: ({ render }) => <Mutation mutation={CLOSE_MENU_MUTATION}>{render}</Mutation>,
   localState: ({ render }) => <Query query={LOCAL_STATE_QUERY}>{render}</Query>,
   contextState: ({ render }) => <LayoutContext.Consumer>{render}</LayoutContext.Consumer>
@@ -94,9 +93,10 @@ const Header = () => {
   return (
     <>
       <Composed>
-        {({ toggleMenu, closeMenu, localState, contextState }) => {
+        {({ closeMenu, localState, contextState }) => {
           const { globalLoading } = contextState;
-          const { menuActive } = localState;
+          const { menuActive } = localState.data;
+   
           return (
             <>
               <StyledHeader>
@@ -109,7 +109,7 @@ const Header = () => {
                       </a>
                     </Link>
                   </StyledLogo>
-                  <Hamburger active={menuActive} toggle={toggleMenu} />
+                  <Hamburger active={menuActive} />
                 </div>
               </StyledHeader>
 

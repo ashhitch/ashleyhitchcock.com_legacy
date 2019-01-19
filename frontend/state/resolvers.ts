@@ -33,7 +33,6 @@ export const resolvers = {
   Mutation: {
     toggleMenu(_, variables, { cache }) {
       // read the cartOpen value from the cache
-      console.log('toggle menu');
       const { menuActive } = cache.readQuery({
         query: LOCAL_STATE_QUERY,
       });
@@ -41,6 +40,7 @@ export const resolvers = {
       const data = {
         data: { menuActive: !menuActive },
       };
+      !menuActive ? document.body.classList.remove('menu-open') : document.body.classList.add('menu-open');
       cache.writeData(data);
       return data;
     },
@@ -50,6 +50,7 @@ export const resolvers = {
       const data = {
         data: { menuActive: false },
       };
+      document.body.classList.remove('menu-open');
       cache.writeData(data);
       return data;
     }
