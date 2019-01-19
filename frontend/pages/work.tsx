@@ -12,8 +12,8 @@ import StyledSection from './../components/styles/Section';
 import gql from 'graphql-tag';
 
 export const WORK_ITEMS_QUERY = gql`
-  query works($cursor: String) {
-    works: works(first: 7, after: $cursor) {
+  query works($cursor: String, $perPage: Int!) {
+    works: works(first: $perPage, after: $cursor) {
       pageInfo {
         startCursor
         endCursor
@@ -43,7 +43,12 @@ export const WORK_ITEMS_QUERY = gql`
 class Work extends Component {
   render() {
     return (
-        <Query query={WORK_ITEMS_QUERY}>
+        <Query 
+        query={WORK_ITEMS_QUERY}
+        variables={{
+          perPage: 7
+        }}
+        >
           {({ error, loading, data, fetchMore }) => {
             if (error) return <ErrorMessage error={error} />;
             if (loading) return <Loader />;

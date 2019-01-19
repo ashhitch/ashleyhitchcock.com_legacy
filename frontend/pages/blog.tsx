@@ -12,8 +12,8 @@ import StyledSection from './../components/styles/Section';
 import gql from 'graphql-tag';
 
 export const BLOG_QUERY = gql`
-  query posts($cursor: String) {
-    posts: posts(first: 7, after: $cursor) {
+  query posts($cursor: String, $perPage: Int!) {
+    posts: posts(first: $perPage, after: $cursor) {
       pageInfo {
         startCursor
         endCursor
@@ -49,7 +49,12 @@ class Work extends Component {
   render() {
     return (
       <>
-        <Query query={BLOG_QUERY}>
+        <Query 
+        query={BLOG_QUERY}
+        variables={{
+          perPage: 7
+        }}
+        >
           {({ error, loading, data, fetchMore }) => {
             if (error) return <ErrorMessage error={error} />;
             if (loading) return <Loader />;
