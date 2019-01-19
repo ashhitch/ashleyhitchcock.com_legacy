@@ -6,7 +6,8 @@ export default ({ fetchMore, endCursor, query, children, hasNextPage }) => (
     onClick={() =>
       fetchMore({
         variables: {
-          cursor: endCursor
+          cursor: endCursor,
+          perPage: 6
         },
         updateQuery: (previousResult, { fetchMoreResult }) => {
           const { edges: newEdges, pageInfo } = fetchMoreResult.posts;

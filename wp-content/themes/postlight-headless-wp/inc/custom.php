@@ -61,10 +61,18 @@ add_filter( 'register_post_type_args', function( $args, $post_type ) {
 
 
          register_graphql_field( $post_type_object->graphql_single_name, 'hero', [
-            'type' => 'mediaItem',
+            'type' => 'String',
             'description' => __( 'Hero Image '.$post_type_object->graphql_single_name, 'wp-graphql' ),
             'resolve' => function( $post ) {
-              $hero = get_field(  'hero_image',$post->ID );
+              $image = get_field(  'hero_image',$post->ID );
+              $size = 'hero';
+
+    
+              if($image) {
+                $hero = wp_get_attachment_image_url( $image, $size );
+        
+              }
+              
               return ! empty( $hero ) ? $hero : null;
             }
          ]);

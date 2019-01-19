@@ -7,6 +7,7 @@ color: ${props => props.theme.black};
   text-decoration: none;
   z-index: 1;
   padding: 2px 5px;
+  cursor: pointer;
 
   &:after {
     display: block;
