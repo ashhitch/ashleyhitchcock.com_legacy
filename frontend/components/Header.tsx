@@ -99,8 +99,10 @@ const Header = () => {
           const { menuActive, isLoading } = localState.data;
       
           // Set the active class 
-          // @TODO this can't be done here
-         // menuActive ? document.body.classList.remove('menu-open') : document.body.classList.add('menu-open'); 
+        
+          if (process.browser) {
+            menuActive ? document.body.classList.add('menu-open') : document.body.classList.remove('menu-open'); 
+          }
           //  onClick={() => client.writeData({data: { menuActive: !menuActive }})}
           return (
             <>
