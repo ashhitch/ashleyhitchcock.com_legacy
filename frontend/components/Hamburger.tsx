@@ -1,9 +1,11 @@
+import { LOCAL_STATE_QUERY, TOGGLE_MENU_MUTATION } from './../state/resolvers';
+
+import { Mutation } from 'react-apollo';
 import React from 'react';
 import styled from 'styled-components';
 
 interface IHamburgerProps {
   active: boolean;
-  toggle: () => {};
 }
 
 const StyledHamburger = styled.div`
@@ -57,11 +59,15 @@ const StyledHamburger = styled.div`
 `;
 const Hamburger = (props: IHamburgerProps) => (
   <StyledHamburger>
-  <button className={'menu-toggle ' + (props.active ? 'is-active' : '')} onClick={props.toggle}>
-    <span />
-    <span />
-    <span />
-  </button>
+    <Mutation mutation={TOGGLE_MENU_MUTATION}>
+      {(toggleMenu) => (
+        <button className={'menu-toggle ' + (props.active ? 'is-active' : '')} onClick={toggleMenu}>
+          <span />
+          <span />
+          <span />
+        </button>
+      )}
+    </Mutation>
   </StyledHamburger>
 );
 

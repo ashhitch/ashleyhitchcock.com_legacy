@@ -125,7 +125,7 @@ class Menu extends Component {
                     return (
                       <li key={id}>
                         <Link href={url}>
-                          <a>{title ? title : label}</a>
+                          <a  onClick={this.props.close}>{title ? title : label}</a>
                         </Link>
                       </li>
                     );

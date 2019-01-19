@@ -14,15 +14,18 @@ display: inline-block;
 
   &:after {
     content: '';
-    width: 0.8ex;
     height: 0.8ex;
     display: block;
+    content: '';
+    background: ${props => props.theme.highlight};
+    width: 100%;
     position: absolute;
+    left: 0;
+    bottom: 10px;
+    z-index: -1;
+    transition: all 0.2s ease-in-out;
     bottom: 0;
-    left: 100%;
-    background-color: ${props => props.theme.highlight};
-    z-index: 1;
-    transform: rotate(45deg);
+    transform: rotate(2deg);
 
   }
 `;

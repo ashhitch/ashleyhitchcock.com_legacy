@@ -53,8 +53,8 @@ const StyledPost = styled.article`
 `;
 const SinglePost = ({post}) => {
 
-  const {title, content, seotitle, seometadesc} = post;
-  const hero = '/static/images/hero-placeholder.svg';
+  const {title, content, seotitle, seometadesc, hero} = post;
+  const heroBanner  = hero ? hero : '/static/images/hero-placeholder.svg';
   return (
     <>
     <Head>
@@ -66,7 +66,7 @@ const SinglePost = ({post}) => {
         <div className="post__banner">
           <img
             className="post__banner__src"
-            src={hero}
+            src={heroBanner}
             alt={title}
           />
         </div>

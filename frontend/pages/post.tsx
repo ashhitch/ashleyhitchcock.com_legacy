@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Head from 'next/head';
+
 import Error from 'next/error';
 import ErrorMessage from '../components/ErrorMessage';
+import Head from 'next/head';
 import Layout from '../components/Layout';
 import Loader from '../components/Loader';
 import PageWrapper from '../components/PageWrapper';
@@ -19,6 +20,7 @@ export const SINGLE_POST_QUERY = gql`
       content
       seotitle
       seometadesc
+      hero
     }
   }
 `;
@@ -32,6 +34,7 @@ export const SINGLE_PAGE_QUERY = gql`
       content
       seotitle
       seometadesc
+      hero
     }
   }
 `;
@@ -45,6 +48,7 @@ export const SINGLE_WORK_QUERY = gql`
       content
       seotitle
       seometadesc
+      hero
     }
   }
 `;
