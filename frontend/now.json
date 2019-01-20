@@ -2,5 +2,8 @@
   "version": 2,
   "name": "ashhitch",
   "builds": [{ "src": "next.config.js", "use": "@now/next" }],
-  "alias": ["dev.ashleyhitchcock.com"]
+  "alias": ["dev.ashleyhitchcock.com"],
+  "env": {
+    "NODE_ENV": "production"
+    }
 }

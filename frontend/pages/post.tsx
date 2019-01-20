@@ -18,9 +18,11 @@ export const SINGLE_POST_QUERY = gql`
       slug
       date
       content
-      seotitle
-      seometadesc
       hero
+      seo {
+          title
+          metaDesc
+        }
     }
   }
 `;
@@ -32,9 +34,11 @@ export const SINGLE_PAGE_QUERY = gql`
       slug
       date
       content
-      seotitle
-      seometadesc
       hero
+      seo {
+          title
+          metaDesc
+        }
     }
   }
 `;
@@ -46,9 +50,11 @@ export const SINGLE_WORK_QUERY = gql`
       slug
       date
       content
-      seotitle
-      seometadesc
       hero
+      seo {
+          title
+          metaDesc
+        }
     }
   }
 `;
