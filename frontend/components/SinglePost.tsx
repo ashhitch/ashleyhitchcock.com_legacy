@@ -53,12 +53,14 @@ const StyledPost = styled.article`
 `;
 const SinglePost = ({post}) => {
 
-  const {title, content, seotitle, seometadesc, hero} = post;
+  const {title, content, seo, hero} = post;
+
   const heroBanner  = hero ? hero : '/static/images/hero-placeholder.svg';
   return (
     <>
     <Head>
-      <title>{!!seotitle ? seotitle : title}</title>
+      <title>{!! seo && !!seo.title ? seo.title  : title}</title>
+      <meta name="description" content="{seo.metaDesc}"/>
    
     </Head>
     <StyledPost>
