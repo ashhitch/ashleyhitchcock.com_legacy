@@ -41,11 +41,6 @@ app
             app.render(req, res, actualPage, queryParams);
         });
 
-        server.get("/sw.js", (req, res) => {
-            res.setHeader('content-type', 'text/javascript');
-            createReadStream('./sw/sw.js').pipe(res)
-
-        });
 
         server.get("*", (req, res) => {
             return handle(req, res);
