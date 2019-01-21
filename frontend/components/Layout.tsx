@@ -54,7 +54,7 @@ const GlobalStyle = createGlobalStyle`
 
   @media (prefers-color-scheme: dark) {
     --primary-color: #fff;
-  --secondary-color: #000;
+  --secondary-color: #262626;
   }
 }
 
