@@ -9,12 +9,12 @@ import PageHead from './Head';
 
 const theme = {
   darkMode: false,
-  primary: 'var(--primary-color, #000)',
+  primary: 'var(--primary-color, #393939)',
   secondary: 'var(--secondary-color, #fff)',
   highlight: '#BADA55',
   blue: '#1c46f2',
   red: '#FF0000',
-  black: '#393939',
+  black: '#222222',
   grey: '#3A3A3A',
   lightgrey: '#E1E1E1',
   offWhite: '#EDEDED',
@@ -49,7 +49,7 @@ const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Cardo');
 
   :root {
-  --primary-color: #000;
+  --primary-color: #393939;
   --secondary-color: #fff;
 
   @media (prefers-color-scheme: dark) {
@@ -70,7 +70,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-size: 1rem;
     line-height: 1.25;
-    background-color: ${theme.primary};
+    background-color: ${theme.black};
     color: ${theme.primary};
     background-size: 400% 400%;
     animation: ${backgroundAni} 5s ease infinite;
