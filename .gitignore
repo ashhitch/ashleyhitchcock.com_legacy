@@ -11,3 +11,4 @@ fix.sh
 
 frontend/.DS_Store
 .DS_Store
+frontend/static/.DS_Store

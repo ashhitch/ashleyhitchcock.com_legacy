@@ -12,8 +12,7 @@ interface ICardProps {
   tag_names: [];
   linkType: string;
   slug: string;
-  _embedded: any;
-  featured_media: boolean;
+  featuredImage: any;
   title: ICardTitleProps;
   excerpt: ICardExcerptProps;
 }
@@ -41,8 +40,8 @@ const Card = (props: ICardProps) => {
           <img
             className="card__image__src"
             src={
-              props.featured_media
-                ? props._embedded['wp:featuredmedia'][0].media_details.sizes.medium_large.source_url
+              props.featuredImage
+                ? props.featuredImage.mediaDetails.sizes[2].sourceUrl
                 : '/static/images/placeholder.svg'
             }
             alt="Image"

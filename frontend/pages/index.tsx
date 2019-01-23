@@ -48,7 +48,7 @@ export const HOME_QUERY = gql`
             mediaDetails {
               sizes {
                 name
-                file
+                sourceUrl
               }
             }
           }

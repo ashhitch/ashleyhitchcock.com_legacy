@@ -31,7 +31,7 @@ export const BLOG_QUERY = gql`
             mediaDetails {
               sizes {
                 name
-                file
+                sourceUrl
               }
             }
           }
