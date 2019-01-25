@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { Heading } from './styles/Headings';
 import NextSeo from 'next-seo';
 import StyledContent from './styles/Content';
+import media from './styles/media';
 import renderHTML from 'react-render-html';
 import styled from 'styled-components';
 
@@ -36,6 +37,7 @@ const StyledPost = styled.article`
       margin: -60px 0 0 0;
       padding: 1rem;
       z-index: 5;
+      ${media.lg` padding: 1.5rem 1rem; `}
 
       h1 {
         margin: 0;
