@@ -1,11 +1,33 @@
 {
   "version": 2,
   "name": "ashhitch",
-  "builds": [{ "src": "next.config.js", "use": "@now/next", "config": { "newPipeline": true } }],
-  "routes": [
-    { "src": "^/post/(?<slug>[^/]*)", "dest": "/post?apiRoute=post&slug=$slug" },
-    { "src": "^/work/(?<slug>[^/]*)", "dest": "/post?apiRoute=work&slug=$slug" },
-    { "src": "^/page/(?<slug>[^/]*)", "dest": "/post?apiRoute=page&slug=$slug" }
+  "builds": [{
+    "src": "next.config.js",
+    "use": "@now/next",
+    "config": {
+      "newPipeline": true
+    }
+  }],
+  "routes": [{
+      "src": "^/post/(?<slug>[^/]*)",
+      "dest": "/post?apiRoute=post&slug=$slug"
+    },
+    {
+      "src": "^/work/(?<slug>[^/]*)",
+      "dest": "/post?apiRoute=work&slug=$slug"
+    },
+    {
+      "src": "^/page/(?<slug>[^/]*)",
+      "dest": "/post?apiRoute=page&slug=$slug"
+    },
+    {
+      "src": "^/service-worker.js$",
+      "dest": "/_next/static/service-worker.js",
+      "headers": {
+        "cache-control": "public, max-age=43200, immutable",
+        "Service-Worker-Allowed": "/"
+      }
+    }
   ],
   "alias": ["dev.ashleyhitchcock.com"],
   "github": {
