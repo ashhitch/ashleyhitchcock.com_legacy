@@ -27,6 +27,7 @@ export const BLOG_QUERY = gql`
           title
           slug
           excerpt
+          date
           featuredImage {
             mediaDetails {
               sizes {
@@ -45,7 +46,7 @@ export const BLOG_QUERY = gql`
     }
   }
 `;
-class Work extends Component {
+class Blog extends Component {
   render() {
     return (
       <>
@@ -81,4 +82,4 @@ class Work extends Component {
   }
 }
 
-export default PageWrapper(Work);
+export default PageWrapper(Blog);
