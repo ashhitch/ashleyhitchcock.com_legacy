@@ -30,6 +30,10 @@ min-height: 100%;
   flex: 1;
 }
 
+.card__meta {
+  font-size: 0.75rem;
+  margin-top: 1rem;
+}
 .card__title {
   margin: 0;
 
@@ -51,8 +55,8 @@ min-height: 100%;
 }
 
 .card__tag {
-  & + & {
-    margin-left: 10px;
+  & + .card__tag {
+    margin-left: 0.5rem;
   }
 }
 

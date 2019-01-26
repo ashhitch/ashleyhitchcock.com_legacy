@@ -9,24 +9,42 @@ interface ICardExcerptProps {
   rendered: string;
 }
 interface ICardProps {
-  tag_names: [];
+  tags: INode;
   linkType: string;
   slug: string;
   featuredImage: any;
+  date: Date;
   title: ICardTitleProps;
   excerpt: ICardExcerptProps;
 }
 
+interface INode {
+  nodes: [ITag];
+}
+
+interface ITag {
+  name: string;
+}
+
+const formatDate = (inputDate) => {
+  const date = new Date(inputDate);
+  if (!isNaN(date.getTime())) {
+      // Months use 0 index.
+      return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+  }
+}
+
 const Card = (props: ICardProps) => {
   const tags =
-    !!props.tag_names && props.tag_names.length
-      ? props.tag_names.map((tag, index) => {
-          return (
+    (!!props.tags && props.tags.nodes.length)
+      ? props.tags.nodes.map((tag, index) => (
+       
             <span className="card__tag" key={index}>
-              {tag}
+              {tag.name}
             </span>
-          );
-        })
+  
+          )
+        )
       : null;
 
   return (
@@ -58,15 +76,19 @@ const Card = (props: ICardProps) => {
           </Link>
         </h2>
 
+
+        {props.date ? <span className="card__meta">{formatDate(props.date)}</span> : null}
+
         <div
           className="card__body"
           dangerouslySetInnerHTML={{
             __html: props.excerpt ? props.excerpt : null
           }}
         />
-        <div className="card__footer" hidden={!!props.tag_names && props.tag_names.length ? false : true}>
-          {tags}
-        </div>
+        
+        {(!!props.tags && props.tags.nodes.length) ? (<div className="card__footer">
+         {tags ? tags : null}
+        </div>): null }
       </div>
       </div>
     </CardArticle>
