@@ -133,6 +133,7 @@
     ]
   },
   "plugins": [
-    "prettier"
+    "prettier",
+    "@typescript-eslint"
   ]
 }
