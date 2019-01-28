@@ -85,7 +85,9 @@
       {
         "extensions": [
           ".js",
-          ".jsx"
+          ".jsx",
+          ".ts",
+          ".tsx"
         ]
       }
     ],
@@ -106,7 +108,7 @@
     ],
     "quotes": [
       2,
-      "single",
+      "backtick",
       {
         "avoidEscape": true,
         "allowTemplateLiterals": true
