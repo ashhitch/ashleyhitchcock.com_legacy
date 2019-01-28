@@ -15,11 +15,6 @@ import { SubHeading } from './../components/styles/Headings';
 import Techstack from './../components/Techstack';
 import gql from 'graphql-tag';
 
-const headerImageStyle = {
-  marginTop: 50,
-  marginBottom: 50
-};
-
 export const HOME_QUERY = gql`
   query home($slug: String!) {
     pageBy(uri: $slug) {
@@ -66,7 +61,6 @@ export const HOME_QUERY = gql`
 class Index extends Component {
   IntroSection: any;
   props: any;
-
 
   render() {
     return (
@@ -124,14 +118,6 @@ class Index extends Component {
     );
   }
 
-  // componentDidMount = () => {
-  //     if ("serviceWorker" in navigator) {
-  //         navigator.serviceWorker.register("/static/service-worker.js")
-  //             .catch(err => console.error("Service worker registration failed", err));
-  //     } else {
-  //         console.log("Service worker not supported");
-  //     }
-  // }
 }
 
 export default PageWrapper(Index);

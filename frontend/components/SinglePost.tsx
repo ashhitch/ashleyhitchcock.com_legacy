@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { Heading } from './styles/Headings';
+import Linky from './Linky';
 import NextSeo from 'next-seo';
 import StyledContent from './styles/Content';
 import media from './styles/media';
@@ -76,8 +77,16 @@ const SinglePost = ({ post }) => {
           <header className="post__heading">
             <Heading>{title}</Heading>
           </header>
+          {/* <StyledContent className="post__content" dangerouslySetInnerHTML={{
+            __html: content ? content : null
+          }} /> */}
+          <StyledContent>
+            <Linky>
+          {renderHTML(content)}
+            </Linky>
+          </StyledContent>
+     
 
-          <StyledContent className="post__content">{!!content ? renderHTML(content) : null}</StyledContent>
         </div>
       </StyledPost>
     </>
