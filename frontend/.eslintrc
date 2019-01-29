@@ -79,6 +79,7 @@
     "react/display-name": 1,
     "react/no-array-index-key": 0,
     "react/react-in-jsx-scope": 0,
+    "react/react-no-danger": 0,
     "react/prefer-stateless-function": 0,
     "react/forbid-prop-types": 0,
     "react/no-unescaped-entities": 0,
@@ -95,7 +96,7 @@
         ]
       }
     ],
-    "radix": 0,
+    "radix": 1,
     "no-shadow": [
       2,
       {
@@ -112,7 +113,7 @@
     ],
     "quotes": [
       2,
-      "backtick",
+      "single",
       {
         "avoidEscape": true,
         "allowTemplateLiterals": true
@@ -123,7 +124,7 @@
       {
         "trailingComma": "es5",
         "singleQuote": true,
-        "printWidth": 80
+        "printWidth": 120
       }
     ],
     "jsx-a11y/href-no-hash": "off",

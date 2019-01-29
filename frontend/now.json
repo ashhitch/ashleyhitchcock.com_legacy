@@ -1,14 +1,17 @@
 {
   "version": 2,
   "name": "ashhitch",
-  "builds": [{
-    "src": "next.config.js",
-    "use": "@now/next",
-    "config": {
-      "newPipeline": true
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@now/next",
+      "config": {
+        "newPipeline": true
+      }
     }
-  }],
-  "routes": [{
+  ],
+  "routes": [
+    {
       "src": "^/post/(?<slug>[^/]*)",
       "dest": "/post?apiRoute=post&slug=$slug"
     },
@@ -29,7 +32,7 @@
       }
     }
   ],
-  "alias": ["dev.ashleyhitchcock.com"],
+  "alias": ["dev.ashleyhitchcock.com", "www.ashleyhitchcock.com"],
   "github": {
     "enabled": false
   },
