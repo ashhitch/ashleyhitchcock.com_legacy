@@ -96,10 +96,9 @@ const Header = () => {
       <Composed>
         {({ closeMenu, localState }) => {
 
-          const { menuActive, isLoading } = localState.data;
+          const { menuActive } = localState.data;
       
           // Set the active class 
-        
           if (process.browser) {
             menuActive ? document.body.classList.add('menu-open') : document.body.classList.remove('menu-open'); 
           }
@@ -108,7 +107,7 @@ const Header = () => {
             <>
               <StyledHeader>
                 <div className="bar">
-                  <StyledLogo className={isLoading ? 'is-loading' : 'is-loaded'}>
+                  <StyledLogo>
                     <Link href="/">
                       <a>
                         AH

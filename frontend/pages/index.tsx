@@ -6,6 +6,7 @@ import Intro from './../components/Intro';
 import Layout from './../components/Layout';
 import Link from 'next/link';
 import Loader from './../components/Loader';
+import NextSeo from 'next-seo';
 import PageWrapper from '../components/PageWrapper';
 import { Query } from 'react-apollo';
 import StyledLink from './../components/styles/Button';
@@ -27,6 +28,10 @@ export const HOME_QUERY = gql`
       link
       content(format: RAW)
       excerpt
+      seo {
+        title
+        metaDesc
+      }
     }
 
     posts(first: 4) {
@@ -43,7 +48,7 @@ export const HOME_QUERY = gql`
             mediaDetails {
               sizes {
                 name
-                file
+                sourceUrl
               }
             }
           }
@@ -79,8 +84,15 @@ class Index extends Component {
 
             const postItems = data.posts.edges;
             const page = data.pageBy;
+            const { seo } = page;
+            const seoData = {
+              title: seo.title,
+              description: seo.metaDesc
+            };
 
             return (
+              <>
+              <NextSeo config={seoData} />
               <Layout>
                 <StyledSection>
                   <Intro
@@ -104,6 +116,7 @@ class Index extends Component {
                   </div>
                 </StyledSection>
               </Layout>
+              </>
             );
           }}
         </Query>
@@ -112,12 +125,12 @@ class Index extends Component {
   }
 
   // componentDidMount = () => {
-  //     // if ("serviceWorker" in navigator) {
-  //     //     navigator.serviceWorker.register("/sw.js")
-  //     //         .catch(err => console.error("Service worker registration failed", err));
-  //     // } else {
-  //     //     console.log("Service worker not supported");
-  //     // }
+  //     if ("serviceWorker" in navigator) {
+  //         navigator.serviceWorker.register("/static/service-worker.js")
+  //             .catch(err => console.error("Service worker registration failed", err));
+  //     } else {
+  //         console.log("Service worker not supported");
+  //     }
   // }
 }
 

@@ -7,7 +7,9 @@ wordpress/wp-content/theme/twentyfifteen/
 wordpress/wp-content/theme/twentysixteen/
 .DS_Store
 frontend/stratch.js
+frontend/scratch.js
 fix.sh
 
 frontend/.DS_Store
 .DS_Store
+frontend/static/.DS_Store
