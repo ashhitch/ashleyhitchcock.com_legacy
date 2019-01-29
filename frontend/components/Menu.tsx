@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Loader from './Loader';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import media from './styles/media';
 import styled from 'styled-components';
 
 export const MENU_QUERY = gql`
@@ -82,11 +83,14 @@ const StyledMenu = styled.div`
       background-color: ${props => props.theme.primary};
       border-bottom: 1px solid ${props => props.theme.secondary};
       color: ${props => props.theme.secondary};
-      font-size: 300%;
+      font-size: 200%;
       letter-spacing: 1vw;
       line-height: ${100 / 4}vh;
       text-decoration: none;
       text-transform: uppercase;
+
+      ${media.lg`font-size: 300%;`}
+
       &:hover,
       &:focus {
         background-color: ${props => props.theme.highlight};

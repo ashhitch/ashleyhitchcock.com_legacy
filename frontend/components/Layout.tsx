@@ -1,29 +1,33 @@
-import React, { Component } from 'react';
-import styled, { ThemeProvider, createGlobalStyle, keyframes } from 'styled-components';
+import React, { Component } from "react";
+import styled, {
+  ThemeProvider,
+  createGlobalStyle,
+  keyframes
+} from "styled-components";
 
-import Footer from './Footer';
-import Header from './Header';
-import { MaxWidthLayout } from './styles/Layout';
-import { Normalize } from 'styled-normalize';
-import PageHead from './Head';
+import { Normalize } from "styled-normalize";
+import Footer from "./Footer";
+import Header from "./Header";
+import { MaxWidthLayout } from "./styles/Layout";
+import PageHead from "./Head";
 
 const theme = {
   darkMode: false,
-  primary: 'var(--primary-color, #000)',
-  secondary: 'var(--secondary-color, #fff)',
-  highlight: '#BADA55',
-  blue: '#1c46f2',
-  red: '#FF0000',
-  black: '#393939',
-  grey: '#3A3A3A',
-  lightgrey: '#E1E1E1',
-  offWhite: '#EDEDED',
-  white: '#ffffff',
-  maxWidth: '1190px',
-  bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
-  fadeBlue: 'linear-gradient(to left, #1c46f2, #5f5fe8)',
-  fade: 'linear-gradient(to left, #000, #000)',
-  bgAni: 'backgroundAni 5s ease infinite',
+  primary: "var(--primary-color, #393939)",
+  secondary: "var(--secondary-color, #fff)",
+  highlight: "#BADA55",
+  blue: "#1c46f2",
+  red: "#FF0000",
+  black: "#222222",
+  grey: "#3A3A3A",
+  lightgrey: "#E1E1E1",
+  offWhite: "#EDEDED",
+  white: "#ffffff",
+  maxWidth: "1190px",
+  bs: "0 12px 24px 0 rgba(0, 0, 0, 0.09)",
+  fadeBlue: "linear-gradient(to left, #1c46f2, #5f5fe8)",
+  fade: "linear-gradient(to left, #000, #000)",
+  bgAni: "backgroundAni 5s ease infinite",
   font:
     '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
   headingFont: '"Cardo", serif',
@@ -49,12 +53,12 @@ const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Cardo');
 
   :root {
-  --primary-color: #000;
+  --primary-color: #393939;
   --secondary-color: #fff;
 
   @media (prefers-color-scheme: dark) {
     --primary-color: #fff;
-  --secondary-color: #000;
+  --secondary-color: #262626;
   }
 }
 
@@ -70,7 +74,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-size: 1rem;
     line-height: 1.25;
-    background-color: ${theme.primary};
+    background-color: ${theme.black};
     color: ${theme.primary};
     background-size: 400% 400%;
     animation: ${backgroundAni} 5s ease infinite;
@@ -130,6 +134,7 @@ const GlobalStyle = createGlobalStyle`
 
 export default class Layout extends Component {
   render() {
+    const { children } = this.props;
     return (
       <ThemeProvider theme={theme}>
         <>
@@ -138,7 +143,7 @@ export default class Layout extends Component {
           <StyledPage>
             <PageHead />
             <Header />
-            <MaxWidthLayout>{this.props.children}</MaxWidthLayout>
+            <MaxWidthLayout>{children}</MaxWidthLayout>
             <Footer />
           </StyledPage>
         </>
