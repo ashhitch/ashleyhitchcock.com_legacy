@@ -28,6 +28,7 @@ interface ITag {
 
 const formatDate = inputDate => {
   const date = new Date(inputDate);
+  // eslint-disable-next-line no-restricted-globals
   if (!isNaN(date.getTime())) {
     // Months use 0 index.
     return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
@@ -35,16 +36,8 @@ const formatDate = inputDate => {
 };
 
 const Card = (props: ICardProps) => {
-  const {
-    tags,
-    linkType,
-    featuredImage,
-    slug,
-    featuredImage,
-    title,
-    excerpt,
-    date
-  } = props;
+  const { tags, linkType, featuredImage, slug, title, excerpt, date } = props;
+
   const tagsElms =
     !!tags && tags.nodes.length
       ? tags.nodes.map((tag, index) => (
@@ -86,7 +79,7 @@ const Card = (props: ICardProps) => {
           <div
             className="card__body"
             dangerouslySetInnerHTML={{
-              __html: excerpt ? excerpt : null
+              __html: excerpt || null
             }}
           />
 
