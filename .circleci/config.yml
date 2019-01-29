@@ -36,16 +36,14 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - deploy:
-          name: Deploy master
-          branch: master
-          command:
-            - now -t ${NOW_TOKEN}
-            - now -t ${NOW_TOKEN} alias dev.ashleyhitchcock.com
-      - deploy:
-          name: Deploy release
-          branch: release
-          command:
-            - now -t ${NOW_TOKEN}
-            - now -t ${NOW_TOKEN} alias www.ashleyhitchcock.com
+          name: Deploy site
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                now --token $NOW_TOKEN
+                now --token $NOW_TOKEN alias dev.ashleyhitchcock.com
+            elif [ "${CIRCLE_BRANCH}" == "release" ]; then
+                now --token $NOW_TOKEN
+                now --token $NOW_TOKEN alias www.ashleyhitchcock.com
+            fi
       # run tests!
       #- run: yarn test
