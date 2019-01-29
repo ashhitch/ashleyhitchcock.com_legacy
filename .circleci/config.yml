@@ -38,13 +38,13 @@ jobs:
       - deploy:
           name: Deploy master
           branch: master
-          commands:
+          command:
             - now -t ${NOW_TOKEN}
             - now -t ${NOW_TOKEN} alias dev.ashleyhitchcock.com
       - deploy:
           name: Deploy release
           branch: release
-          commands:
+          command:
             - now -t ${NOW_TOKEN}
             - now -t ${NOW_TOKEN} alias www.ashleyhitchcock.com
       # run tests!
