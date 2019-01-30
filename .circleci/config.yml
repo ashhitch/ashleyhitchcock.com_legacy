@@ -3,14 +3,14 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.11.0
-    working_directory: ~/repo/frontend
+    working_directory: ~/repo
     steps:
       - checkout
 
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v-{{ .Branch }}-dependencies-{{ checksum "yarn.lock" }}
+            - v-{{ .Branch }}-dependencies-{{ checksum "frontend/yarn.lock" }}
             # fallback to using the latest cache if no exact match is found
             - v-{{ .Branch }}-dependencies-
 
@@ -20,16 +20,17 @@ jobs:
           name: Install Now CLI
           command: yarn global add now --unsafe-perm
 
-      - run: yarn install --frozen-lockfile
+      - run: cd frontend && yarn install --frozen-lockfile
 
       - save_cache:
-          key: v-{{ .Branch }}-dependencies-{{ checksum "yarn.lock" }}
+          key: v-{{ .Branch }}-dependencies-{{ checksum "frontend/yarn.lock" }}
           paths:
             - ~/.cache/yarn
 
       - deploy:
           name: Deploy site
           command: |
+            cd frontend &&
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
                 now --token $NOW_TOKEN
                 now --token $NOW_TOKEN alias dev.ashleyhitchcock.com
