@@ -14,7 +14,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v-{{ .Branch }}-dependencies-
 
-      - run: cd frontend
+      #- run: cd frontend
 
       - run:
           name: Install Now CLI
