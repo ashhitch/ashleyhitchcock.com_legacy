@@ -1,12 +1,9 @@
-defaults: &defaults
-    docker:
-        - image: circleci/node:8.11.0
-    working_directory: ~/repo
-
 version: 2
 jobs:
   build:
-     <<: *defaults
+    docker:
+      - image: circleci/node:8.11.0
+    working_directory: ~/repo
     steps:
       - checkout
 
@@ -39,5 +36,3 @@ jobs:
                 now --token $NOW_TOKEN
                 now --token $NOW_TOKEN alias www.ashleyhitchcock.com
             fi
-      # run tests!
-      #- run: yarn test
