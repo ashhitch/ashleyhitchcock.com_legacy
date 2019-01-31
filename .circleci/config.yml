@@ -16,11 +16,11 @@ jobs:
 
       #- run: cd frontend
 
+      - run: yarn install --frozen-lockfile
+
       - run:
           name: Install Now CLI
-          command: yarn global add now --unsafe-perm
-
-      - run: cd frontend && yarn install --frozen-lockfile
+          command: sudo yarn global add now --unsafe-perm
 
       - save_cache:
           key: v-{{ .Branch }}-dependencies-{{ checksum "frontend/yarn.lock" }}
