@@ -16,7 +16,7 @@ jobs:
 
       #- run: cd frontend
 
-      - run: yarn install --frozen-lockfile
+      - run: cd frontend && yarn install --frozen-lockfile
 
       - run:
           name: Install Now CLI
