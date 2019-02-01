@@ -1,10 +1,13 @@
 import Head from 'next/head';
-import { Heading } from './styles/Headings';
 import NextSeo from 'next-seo';
-import StyledContent from './styles/Content';
-import media from './styles/media';
 import renderHTML from 'react-render-html';
 import styled from 'styled-components';
+import { useEffect } from 'react';
+import Gist from 'react-gist';
+import React from 'react';
+import media from './styles/media';
+import StyledContent from './styles/Content';
+import { Heading } from './styles/Headings';
 
 const StyledPost = styled.article`
   .post {
@@ -54,15 +57,53 @@ const StyledPost = styled.article`
     }
   }
 `;
+
+const formatPost = content => {
+  if (!content) {
+    return <></>;
+  }
+  const extractscript = /<script(.*?)src="https:\/\/gist.github.com\/(.*?)\/(.*?).js"><\/script>/gi.exec(content);
+  let updatedContent = content;
+  console.log(extractscript);
+  if (extractscript) {
+    // create filler to split on and then return the parts ie using React.isValidElement
+    // updatedContent = !!extractscript && extractscript.length ? content.replace(extractscript[0], tag) : content;
+
+    updatedContent = content.replace(extractscript[0], <Gist id="{extractscript[0]}" />);
+  }
+
+  console.log(updatedContent);
+
+  return <>{renderHTML(updatedContent)}</>;
+};
+
 const SinglePost = ({ post }) => {
   const { title, content, seo, hero } = post;
 
-  const heroBanner = hero ? hero : '/static/images/hero-placeholder.svg';
+  const heroBanner = hero || '/static/images/hero-placeholder.svg';
+
+  // const extractscript = /<script.*?src="(.*?)"/gim.exec(content);
+
+  // const tag = '';
 
   const seoData = {
     title: seo && !!seo.title ? seo.title : title,
-    description: seo.metaDesc
+    description: seo.metaDesc,
   };
+
+  useEffect(() => {
+    // if (extractscript) {
+    // / console.log('yes', extractscript);
+    //   // eval(extractscript[2]);
+    // } else {
+    //   console.log('no', extractscript, content);
+    // }
+    // if (extractscript) {
+    //   const addScript = document.createElement('script');
+    //   addScript.setAttribute('src', extractscript[2]);
+    //   document.body.appendChild(addScript);
+    // }
+  });
 
   return (
     <>
@@ -77,7 +118,7 @@ const SinglePost = ({ post }) => {
             <Heading>{title}</Heading>
           </header>
 
-          <StyledContent className="post__content">{!!content ? renderHTML(content) : null}</StyledContent>
+          <StyledContent className="post__content">{content ? formatPost(content) : null}</StyledContent>
         </div>
       </StyledPost>
     </>
