@@ -1,13 +1,13 @@
-import Head from 'next/head';
-import NextSeo from 'next-seo';
-import renderHTML from 'react-render-html';
-import styled from 'styled-components';
-import { useEffect } from 'react';
-import Gist from 'react-gist';
-import React from 'react';
-import media from './styles/media';
-import StyledContent from './styles/Content';
-import { Heading } from './styles/Headings';
+import Head from "next/head";
+import NextSeo from "next-seo";
+import renderHTML from "react-render-html";
+import styled from "styled-components";
+import { useEffect } from "react";
+import Gist from "react-gist";
+import React from "react";
+import media from "./styles/media";
+import StyledContent from "./styles/Content";
+import { Heading } from "./styles/Headings";
 
 const StyledPost = styled.article`
   .post {
@@ -17,7 +17,7 @@ const StyledPost = styled.article`
 
     &__banner {
       height: 300px;
-      background-color: ${props => props.theme.highlight};
+      background-color: ${props => props.theme.secondary};
       position: relative;
       margin-left: -1rem;
       margin-right: -1rem;
@@ -58,52 +58,33 @@ const StyledPost = styled.article`
   }
 `;
 
-const formatPost = content => {
+const parseGist = content => {
   if (!content) {
-    return <></>;
-  }
-  const extractscript = /<script(.*?)src="https:\/\/gist.github.com\/(.*?)\/(.*?).js"><\/script>/gi.exec(content);
-  let updatedContent = content;
-  console.log(extractscript);
-  if (extractscript) {
-    // create filler to split on and then return the parts ie using React.isValidElement
-    // updatedContent = !!extractscript && extractscript.length ? content.replace(extractscript[0], tag) : content;
-
-    updatedContent = content.replace(extractscript[0], <Gist id="{extractscript[0]}" />);
+    return;
   }
 
-  console.log(updatedContent);
+  const delimiterPattern = /<script src="https:\/\/gist.github.com\/ashhitch\/(.*?).js"><\/script>/gi;
+  const test = delimiterPattern.exec(content);
 
-  return <>{renderHTML(updatedContent)}</>;
+  const updatedContent = content.split(delimiterPattern).map((token, i) => {
+    if (test && token === test[1]) {
+      return <Gist id={test[1]} key={i} />;
+    }
+    return <React.Fragment key={i}>{renderHTML(token)}</React.Fragment>;
+  });
+
+  return <>{updatedContent}</>;
 };
 
 const SinglePost = ({ post }) => {
   const { title, content, seo, hero } = post;
 
-  const heroBanner = hero || '/static/images/hero-placeholder.svg';
-
-  // const extractscript = /<script.*?src="(.*?)"/gim.exec(content);
-
-  // const tag = '';
+  const heroBanner = hero || "/static/images/hero-placeholder.svg";
 
   const seoData = {
     title: seo && !!seo.title ? seo.title : title,
-    description: seo.metaDesc,
+    description: seo.metaDesc
   };
-
-  useEffect(() => {
-    // if (extractscript) {
-    // / console.log('yes', extractscript);
-    //   // eval(extractscript[2]);
-    // } else {
-    //   console.log('no', extractscript, content);
-    // }
-    // if (extractscript) {
-    //   const addScript = document.createElement('script');
-    //   addScript.setAttribute('src', extractscript[2]);
-    //   document.body.appendChild(addScript);
-    // }
-  });
 
   return (
     <>
@@ -118,7 +99,9 @@ const SinglePost = ({ post }) => {
             <Heading>{title}</Heading>
           </header>
 
-          <StyledContent className="post__content">{content ? formatPost(content) : null}</StyledContent>
+          <StyledContent className="post__content">
+            {content ? parseGist(content) : null}
+          </StyledContent>
         </div>
       </StyledPost>
     </>
