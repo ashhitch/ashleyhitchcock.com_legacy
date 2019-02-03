@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import ErrorMessage from './ErrorMessage';
-import Link from 'next/link';
-import Loader from './Loader';
-import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
-import media from './styles/media';
-import styled from 'styled-components';
+import Link from "next/link";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+import media from "./styles/media";
+import styled from "styled-components";
+import Loader from "./Loader";
+import ErrorMessage from "./ErrorMessage";
 
 export const MENU_QUERY = gql`
   query menuItems {
@@ -101,13 +101,10 @@ const StyledMenu = styled.div`
 `;
 class Menu extends Component {
   props: IMenuProps;
-  constructor(props) {
-    super(props);
-  }
 
   getSlug(url) {
-    const parts = url.split('/');
-    return parts.length > 2 ? parts[parts.length - 2] : '';
+    const parts = url.split("/");
+    return parts.length > 2 ? parts[parts.length - 2] : "";
   }
 
   render() {
@@ -124,22 +121,26 @@ class Menu extends Component {
               ? menu.map(item => {
                   const { id, url, title, label, connectedObject } = item.node;
                   const object = connectedObject.__typename.toLowerCase();
-     
-                  if (object === 'menuitem') {
+
+                  if (object === "menuitem") {
                     return (
                       <li key={id}>
                         <Link href={url}>
-                          <a  onClick={this.props.close}>{title ? title : label}</a>
+                          <a onClick={this.props.close}>{title || label}</a>
                         </Link>
                       </li>
                     );
                   }
                   const slug = this.getSlug(url);
-                  const actualPage = object === 'category' ? 'category' : 'post';
+                  const actualPage =
+                    object === "category" ? "category" : "post";
                   return (
                     <li key={id}>
-                      <Link as={`/${object}/${slug}`} href={`/${actualPage}?slug=${slug}&apiRoute=${object}`}>
-                        <a onClick={this.props.close}>{title ? title : label}</a>
+                      <Link
+                        as={`/${object}/${slug}`}
+                        href={`/${actualPage}?slug=${slug}&apiRoute=${object}`}
+                      >
+                        <a onClick={this.props.close}>{title || label}</a>
                       </Link>
                     </li>
                   );
@@ -148,7 +149,7 @@ class Menu extends Component {
 
           return (
             <StyledMenu>
-              <nav className={'menu ' + (this.props.active ? 'is-active' : '')}>
+              <nav className={`menu ${this.props.active ? "is-active" : ""}`}>
                 <ul className="nav">
                   <li>
                     <Link href="/">

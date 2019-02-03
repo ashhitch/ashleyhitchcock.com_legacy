@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
-import media from './media';
+import media from "./media";
 
 const baseHeadingStyles = css`
-display: inline-block;
+  display: inline-block;
   position: relative;
   color: ${props => props.theme.primary};
   line-height: 1.2;
@@ -13,10 +13,10 @@ display: inline-block;
   ${media.xl`margin: 0 0 4rem 0;`}
 
   &:after {
-    content: '';
+    content: "";
     height: 0.8ex;
     display: block;
-    content: '';
+    content: "";
     background: ${props => props.theme.highlight};
     width: 100%;
     position: absolute;
@@ -26,7 +26,6 @@ display: inline-block;
     transition: all 0.2s ease-in-out;
     bottom: 0;
     transform: rotate(2deg);
-
   }
 `;
 

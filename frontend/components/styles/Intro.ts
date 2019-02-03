@@ -1,5 +1,5 @@
-import media from './media';
-import styled from 'styled-components';
+import styled from "styled-components";
+import media from "./media";
 
 const IntroWrap = styled.div`
   background-color: ${props => props.theme.secondary};
@@ -12,6 +12,6 @@ const IntroWrap = styled.div`
   h1 {
     margin: 0 0 1rem 0;
   }
-  `;
+`;
 
-  export default IntroWrap;
+export default IntroWrap;

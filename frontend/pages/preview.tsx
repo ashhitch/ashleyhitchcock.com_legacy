@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Error from 'next/error';
-import ErrorMessage from '../components/ErrorMessage';
-import Layout from '../components/Layout';
-import Loader from '../components/Loader';
-import PageWrapper from '../components/PageWrapper';
-import { Query } from 'react-apollo';
-import SinglePost from '../components/SinglePost';
-import gql from 'graphql-tag';
+import Error from "next/error";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+import ErrorMessage from "../components/ErrorMessage";
+import Layout from "../components/Layout";
+import Loader from "../components/Loader";
+import PageWrapper from "../components/PageWrapper";
+import SinglePost from "../components/SinglePost";
 
 export const SINGLE_POST_QUERY = gql`
   query postBy($id: String!) {
@@ -23,13 +23,13 @@ export const SINGLE_POST_QUERY = gql`
 
 class Post extends Component {
   props: any;
+
   static async getInitialProps({ query: { id } }) {
-    //&_wpnonce=${wpnonce}
+    // &_wpnonce=${wpnonce}
     return { id };
   }
 
   render() {
-
     return (
       <Layout>
         <Query

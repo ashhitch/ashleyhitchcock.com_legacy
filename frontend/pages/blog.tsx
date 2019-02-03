@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import ErrorMessage from './../components/ErrorMessage';
-import Grid from './../components/Grid';
-import { Heading } from './../components/styles/Headings';
-import Layout from './../components/Layout';
-import LoadMore from './../components/LoadMore';
-import Loader from './../components/Loader';
-import PageWrapper from './../components/PageWrapper';
-import { Query } from 'react-apollo';
-import StyledSection from './../components/styles/Section';
-import gql from 'graphql-tag';
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+import ErrorMessage from "./../components/ErrorMessage";
+import Grid from "./../components/Grid";
+import { Heading } from "./../components/styles/Headings";
+import Layout from "./../components/Layout";
+import LoadMore from "./../components/LoadMore";
+import Loader from "./../components/Loader";
+import PageWrapper from "./../components/PageWrapper";
+import StyledSection from "../components/styles/Section";
 
 export const BLOG_QUERY = gql`
   query posts($cursor: String, $perPage: Int!) {
@@ -50,11 +50,11 @@ class Blog extends Component {
   render() {
     return (
       <>
-        <Query 
-        query={BLOG_QUERY}
-        variables={{
-          perPage: 7
-        }}
+        <Query
+          query={BLOG_QUERY}
+          variables={{
+            perPage: 7
+          }}
         >
           {({ error, loading, data, fetchMore }) => {
             if (error) return <ErrorMessage error={error} />;
@@ -70,7 +70,14 @@ class Blog extends Component {
                   <Grid cards={posts} linkType="post" />
 
                   <div className="actions">
-                    <LoadMore fetchMore={fetchMore} endCursor={pageInfo.endCursor} hasNextPage={pageInfo.hasNextPage} query="posts">Load More</LoadMore>
+                    <LoadMore
+                      fetchMore={fetchMore}
+                      endCursor={pageInfo.endCursor}
+                      hasNextPage={pageInfo.hasNextPage}
+                      query="posts"
+                    >
+                      Load More
+                    </LoadMore>
                   </div>
                 </StyledSection>
               </Layout>
