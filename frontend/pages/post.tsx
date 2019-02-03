@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Error from 'next/error';
-import ErrorMessage from '../components/ErrorMessage';
-import Head from 'next/head';
-import Layout from '../components/Layout';
-import Loader from '../components/Loader';
-import PageWrapper from '../components/PageWrapper';
-import { Query } from 'react-apollo';
-import SinglePost from '../components/SinglePost';
-import gql from 'graphql-tag';
+import Error from "next/error";
+import Head from "next/head";
+import ErrorMessage from "../components/ErrorMessage";
+import Layout from "../components/Layout";
+import Loader from "../components/Loader";
+import PageWrapper from "../components/PageWrapper";
+import { Query } from "react-apollo";
+import SinglePost from "../components/SinglePost";
+import gql from "graphql-tag";
 
 export const SINGLE_POST_QUERY = gql`
   query postBy($slug: String!) {
@@ -20,9 +20,9 @@ export const SINGLE_POST_QUERY = gql`
       content
       hero
       seo {
-          title
-          metaDesc
-        }
+        title
+        metaDesc
+      }
     }
   }
 `;
@@ -36,9 +36,9 @@ export const SINGLE_PAGE_QUERY = gql`
       content
       hero
       seo {
-          title
-          metaDesc
-        }
+        title
+        metaDesc
+      }
     }
   }
 `;
@@ -52,31 +52,29 @@ export const SINGLE_WORK_QUERY = gql`
       content
       hero
       seo {
-          title
-          metaDesc
-        }
+        title
+        metaDesc
+      }
     }
   }
 `;
 
 class Post extends Component {
   props: any;
-  static async getInitialProps({ query: { slug, apiRoute} }) {
 
-       // Query depending on post type
-       let queryGQL = SINGLE_POST_QUERY;
-       if (apiRoute === 'work') {
-        queryGQL = SINGLE_WORK_QUERY;
-       } else if (apiRoute === 'page') {
-        queryGQL = SINGLE_PAGE_QUERY;
-   
-       }
-    
-    return { slug,  queryGQL};
+  static async getInitialProps({ query: { slug, apiRoute } }) {
+    // Query depending on post type
+    let queryGQL = SINGLE_POST_QUERY;
+    if (apiRoute === "work") {
+      queryGQL = SINGLE_WORK_QUERY;
+    } else if (apiRoute === "page") {
+      queryGQL = SINGLE_PAGE_QUERY;
+    }
+
+    return { slug, queryGQL };
   }
 
   render() {
-
     return (
       <Layout>
         <Query

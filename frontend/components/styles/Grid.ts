@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const GridWrapper = styled.section`
   display: grid;
@@ -9,7 +9,6 @@ const GridWrapper = styled.section`
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 2rem;
 `;
-
 
 const GridItem = styled.div`
   @media (min-width: 768px) {
@@ -23,9 +22,6 @@ const GridItem = styled.div`
       grid-column: span 3;
     }
   }
-`; 
+`;
 
-export {
-  GridWrapper,
-  GridItem
-}
+export { GridWrapper, GridItem };

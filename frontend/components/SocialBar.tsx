@@ -1,11 +1,11 @@
-import Github from './icons/github.svg';
-import Instagram from './icons/instagram.svg';
-import Linkedin from './icons/linkedin.svg';
-import React from 'react';
-import Twitter from './icons/twitter.svg';
-import media from './styles/media';
+import React from "react";
+import Github from "./icons/github.svg";
+import Instagram from "./icons/instagram.svg";
+import Linkedin from "./icons/linkedin.svg";
+import Twitter from "./icons/twitter.svg";
+import media from "./styles/media";
 // import Link from 'next/link';
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const SocialStyle = styled.nav`
   ul {

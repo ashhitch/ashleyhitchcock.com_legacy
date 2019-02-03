@@ -1,13 +1,12 @@
-import App, { Container } from 'next/app';
+import App, { Container } from "next/app";
 
-import { ApolloProvider } from 'react-apollo';
-import NextSeo from 'next-seo';
-import React from 'react';
-import SEO from './../next-seo.config';
-import withApolloClient from './../lib/init-apollo';
+import { ApolloProvider } from "react-apollo";
+import NextSeo from "next-seo";
+import React from "react";
+import SEO from "../next-seo.config";
+import withApolloClient from "../lib/init-apollo";
 
 class MyApp extends App {
-  
   static async getInitialProps({ Component, ctx }) {
     let pageProps: any = {};
     if (Component.getInitialProps) {
@@ -18,7 +17,7 @@ class MyApp extends App {
     return { pageProps };
   }
 
-  render () {
+  render() {
     const { Component, apollo, pageProps } = this.props;
     return (
       <Container>
@@ -27,8 +26,8 @@ class MyApp extends App {
           <Component {...pageProps} />
         </ApolloProvider>
       </Container>
-    )
+    );
   }
 }
 
-export default withApolloClient(MyApp)
+export default withApolloClient(MyApp);
