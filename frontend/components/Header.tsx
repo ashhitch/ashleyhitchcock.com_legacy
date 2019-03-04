@@ -5,9 +5,9 @@ import { Mutation, Query } from "react-apollo";
 import styled, { keyframes } from "styled-components";
 
 import Link from "next/link";
+import { adopt } from "react-adopt";
 import Hamburger from "./Hamburger";
 import Menu from "./Menu";
-import { adopt } from "react-adopt";
 import { CLOSE_MENU_MUTATION, LOCAL_STATE_QUERY } from "../state/resolvers";
 
 // import Headroom from 'react-headroom';
@@ -116,11 +116,9 @@ const Header = () => (
                     </a>
                   </Link>
                 </StyledLogo>
-                <Hamburger active={menuActive} />
+                <Menu active={menuActive} close={closeMenu} />
               </div>
             </StyledHeader>
-
-            <Menu active={menuActive} close={closeMenu} />
           </>
         );
       }}

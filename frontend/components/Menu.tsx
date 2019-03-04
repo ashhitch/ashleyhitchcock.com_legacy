@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-import Link from "next/link";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
-import media from "./styles/media";
 import styled from "styled-components";
+import Link from "./Link";
+import media from "./styles/media";
 import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";
 
@@ -48,26 +48,18 @@ interface IItemsProps {
 
 const StyledMenu = styled.div`
   .menu {
-    position: fixed;
-    overflow-y: auto;
     width: 100%;
-    height: 100%;
     background: transparent;
-    border-top: 1px solid ${props => props.theme.secondary};
-    opacity: 0;
-    z-index: -1;
-    transition: opacity 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     margin: 0;
     padding: 0;
-    &.is-active {
-      z-index: 100;
-      transition: opacity 0.2s ease-in;
-      opacity: 1;
+
+    .nav {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-end;
     }
+
     .nav,
     .nav li {
       margin: 0;
@@ -80,21 +72,15 @@ const StyledMenu = styled.div`
       position: relative;
       z-index: 3;
       width: 100%;
-      background-color: ${props => props.theme.primary};
-      border-bottom: 1px solid ${props => props.theme.secondary};
-      color: ${props => props.theme.secondary};
-      font-size: 200%;
-      letter-spacing: 1vw;
-      line-height: ${100 / 4}vh;
+      background-color: transparent;
+      color: ${props => props.theme.primary};
+      font-family: ${props => props.theme.headingFont};
       text-decoration: none;
       text-transform: uppercase;
-
-      ${media.lg`font-size: 300%;`}
+      padding: 1rem;
 
       &:hover,
       &:focus {
-        background-color: ${props => props.theme.highlight};
-        color: ${props => props.theme.black};
       }
     }
   }
@@ -113,7 +99,7 @@ class Menu extends Component {
         {({ error, loading, data }) => {
           if (error) return <ErrorMessage error={error} />;
           if (loading) return <Loader />;
-          if (!data) return <p>No menu found</p>;
+          if (!data) return null;
           const menu = data.menuItems.edges;
 
           const menuItems =
