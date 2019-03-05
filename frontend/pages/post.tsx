@@ -2,11 +2,11 @@ import React, { Component } from "react";
 
 import Error from "next/error";
 import Head from "next/head";
+import { Query } from "react-apollo";
 import ErrorMessage from "../components/ErrorMessage";
 import Layout from "../components/Layout";
 import Loader from "../components/Loader";
 import PageWrapper from "../components/PageWrapper";
-import { Query } from "react-apollo";
 import SinglePost from "../components/SinglePost";
 import gql from "graphql-tag";
 

@@ -5,7 +5,7 @@ const IntroWrap = styled.div`
   background-color: ${props => props.theme.secondary};
   padding: 0;
   line-height: 1.4;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   font-size: 1.125rem;
   ${media.lg`font-size: 1.25rem;`}
 

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import media from "./media";
 
 const StyledSection = styled.section`
-  padding: 1rem 0;
+  padding: 1.5rem 0;
 
   ${media.md`padding: 2rem 0;`}
   ${media.lg`padding: 3rem 0;`}

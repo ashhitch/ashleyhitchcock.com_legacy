@@ -3,12 +3,15 @@ import Link from "next/link";
 import { withRouter } from "next/router";
 
 const ActiveLink = withRouter(({ router, children, ...props }) => {
-  console.log(router.asPath.split("/"), props.href);
+  const thePath = router.asPath.split("/");
+
   return (
     <Link {...props}>
       {React.cloneElement(Children.only(children), {
         className:
-          `/${router.asPath.split("/")[1]}` === props.href ? `is-active` : null
+          router.asPath === props.as || `/${thePath[1]}` === props.href
+            ? `is-active`
+            : null
       })}
     </Link>
   );
