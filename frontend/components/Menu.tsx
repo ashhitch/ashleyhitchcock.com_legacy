@@ -40,7 +40,6 @@ export const MENU_QUERY = gql`
 interface IMenuProps {
   menu: IItemsProps;
   close: () => void;
-  active: boolean;
 }
 interface IItemsProps {
   items: [{ ID: number; url: string; title: string; object: string }];
@@ -57,15 +56,37 @@ const StyledMenu = styled.div`
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
+      justify-content: flex-start;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      -webkit-overflow-scrolling: touch;
+      overflow-x: auto;
+      overflow-y: visible;
+      white-space: nowrap;
+
+      ${media.md`
       justify-content: flex-end;
+    `}
     }
 
-    .nav,
     .nav li {
       margin: 0;
       padding: 0;
       list-style: none;
       text-align: center;
+      padding: 0 0.75rem;
+
+      ${media.md`
+      padding: 0 1rem;
+    `}
+
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
     }
     .nav a {
       display: block;
@@ -78,16 +99,15 @@ const StyledMenu = styled.div`
       text-decoration: none;
       text-transform: uppercase;
       padding: 1rem 0;
-      margin: 0 1rem;
 
       &.is-active:after {
         display: block;
         content: "";
         background: ${props => props.theme.highlight};
         height: 0.4ex;
-        width: 100%;
         position: absolute;
         left: 0;
+        right: 0;
         bottom: 10px;
         z-index: -1;
         transition: all 0.2s ease-in-out;
@@ -95,10 +115,6 @@ const StyledMenu = styled.div`
 
       &.is-active:hover:after {
         transform: rotate(5deg);
-      }
-
-      &:hover,
-      &:focus {
       }
     }
   }

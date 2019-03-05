@@ -9,6 +9,7 @@ import { adopt } from "react-adopt";
 import Hamburger from "./Hamburger";
 import Menu from "./Menu";
 import { CLOSE_MENU_MUTATION, LOCAL_STATE_QUERY } from "../state/resolvers";
+import media from "./styles/media";
 
 // import Headroom from 'react-headroom';
 
@@ -70,15 +71,18 @@ const StyledHeader = styled.header`
   margin: 0 auto;
 
   .bar {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    justify-content: space-between;
-    align-items: stretch;
     padding: 1rem 0;
 
-    @media (min-width: 992px) {
-      padding: 2rem 0;
-    }
+    ${media.md`
+    display: grid;
+    justify-content: space-between;
+    align-items: stretch;
+    grid-template-columns: auto 1fr;
+    `}
+
+    ${media.lg`
+    padding: 2rem 0;
+    `}
   }
 `;
 
@@ -94,34 +98,23 @@ const Header = () => (
 
   <>
     <Composed>
-      {({ closeMenu, localState }) => {
-        const { menuActive } = localState.data;
-
-        // Set the active class
-        if (process.browser) {
-          menuActive
-            ? document.body.classList.add("menu-open")
-            : document.body.classList.remove("menu-open");
-        }
-        //  onClick={() => client.writeData({data: { menuActive: !menuActive }})}
-        return (
-          <>
-            <StyledHeader>
-              <div className="bar">
-                <StyledLogo>
-                  <Link href="/">
-                    <a>
-                      AH
-                      <span />
-                    </a>
-                  </Link>
-                </StyledLogo>
-                <Menu active={menuActive} close={closeMenu} />
-              </div>
-            </StyledHeader>
-          </>
-        );
-      }}
+      {({ closeMenu }) => (
+        <>
+          <StyledHeader>
+            <div className="bar">
+              <StyledLogo>
+                <Link href="/">
+                  <a>
+                    AH
+                    <span />
+                  </a>
+                </Link>
+              </StyledLogo>
+              <Menu close={closeMenu} />
+            </div>
+          </StyledHeader>
+        </>
+      )}
     </Composed>
   </>
 );
