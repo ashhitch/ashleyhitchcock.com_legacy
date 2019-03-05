@@ -77,7 +77,25 @@ const StyledMenu = styled.div`
       font-family: ${props => props.theme.headingFont};
       text-decoration: none;
       text-transform: uppercase;
-      padding: 1rem;
+      padding: 1rem 0;
+      margin: 0 1rem;
+
+      &.is-active:after {
+        display: block;
+        content: "";
+        background: ${props => props.theme.highlight};
+        height: 0.4ex;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        bottom: 10px;
+        z-index: -1;
+        transition: all 0.2s ease-in-out;
+      }
+
+      &.is-active:hover:after {
+        transform: rotate(5deg);
+      }
 
       &:hover,
       &:focus {
