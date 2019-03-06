@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "next/link";
-import CardArticle from "./styles/Card";
+import React from 'react';
+import Link from 'next/link';
+import CardArticle from './styles/Card';
 
 interface ICardTitleProps {
   rendered: string;
@@ -47,7 +47,7 @@ const Card = (props: ICardProps) => {
         ))
       : null;
 
-  const linkPrefix = linkType || `page`;
+  const linkPrefix = linkType === 'post' ? 'blog' : linkType || `page`;
   const linkAs = `/${linkPrefix}/${slug}`;
   const linkHref = `/post?slug=${slug}&apiRoute=${linkPrefix}`;
 
@@ -58,11 +58,7 @@ const Card = (props: ICardProps) => {
           <Link as={linkAs} href={linkHref}>
             <img
               className="card__image__src"
-              src={
-                featuredImage
-                  ? featuredImage.mediaDetails.sizes[2].sourceUrl
-                  : `/static/images/placeholder.svg`
-              }
+              src={featuredImage ? featuredImage.mediaDetails.sizes[2].sourceUrl : `/static/images/placeholder.svg`}
               alt="{title ? title : null}"
             />
           </Link>
@@ -79,13 +75,11 @@ const Card = (props: ICardProps) => {
           <div
             className="card__body"
             dangerouslySetInnerHTML={{
-              __html: excerpt || null
+              __html: excerpt || null,
             }}
           />
 
-          {!!tagsElms && tagsElms.length ? (
-            <div className="card__footer">{tagsElms}</div>
-          ) : null}
+          {!!tagsElms && tagsElms.length ? <div className="card__footer">{tagsElms}</div> : null}
         </div>
       </div>
     </CardArticle>

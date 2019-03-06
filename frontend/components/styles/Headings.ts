@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
-import media from "./media";
+import media from './media';
 
 const baseHeadingStyles = css`
   display: inline-block;
@@ -14,10 +14,10 @@ const baseHeadingStyles = css`
   ${media.xl`margin: 0 0 4rem 0;`}
 
   &:after {
-    content: "";
+    content: '';
     height: 0.8ex;
     display: block;
-    content: "";
+    content: '';
     background: ${props => props.theme.highlight};
     width: 100%;
     position: absolute;
