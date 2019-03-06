@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
-import media from "./media";
+import media from './media';
 
 const baseHeadingStyles = css`
   display: inline-block;
@@ -9,14 +9,15 @@ const baseHeadingStyles = css`
   line-height: 1.2;
   margin: 0 0 2rem 0;
   z-index: 2;
+  font-family: ${props => props.theme.headingFont};
   ${media.md`margin: 0 0 3rem 0;`}
   ${media.xl`margin: 0 0 4rem 0;`}
 
   &:after {
-    content: "";
+    content: '';
     height: 0.8ex;
     display: block;
-    content: "";
+    content: '';
     background: ${props => props.theme.highlight};
     width: 100%;
     position: absolute;

@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import Link from "next/link";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import media from "./styles/media";
-import styled from "styled-components";
-import Loader from "./Loader";
-import ErrorMessage from "./ErrorMessage";
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import styled, { keyframes } from 'styled-components';
+import Link from './Link';
+import media from './styles/media';
+import Loader from './Loader';
+import ErrorMessage from './ErrorMessage';
 
 export const MENU_QUERY = gql`
   query menuItems {
@@ -38,133 +38,155 @@ export const MENU_QUERY = gql`
 `;
 
 interface IMenuProps {
-  menu: IItemsProps;
-  close: () => void;
-  active: boolean;
+  menu?: IItemsProps;
+  close?: () => void;
 }
 interface IItemsProps {
   items: [{ ID: number; url: string; title: string; object: string }];
 }
 
+const menuAni = keyframes`
+  0%{transform: rotate(5deg);}
+  50%{transform: rotate(0deg);}
+  100%{transform: rotate(5deg);}
+  `;
+
 const StyledMenu = styled.div`
   .menu {
-    position: fixed;
-    overflow-y: auto;
     width: 100%;
-    height: 100%;
     background: transparent;
-    border-top: 1px solid ${props => props.theme.secondary};
-    opacity: 0;
-    z-index: -1;
-    transition: opacity 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     margin: 0;
     padding: 0;
-    &.is-active {
-      z-index: 100;
-      transition: opacity 0.2s ease-in;
-      opacity: 1;
+
+    .nav {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      -webkit-overflow-scrolling: touch;
+      overflow-x: auto;
+      overflow-y: visible;
+      white-space: nowrap;
+
+      ${media.md`
+      justify-content: flex-end;
+    `}
     }
-    .nav,
+
     .nav li {
       margin: 0;
       padding: 0;
       list-style: none;
       text-align: center;
+      padding: 0 0.75rem;
+
+      ${media.md`
+      padding: 0 1rem;
+    `}
+
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
     }
     .nav a {
       display: block;
       position: relative;
       z-index: 3;
       width: 100%;
-      background-color: ${props => props.theme.primary};
-      border-bottom: 1px solid ${props => props.theme.secondary};
-      color: ${props => props.theme.secondary};
-      font-size: 200%;
-      letter-spacing: 1vw;
-      line-height: ${100 / 4}vh;
+      background-color: transparent;
+      color: ${props => props.theme.primary};
       text-decoration: none;
       text-transform: uppercase;
+      padding: 1rem 0;
 
-      ${media.lg`font-size: 300%;`}
+      &:after {
+        display: block;
+        content: '';
+        background: ${props => props.theme.secondary};
+        height: 0.4ex;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 10px;
+        z-index: -1;
+        transition: all 0.2s ease-in-out;
+      }
+      &.is-active:after {
+        background: ${props => props.theme.highlight};
+        animation: ${menuAni} 1s ease 2;
+      }
 
-      &:hover,
-      &:focus {
-        background-color: ${props => props.theme.highlight};
-        color: ${props => props.theme.black};
+      &:hover:after {
+        transform: rotate(4deg);
+        background: ${props => props.theme.highlight};
       }
     }
   }
 `;
-class Menu extends Component {
-  props: IMenuProps;
+const Menu = (props: IMenuProps) => {
+  const getSlug = url => {
+    const parts = url.split('/');
+    return parts.length > 2 ? parts[parts.length - 2] : '';
+  };
 
-  getSlug(url) {
-    const parts = url.split("/");
-    return parts.length > 2 ? parts[parts.length - 2] : "";
-  }
+  return (
+    <Query query={MENU_QUERY}>
+      {({ error, loading, data }) => {
+        if (error) return <ErrorMessage error={error} />;
+        if (loading) return <Loader />;
+        if (!data) return null;
+        const menu = data.menuItems.edges;
 
-  render() {
-    return (
-      <Query query={MENU_QUERY}>
-        {({ error, loading, data }) => {
-          if (error) return <ErrorMessage error={error} />;
-          if (loading) return <Loader />;
-          if (!data) return <p>No menu found</p>;
-          const menu = data.menuItems.edges;
+        const menuItems =
+          !!menu && menu.length
+            ? menu.map(item => {
+                const { id, url, title, label, connectedObject } = item.node;
+                const object = connectedObject.__typename.toLowerCase();
 
-          const menuItems =
-            !!menu && menu.length
-              ? menu.map(item => {
-                  const { id, url, title, label, connectedObject } = item.node;
-                  const object = connectedObject.__typename.toLowerCase();
-
-                  if (object === "menuitem") {
-                    return (
-                      <li key={id}>
-                        <Link href={url}>
-                          <a onClick={this.props.close}>{title || label}</a>
-                        </Link>
-                      </li>
-                    );
-                  }
-                  const slug = this.getSlug(url);
-                  const actualPage =
-                    object === "category" ? "category" : "post";
+                if (object === 'menuitem') {
                   return (
                     <li key={id}>
-                      <Link
-                        as={`/${object}/${slug}`}
-                        href={`/${actualPage}?slug=${slug}&apiRoute=${object}`}
-                      >
-                        <a onClick={this.props.close}>{title || label}</a>
+                      <Link href={url}>
+                        <a>{title || label}</a>
                       </Link>
                     </li>
                   );
-                })
-              : null;
-
-          return (
-            <StyledMenu>
-              <nav className={`menu ${this.props.active ? "is-active" : ""}`}>
-                <ul className="nav">
-                  <li>
-                    <Link href="/">
-                      <a onClick={this.props.close}>Home</a>
+                }
+                const slug = getSlug(url);
+                const actualPage = object === 'category' ? 'category' : 'post';
+                return (
+                  <li key={id}>
+                    <Link as={`/${object}/${slug}`} href={`/${actualPage}?slug=${slug}&apiRoute=${object}`}>
+                      <a>{title || label}</a>
                     </Link>
                   </li>
-                  {menuItems}
-                </ul>
-              </nav>
-            </StyledMenu>
-          );
-        }}
-      </Query>
-    );
-  }
-}
+                );
+              })
+            : null;
+
+        return (
+          <StyledMenu>
+            <nav className="menu">
+              <ul className="nav">
+                <li>
+                  <Link href="/">
+                    <a>Home</a>
+                  </Link>
+                </li>
+                {menuItems}
+              </ul>
+            </nav>
+          </StyledMenu>
+        );
+      }}
+    </Query>
+  );
+};
 
 export default Menu;

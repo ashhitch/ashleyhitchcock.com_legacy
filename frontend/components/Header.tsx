@@ -1,14 +1,10 @@
-// import Router from 'next/router';
-// import { useState } from 'react';
+import Router from 'next/router';
+import React, { useState } from 'react';
 
-import { Mutation, Query } from "react-apollo";
-import styled, { keyframes } from "styled-components";
-
-import Link from "next/link";
-import Hamburger from "./Hamburger";
-import Menu from "./Menu";
-import { adopt } from "react-adopt";
-import { CLOSE_MENU_MUTATION, LOCAL_STATE_QUERY } from "../state/resolvers";
+import styled, { keyframes } from 'styled-components';
+import Link from 'next/link';
+import Menu from './Menu';
+import media from './styles/media';
 
 // import Headroom from 'react-headroom';
 
@@ -26,6 +22,7 @@ const bounce = keyframes`
     transform: translateY(-12px) rotate(0.75turn);
   }
 `;
+
 const StyledLogo = styled.span`
   font-size: 2.8rem;
   position: relative;
@@ -59,7 +56,7 @@ const StyledLogo = styled.span`
     }
 
     &:hover span,
-    .is-loading span {
+    &.is-loading span {
       animation-name: ${bounce};
     }
   }
@@ -70,62 +67,44 @@ const StyledHeader = styled.header`
   margin: 0 auto;
 
   .bar {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    justify-content: space-between;
-    align-items: stretch;
     padding: 1rem 0;
 
-    @media (min-width: 992px) {
-      padding: 2rem 0;
-    }
+    ${media.md`
+    display: grid;
+    justify-content: space-between;
+    align-items: stretch;
+    grid-template-columns: auto 1fr;
+    `}
+
+    ${media.lg`
+    padding: 2rem 0;
+    `}
   }
 `;
+const Header = () => {
+  const [isLoading, setIsLoading] = useState(false);
 
-const Composed = adopt({
-  closeMenu: ({ render }) => (
-    <Mutation mutation={CLOSE_MENU_MUTATION}>{render}</Mutation>
-  ),
-  localState: ({ render }) => <Query query={LOCAL_STATE_QUERY}>{render}</Query>
-});
+  Router.onRouteChangeStart = () => setIsLoading(true);
+  Router.onRouteChangeComplete = () => setTimeout(() => setIsLoading(false), 2000);
+  Router.onRouteChangeError = () => setIsLoading(false);
 
-const Header = () => (
-  // const [loading, setLoading] = useState(false);
-
-  <>
-    <Composed>
-      {({ closeMenu, localState }) => {
-        const { menuActive } = localState.data;
-
-        // Set the active class
-        if (process.browser) {
-          menuActive
-            ? document.body.classList.add("menu-open")
-            : document.body.classList.remove("menu-open");
-        }
-        //  onClick={() => client.writeData({data: { menuActive: !menuActive }})}
-        return (
-          <>
-            <StyledHeader>
-              <div className="bar">
-                <StyledLogo>
-                  <Link href="/">
-                    <a>
-                      AH
-                      <span />
-                    </a>
-                  </Link>
-                </StyledLogo>
-                <Hamburger active={menuActive} />
-              </div>
-            </StyledHeader>
-
-            <Menu active={menuActive} close={closeMenu} />
-          </>
-        );
-      }}
-    </Composed>
-  </>
-);
+  return (
+    <>
+      <StyledHeader>
+        <div className="bar">
+          <StyledLogo>
+            <Link href="/">
+              <a className={isLoading ? 'is-loading' : 'is-not-loading'}>
+                AH
+                <span />
+              </a>
+            </Link>
+          </StyledLogo>
+          <Menu />
+        </div>
+      </StyledHeader>
+    </>
+  );
+};
 
 export default Header;
