@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import Error from "next/error";
-import Head from "next/head";
-import { Query } from "react-apollo";
-import ErrorMessage from "../components/ErrorMessage";
-import Layout from "../components/Layout";
-import Loader from "../components/Loader";
-import PageWrapper from "../components/PageWrapper";
-import SinglePost from "../components/SinglePost";
-import gql from "graphql-tag";
+import Error from 'next/error';
+import Head from 'next/head';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import ErrorMessage from '../components/ErrorMessage';
+import Layout from '../components/Layout';
+import Loader from '../components/Loader';
+import PageWrapper from '../components/PageWrapper';
+import SinglePost from '../components/SinglePost';
 
 export const SINGLE_POST_QUERY = gql`
   query postBy($slug: String!) {
@@ -65,9 +65,9 @@ class Post extends Component {
   static async getInitialProps({ query: { slug, apiRoute } }) {
     // Query depending on post type
     let queryGQL = SINGLE_POST_QUERY;
-    if (apiRoute === "work") {
+    if (apiRoute === 'work') {
       queryGQL = SINGLE_WORK_QUERY;
-    } else if (apiRoute === "page") {
+    } else if (apiRoute === 'page') {
       queryGQL = SINGLE_PAGE_QUERY;
     }
 
@@ -80,7 +80,7 @@ class Post extends Component {
         <Query
           query={this.props.queryGQL}
           variables={{
-            slug: this.props.slug
+            slug: this.props.slug,
           }}
         >
           {({ error, loading, data }) => {

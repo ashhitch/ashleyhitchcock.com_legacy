@@ -1,18 +1,15 @@
 {
   "version": 2,
   "name": "ashhitch",
-  "builds": [
-    {
-      "src": "next.config.js",
-      "use": "@now/next",
-      "config": {
-        "newPipeline": true
-      }
+  "builds": [{
+    "src": "next.config.js",
+    "use": "@now/next",
+    "config": {
+      "newPipeline": true
     }
-  ],
-  "routes": [
-    {
-      "src": "^/post/(?<slug>[^/]*)",
+  }],
+  "routes": [{
+      "src": "^/blog/(?<slug>[^/]*)",
       "dest": "/post?apiRoute=post&slug=$slug"
     },
     {

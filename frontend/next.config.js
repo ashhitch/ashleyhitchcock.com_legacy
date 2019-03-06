@@ -1,5 +1,5 @@
-const withTypescript = require("@zeit/next-typescript");
-const withPlugins = require("next-compose-plugins");
+const withTypescript = require('@zeit/next-typescript');
+const withPlugins = require('next-compose-plugins');
 
 function moduleExists(name) {
   try {
@@ -9,39 +9,36 @@ function moduleExists(name) {
   }
 }
 
-const withOffline = moduleExists("next-offline") ? require("next-offline") : {};
+const withOffline = moduleExists('next-offline') ? require('next-offline') : {};
 
 const nextConfig = {
-  target: "serverless"
+  target: 'serverless',
 };
 
 const swConfig = {
   workboxOpts: {
-    swDest: "static/service-worker.js",
+    swDest: 'static/service-worker.js',
     runtimeCaching: [
       {
         urlPattern: /^https?.*/,
-        handler: "networkFirst",
+        handler: 'networkFirst',
         options: {
-          cacheName: "https-calls",
+          cacheName: 'https-calls',
           networkTimeoutSeconds: 15,
           expiration: {
             maxEntries: 150,
-            maxAgeSeconds: 30 * 24 * 60 * 60 // 1 month
+            maxAgeSeconds: 30 * 24 * 60 * 60, // 1 month
           },
           cacheableResponse: {
-            statuses: [0, 200]
-          }
-        }
-      }
-    ]
-  }
+            statuses: [0, 200],
+          },
+        },
+      },
+    ],
+  },
 };
 
 module.exports = withPlugins(
-  [
-    [withTypescript],
-    [moduleExists("next-offline") ? withOffline : null, swConfig]
-  ],
+  [[withTypescript], [moduleExists('next-offline') ? withOffline : null, swConfig]],
   nextConfig
 );

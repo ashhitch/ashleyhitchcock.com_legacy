@@ -1,15 +1,10 @@
-// import Router from 'next/router';
-// import { useState } from 'react';
+import Router from 'next/router';
+import React, { useState } from 'react';
 
-import { Mutation, Query } from "react-apollo";
-import styled, { keyframes } from "styled-components";
-
-import Link from "next/link";
-import { adopt } from "react-adopt";
-import Hamburger from "./Hamburger";
-import Menu from "./Menu";
-import { CLOSE_MENU_MUTATION, LOCAL_STATE_QUERY } from "../state/resolvers";
-import media from "./styles/media";
+import styled, { keyframes } from 'styled-components';
+import Link from 'next/link';
+import Menu from './Menu';
+import media from './styles/media';
 
 // import Headroom from 'react-headroom';
 
@@ -27,6 +22,7 @@ const bounce = keyframes`
     transform: translateY(-12px) rotate(0.75turn);
   }
 `;
+
 const StyledLogo = styled.span`
   font-size: 2.8rem;
   position: relative;
@@ -60,7 +56,7 @@ const StyledLogo = styled.span`
     }
 
     &:hover span,
-    .is-loading span {
+    &.is-loading span {
       animation-name: ${bounce};
     }
   }
@@ -85,38 +81,30 @@ const StyledHeader = styled.header`
     `}
   }
 `;
+const Header = () => {
+  const [isLoading, setIsLoading] = useState(false);
 
-const Composed = adopt({
-  closeMenu: ({ render }) => (
-    <Mutation mutation={CLOSE_MENU_MUTATION}>{render}</Mutation>
-  ),
-  localState: ({ render }) => <Query query={LOCAL_STATE_QUERY}>{render}</Query>
-});
+  Router.onRouteChangeStart = () => setIsLoading(true);
+  Router.onRouteChangeComplete = () => setTimeout(() => setIsLoading(false), 2000);
+  Router.onRouteChangeError = () => setIsLoading(false);
 
-const Header = () => (
-  // const [loading, setLoading] = useState(false);
-
-  <>
-    <Composed>
-      {({ closeMenu }) => (
-        <>
-          <StyledHeader>
-            <div className="bar">
-              <StyledLogo>
-                <Link href="/">
-                  <a>
-                    AH
-                    <span />
-                  </a>
-                </Link>
-              </StyledLogo>
-              <Menu close={closeMenu} />
-            </div>
-          </StyledHeader>
-        </>
-      )}
-    </Composed>
-  </>
-);
+  return (
+    <>
+      <StyledHeader>
+        <div className="bar">
+          <StyledLogo>
+            <Link href="/">
+              <a className={isLoading ? 'is-loading' : 'is-not-loading'}>
+                AH
+                <span />
+              </a>
+            </Link>
+          </StyledLogo>
+          <Menu />
+        </div>
+      </StyledHeader>
+    </>
+  );
+};
 
 export default Header;
