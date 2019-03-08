@@ -1,23 +1,30 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import Link from "next/link";
-import NextSeo from "next-seo";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import ErrorMessage from "./../components/ErrorMessage";
-import Grid from "./../components/Grid";
-import Intro from "./../components/Intro";
-import Layout from "./../components/Layout";
-import Loader from "../components/Loader";
-import PageWrapper from "../components/PageWrapper";
-import StyledLink from "../components/styles/Button";
-import StyledSection from "../components/styles/Section";
-import { SubHeading } from "../components/styles/Headings";
-import Techstack from "../components/Techstack";
+import Link from 'next/link';
+import NextSeo from 'next-seo';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+
+import dynamic from 'next/dynamic';
+import ErrorMessage from '../components/ErrorMessage';
+import Grid from '../components/Grid';
+import Intro from '../components/Intro';
+import Layout from '../components/Layout';
+import Loader from '../components/Loader';
+import PageWrapper from '../components/PageWrapper';
+import StyledLink from '../components/styles/Button';
+import StyledSection from '../components/styles/Section';
+import { SubHeading } from '../components/styles/Headings';
+import Techstack from '../components/Techstack';
+import Card from '../components/Card';
+
+const GridSlider = dynamic(() => import('../components/GridSlider'), {
+  ssr: false,
+});
 
 const headerImageStyle = {
   marginTop: 50,
-  marginBottom: 50
+  marginBottom: 50,
 };
 
 export const HOME_QUERY = gql`
@@ -74,7 +81,7 @@ class Index extends Component {
         <Query
           query={HOME_QUERY}
           variables={{
-            slug: "welcome"
+            slug: 'welcome',
           }}
         >
           {({ error, loading, data }) => {
@@ -87,7 +94,7 @@ class Index extends Component {
             const { seo } = page;
             const seoData = {
               title: seo.title,
-              description: seo.metaDesc
+              description: seo.metaDesc,
             };
 
             return (
@@ -108,7 +115,11 @@ class Index extends Component {
                   </StyledSection>
                   <StyledSection>
                     <SubHeading>Latest from the blog</SubHeading>
-                    <Grid cards={postItems} linkType="post" />
+                    <GridSlider>
+                      {!!postItems && postItems.length
+                        ? postItems.map((card, index) => <Card {...card.node} linkType="post" key={index} />)
+                        : null}
+                    </GridSlider>
                     <div className="actions">
                       <Link href="/blog">
                         <StyledLink>Read more</StyledLink>
@@ -123,15 +134,6 @@ class Index extends Component {
       </>
     );
   }
-
-  // componentDidMount = () => {
-  //     if ("serviceWorker" in navigator) {
-  //         navigator.serviceWorker.register("/static/service-worker.js")
-  //             .catch(err => console.error("Service worker registration failed", err));
-  //     } else {
-  //         console.log("Service worker not supported");
-  //     }
-  // }
 }
 
 export default PageWrapper(Index);
