@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import media from "./media";
+import styled from 'styled-components';
+import media from './media';
 
 const StyledSection = styled.section`
   padding: 1.5rem 0;

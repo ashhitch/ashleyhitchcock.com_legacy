@@ -1,29 +1,34 @@
-import React, { Component } from 'react';
-import styled, { ThemeProvider, createGlobalStyle, keyframes } from 'styled-components';
+import React, { Component } from "react";
+import styled, {
+  ThemeProvider,
+  createGlobalStyle,
+  keyframes
+} from "styled-components";
 
-import { Normalize } from 'styled-normalize';
-import Footer from './Footer';
-import Header from './Header';
-import { MaxWidthLayout } from './styles/Layout';
-import PageHead from './Head';
+import { Normalize } from "styled-normalize";
+import Footer from "./Footer";
+import Header from "./Header";
+import { MaxWidthLayout } from "./styles/Layout";
+import PageHead from "./Head";
+import media from "./styles/media";
 
 const theme = {
   darkMode: false,
-  primary: 'var(--primary-color, #393939)',
-  secondary: 'var(--secondary-color, #fff)',
-  highlight: '#BADA55',
-  blue: '#1c46f2',
-  red: '#FF0000',
-  black: '#222222',
-  grey: '#3A3A3A',
-  lightgrey: '#E1E1E1',
-  offWhite: '#EDEDED',
-  white: '#ffffff',
-  maxWidth: '1190px',
-  bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
-  fadeBlue: 'linear-gradient(to left, #1c46f2, #5f5fe8)',
-  fade: 'linear-gradient(to left, #000, #000)',
-  bgAni: 'backgroundAni 5s ease infinite',
+  primary: "var(--primary-color, #393939)",
+  secondary: "var(--secondary-color, #fff)",
+  highlight: "#BADA55",
+  blue: "#1c46f2",
+  red: "#FF0000",
+  black: "#222222",
+  grey: "#3A3A3A",
+  lightgrey: "#E1E1E1",
+  offWhite: "#EDEDED",
+  white: "#ffffff",
+  maxWidth: "1190px",
+  bs: "0 12px 24px 0 rgba(0, 0, 0, 0.09)",
+  fadeBlue: "linear-gradient(to left, #1c46f2, #5f5fe8)",
+  fade: "linear-gradient(to left, #000, #000)",
+  bgAni: "backgroundAni 5s ease infinite",
   font:
     '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
   headingFont: '"Cardo", serif',
@@ -31,7 +36,7 @@ const theme = {
   0%{background-position:0% 50%}
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
-`,
+`
 };
 
 const backgroundAni = keyframes`${theme.backgroundAni}`;
@@ -43,6 +48,7 @@ const StyledPage = styled.main`
   min-height: 100vh;
   padding: 1rem 1rem 20px 1rem;
   margin: 0 1rem;
+  overflow: hidden;
 `;
 
 const GlobalStyle = createGlobalStyle`
@@ -150,6 +156,30 @@ const GlobalStyle = createGlobalStyle`
     table tbody tr:nth-of-type(odd) {
       background-color: rgba(0, 0, 0, 0.05);
     }
+    
+    .tns-ovh.tns-ovh {
+      overflow: visible;
+      ${media.md`
+      `}
+    }
+
+    .tns-controls {
+      .nav-button {
+        background-color: transparent;
+        border: 0;
+        padding: 0;
+        margin: 0;
+        width: 30px;
+        height: 30px;
+        display: block;
+
+        svg {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+    
 
 `;
 

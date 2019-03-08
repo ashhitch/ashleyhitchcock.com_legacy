@@ -17,7 +17,7 @@ const IconGridStyle = styled.div`
   padding: 0;
   list-style-type: none;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  grid-gap: 2rem;
+  grid-gap: 2.25rem;
   justify-items: center;
   align-items: center;
   ${media.md`grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));  grid-gap: 4rem;`}

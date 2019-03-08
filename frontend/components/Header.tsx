@@ -85,7 +85,10 @@ const Header = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   Router.onRouteChangeStart = () => setIsLoading(true);
-  Router.onRouteChangeComplete = () => setTimeout(() => setIsLoading(false), 2000);
+  Router.onRouteChangeComplete = () => {
+    // console.log('timeout');
+    // setTimeout(() => setIsLoading(false), 2000);
+  };
   Router.onRouteChangeError = () => setIsLoading(false);
 
   return (

@@ -1,5 +1,6 @@
 const withTypescript = require('@zeit/next-typescript');
 const withPlugins = require('next-compose-plugins');
+const withCSS = require('@zeit/next-css');
 
 function moduleExists(name) {
   try {
@@ -39,6 +40,6 @@ const swConfig = {
 };
 
 module.exports = withPlugins(
-  [[withTypescript], [moduleExists('next-offline') ? withOffline : null, swConfig]],
+  [[withTypescript], [withCSS], [moduleExists('next-offline') ? withOffline : null, swConfig]],
   nextConfig
 );
