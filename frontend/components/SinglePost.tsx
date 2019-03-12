@@ -1,20 +1,20 @@
-import NextSeo from "next-seo";
+import NextSeo from 'next-seo';
 
-import React from "react";
-import parseCode from "../lib/code";
-import StyledContent from "./styles/Content";
-import { Heading } from "./styles/Headings";
-import StyledPost from "./styles/Post";
-import Categories from "./categories";
+import React from 'react';
+import parseCode from '../lib/code';
+import StyledContent from './styles/Content';
+import { Heading, SubHeading } from './styles/Headings';
+import StyledPost from './styles/Post';
+import Categories from './categories';
 
 const SinglePost = ({ post }) => {
   const { title, content, seo, hero } = post;
 
-  const heroBanner = hero || "/static/images/hero-placeholder.svg";
+  const heroBanner = hero || '/static/images/hero-placeholder.svg';
 
   const seoData = {
     title: seo && !!seo.title ? seo.title : title,
-    description: seo.metaDesc
+    description: seo.metaDesc,
   };
 
   return (
@@ -31,10 +31,9 @@ const SinglePost = ({ post }) => {
           </header>
 
           <div className="post__main">
-            <StyledContent className="post__content">
-              {content ? parseCode(content) : null}
-            </StyledContent>
+            <StyledContent className="post__content">{content ? parseCode(content) : null}</StyledContent>
             <aside className="post__aside">
+              <SubHeading as="h3">Browse Categories</SubHeading>
               <Categories />
             </aside>
           </div>
