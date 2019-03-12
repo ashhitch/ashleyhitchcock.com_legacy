@@ -1,57 +1,98 @@
 import React, { Component } from "react";
 
-import Error from "next/error";
-import Link from "next/link";
-import { endpoint as Config } from "../config";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+import ErrorMessage from "../components/ErrorMessage";
+import Grid from "../components/Grid";
+import { Heading } from "../components/styles/Headings";
 import Layout from "../components/Layout";
-import Menu from "../components/Menu";
+import LoadMore from "../components/LoadMore";
+import Loader from "../components/Loader";
 import PageWrapper from "../components/PageWrapper";
-import fetch from "isomorphic-unfetch";
+import StyledSection from "../components/styles/Section";
 
-class Category extends Component {
-  props: any;
-
-  static async getInitialProps(context) {
-    const { slug } = context.query;
-    const categoriesRes = await fetch(
-      `${Config.apiUrl}/wp-json/wp/v2/categories?slug=${slug}`
-    );
-    const categories = await categoriesRes.json();
-    if (categories.length > 0) {
-      const postsRes = await fetch(
-        `${Config.apiUrl}/wp-json/wp/v2/posts?_embed&categories=${
-          categories[0].id
-        }`
-      );
-      const posts = await postsRes.json();
-      return { categories, posts };
+export const CAT_QUERY = gql`
+  query catBy($cursor: String, $perPage: Int!, $slug: String!) {
+    posts: posts(
+      first: $perPage
+      after: $cursor
+      where: { categoryName: $slug }
+    ) {
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      edges {
+        cursor
+        node {
+          id
+          title
+          slug
+          excerpt
+          date
+          featuredImage {
+            mediaDetails {
+              sizes {
+                name
+                sourceUrl
+              }
+            }
+          }
+          tags {
+            nodes {
+              name
+            }
+          }
+        }
+      }
     }
-    return { categories };
   }
+`;
 
-  render() {
-    if (this.props.categories.length == 0) return <Error statusCode={404} />;
+const CatPosts = ({ query }) => {
+  const { slug } = query;
 
-    const posts = this.props.posts.map((post, index) => (
-      <ul key={index}>
-        <li>
-          <Link
-            as={`/post/${post.slug}`}
-            href={`/post?slug=${post.slug}&apiRoute=post`}
-          >
-            <a>{post.title.rendered}</a>
-          </Link>
-        </li>
-      </ul>
-    ));
-    return (
-      <Layout>
-        <Menu menu={this.props.headerMenu} />
-        <h1>{this.props.categories[0].name} Posts</h1>
-        {posts}
-      </Layout>
-    );
-  }
-}
+  return (
+    <>
+      <Query
+        query={CAT_QUERY}
+        variables={{
+          perPage: 7,
+          slug
+        }}
+      >
+        {({ error, loading, data, fetchMore }) => {
+          if (error) return <ErrorMessage error={error} />;
+          if (loading) return <Loader />;
+          if (!data.posts) return <p>No Data returned</p>;
 
-export default PageWrapper(Category);
+          const { edges: posts, pageInfo } = data.posts;
+
+          return (
+            <Layout>
+              <StyledSection>
+                <Heading>{slug}</Heading>
+                <Grid cards={posts} linkType="post" />
+
+                <div className="actions">
+                  <LoadMore
+                    fetchMore={fetchMore}
+                    endCursor={pageInfo.endCursor}
+                    hasNextPage={pageInfo.hasNextPage}
+                    query="posts"
+                  >
+                    Load More
+                  </LoadMore>
+                </div>
+              </StyledSection>
+            </Layout>
+          );
+        }}
+      </Query>
+    </>
+  );
+};
+
+export default PageWrapper(CatPosts);

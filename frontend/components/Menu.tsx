@@ -163,7 +163,8 @@ const Menu = (props: IMenuProps) => {
                   );
                 }
                 const slug = getSlug(url);
-                const actualPage = object === "category" ? "category" : "post";
+
+                const actualPage = object;
                 return (
                   <li key={id}>
                     <Link
