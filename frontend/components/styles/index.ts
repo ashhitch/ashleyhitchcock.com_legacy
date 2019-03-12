@@ -1,5 +1,6 @@
 export * from "./Button";
 export * from "./Card";
+export * from "./Categories";
 export * from "./Content";
 export * from "./Grid";
 export * from "./Headings";

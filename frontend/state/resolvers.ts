@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from "apollo-boost";
 
 export const defaults = {
   menuActive: false,
@@ -74,7 +74,7 @@ export const resolvers = {
       const data = {
         data: { menuActive: false }
       };
-     
+
       cache.writeData(data);
       return data;
     },
@@ -83,7 +83,7 @@ export const resolvers = {
       const data = {
         data: { isLoading: true }
       };
-     
+
       cache.writeData(data);
       return data;
     },
@@ -92,7 +92,7 @@ export const resolvers = {
       const data = {
         data: { isLoading: false }
       };
-     
+
       cache.writeData(data);
       return data;
     }

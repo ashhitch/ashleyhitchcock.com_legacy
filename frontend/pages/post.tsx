@@ -1,15 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Error from 'next/error';
-import Head from 'next/head';
-import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
-import ErrorMessage from '../components/ErrorMessage';
-import Layout from '../components/Layout';
-import Loader from '../components/Loader';
-import PageWrapper from '../components/PageWrapper';
-import SinglePost from '../components/SinglePost';
+import Error from "next/error";
+import Head from "next/head";
+import { Query } from "react-apollo";
+import { gql } from "apollo-boost";
+import { compose } from "react-apollo";
+import ErrorMessage from "../components/ErrorMessage";
+import Layout from "../components/Layout";
+import Loader from "../components/Loader";
+import PageWrapper from "../components/PageWrapper";
+import SinglePost from "../components/SinglePost";
 
+// (format: RAW)
 export const SINGLE_POST_QUERY = gql`
   query postBy($slug: String!) {
     item: postBy(uri: $slug) {
@@ -26,22 +28,7 @@ export const SINGLE_POST_QUERY = gql`
     }
   }
 `;
-export const SINGLE_PAGE_QUERY = gql`
-  query pageBy($slug: String!) {
-    item: pageBy(uri: $slug) {
-      id
-      title
-      slug
-      date
-      content
-      hero
-      seo {
-        title
-        metaDesc
-      }
-    }
-  }
-`;
+
 export const SINGLE_WORK_QUERY = gql`
   query workBy($slug: String!) {
     item: workBy(uri: $slug) {
@@ -65,29 +52,28 @@ class Post extends Component {
   static async getInitialProps({ query: { slug, apiRoute } }) {
     // Query depending on post type
     let queryGQL = SINGLE_POST_QUERY;
-    if (apiRoute === 'work') {
+    if (apiRoute === "work") {
       queryGQL = SINGLE_WORK_QUERY;
-    } else if (apiRoute === 'page') {
-      queryGQL = SINGLE_PAGE_QUERY;
     }
 
     return { slug, queryGQL };
   }
 
   render() {
+    const { queryGQL, slug } = this.props;
     return (
       <Layout>
         <Query
-          query={this.props.queryGQL}
+          query={queryGQL}
           variables={{
-            slug: this.props.slug,
+            slug
           }}
         >
           {({ error, loading, data }) => {
             if (error) return <ErrorMessage error={error} />;
             if (loading) return <Loader />;
             if (!data.item) return <Error statusCode={404} />;
-            const item = data.item;
+            const { item } = data;
 
             return <SinglePost post={item} />;
           }}

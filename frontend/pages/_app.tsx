@@ -1,5 +1,6 @@
 import App, { Container } from "next/app";
-
+import Router from "next/router";
+import withGA from "next-ga";
 import { ApolloProvider } from "react-apollo";
 import NextSeo from "next-seo";
 import React from "react";
@@ -30,4 +31,4 @@ class MyApp extends App {
   }
 }
 
-export default withApolloClient(MyApp);
+export default withApolloClient(withGA("UA-800899-32", Router)(MyApp));

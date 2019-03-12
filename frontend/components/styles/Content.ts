@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledContent = styled.div`
   a {
-    color: ${props => props.theme.black};
+    color: ${props => props.theme.primary};
     position: relative;
     display: inline-block;
     text-decoration: none;
@@ -46,6 +46,28 @@ const StyledContent = styled.div`
   img {
     max-width: 100%;
     height: auto;
+  }
+
+  pre {
+    overflow: auto;
+    font-family: monospace;
+  }
+
+  .prism-code {
+    display: block;
+    white-space: pre;
+    margin: 0;
+    outline: none;
+    text-shadow: none;
+    hyphens: none;
+    word-wrap: normal;
+    word-break: normal;
+    text-align: left;
+    word-spacing: normal;
+    tab-size: 2;
+    padding: 0.75rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
   }
 `;
 
