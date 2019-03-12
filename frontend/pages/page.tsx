@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import Error from "next/error";
+import Error from 'next/error';
 
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import ErrorMessage from "../components/ErrorMessage";
-import Layout from "../components/Layout";
-import Loader from "../components/Loader";
-import PageWrapper from "../components/PageWrapper";
-import SinglePage from "../components/SinglePage";
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import ErrorMessage from '../components/ErrorMessage';
+import Layout from '../components/Layout';
+import Loader from '../components/Loader';
+import PageWrapper from '../components/PageWrapper';
+import SinglePage from '../components/SinglePage';
 
 export const SINGLE_PAGE_QUERY = gql`
   query pageBy($slug: String!) {
@@ -29,13 +29,12 @@ export const SINGLE_PAGE_QUERY = gql`
 
 const Page = ({ query }) => {
   const { slug } = query;
-  console.log(`loaded the page.tsx ${slug}`);
   return (
     <Layout>
       <Query
         query={SINGLE_PAGE_QUERY}
         variables={{
-          slug
+          slug,
         }}
       >
         {({ error, loading, data }) => {

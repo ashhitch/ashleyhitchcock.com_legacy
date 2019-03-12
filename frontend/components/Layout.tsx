@@ -1,34 +1,32 @@
-import React, { Component } from "react";
-import styled, {
-  ThemeProvider,
-  createGlobalStyle,
-  keyframes
-} from "styled-components";
+import React, { Component } from 'react';
+import styled, { ThemeProvider, createGlobalStyle, keyframes } from 'styled-components';
 
-import { Normalize } from "styled-normalize";
-import Footer from "./Footer";
-import Header from "./Header";
-import { MaxWidthLayout } from "./styles/Layout";
-import PageHead from "./Head";
-import media from "./styles/media";
+import { Normalize } from 'styled-normalize';
+import Footer from './Footer';
+import Header from './Header';
+import { MaxWidthLayout } from './styles/Layout';
+import PageHead from './Head';
+import media from './styles/media';
+
+const TIMEOUT = 400;
 
 const theme = {
   darkMode: false,
-  primary: "var(--primary-color, #393939)",
-  secondary: "var(--secondary-color, #fff)",
-  highlight: "#BADA55",
-  blue: "#1c46f2",
-  red: "#FF0000",
-  black: "#222222",
-  grey: "#3A3A3A",
-  lightgrey: "#E1E1E1",
-  offWhite: "#EDEDED",
-  white: "#ffffff",
-  maxWidth: "1190px",
-  bs: "0 12px 24px 0 rgba(0, 0, 0, 0.09)",
-  fadeBlue: "linear-gradient(to left, #1c46f2, #5f5fe8)",
-  fade: "linear-gradient(to left, #000, #000)",
-  bgAni: "backgroundAni 5s ease infinite",
+  primary: 'var(--primary-color, #393939)',
+  secondary: 'var(--secondary-color, #fff)',
+  highlight: '#BADA55',
+  blue: '#1c46f2',
+  red: '#FF0000',
+  black: '#222222',
+  grey: '#3A3A3A',
+  lightgrey: '#E1E1E1',
+  offWhite: '#EDEDED',
+  white: '#ffffff',
+  maxWidth: '1190px',
+  bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
+  fadeBlue: 'linear-gradient(to left, #1c46f2, #5f5fe8)',
+  fade: 'linear-gradient(to left, #000, #000)',
+  bgAni: 'backgroundAni 5s ease infinite',
   font:
     '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
   headingFont: '"Cardo", serif',
@@ -36,7 +34,7 @@ const theme = {
   0%{background-position:0% 50%}
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
-`
+`,
 };
 
 const backgroundAni = keyframes`${theme.backgroundAni}`;
@@ -156,6 +154,10 @@ const GlobalStyle = createGlobalStyle`
     table tbody tr:nth-of-type(odd) {
       background-color: rgba(0, 0, 0, 0.05);
     }
+
+    ul {
+      padding-left: 20px;
+    }
     
     .tns-ovh.tns-ovh {
       overflow: visible;
@@ -180,6 +182,32 @@ const GlobalStyle = createGlobalStyle`
       }
     }
     
+
+    .page-transition-enter {
+            opacity: 0.5;
+           /* transform: translate3d(0, 20px, 0); */
+          }
+          .page-transition-enter-active {
+            opacity: 1;
+          /* transform: translate3d(0, 0, 0); */
+            transition: opacity ${TIMEOUT}ms, transform ${TIMEOUT}ms;
+          }
+          .page-transition-exit {
+            opacity: 1;
+          }
+          .page-transition-exit-active {
+            opacity: 0.5;
+            transition: opacity ${TIMEOUT}ms;
+          }
+          .loading-indicator-appear,
+          .loading-indicator-enter {
+            opacity: 0.5;
+          }
+          .loading-indicator-appear-active,
+          .loading-indicator-enter-active {
+            opacity: 1;
+            transition: opacity ${TIMEOUT}ms;
+          }
 
 `;
 

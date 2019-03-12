@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledCategories = styled.ul`
   list-style: none;
@@ -16,6 +16,7 @@ const StyledCategories = styled.ul`
     background-color: ${props => props.theme.secondary};
     text-align: center;
     transition: all 0.2s ease-in-out;
+    border-radius: 2px;
 
     &:hover {
       background-color: ${props => props.theme.primary};

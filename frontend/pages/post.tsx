@@ -1,15 +1,14 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import Error from "next/error";
-import Head from "next/head";
-import { Query } from "react-apollo";
-import { gql } from "apollo-boost";
-import { compose } from "react-apollo";
-import ErrorMessage from "../components/ErrorMessage";
-import Layout from "../components/Layout";
-import Loader from "../components/Loader";
-import PageWrapper from "../components/PageWrapper";
-import SinglePost from "../components/SinglePost";
+import Error from 'next/error';
+import Head from 'next/head';
+import { Query } from 'react-apollo';
+import { gql } from 'apollo-boost';
+import ErrorMessage from '../components/ErrorMessage';
+import Layout from '../components/Layout';
+import Loader from '../components/Loader';
+import PageWrapper from '../components/PageWrapper';
+import SinglePost from '../components/SinglePost';
 
 // (format: RAW)
 export const SINGLE_POST_QUERY = gql`
@@ -52,7 +51,7 @@ class Post extends Component {
   static async getInitialProps({ query: { slug, apiRoute } }) {
     // Query depending on post type
     let queryGQL = SINGLE_POST_QUERY;
-    if (apiRoute === "work") {
+    if (apiRoute === 'work') {
       queryGQL = SINGLE_WORK_QUERY;
     }
 
@@ -66,7 +65,7 @@ class Post extends Component {
         <Query
           query={queryGQL}
           variables={{
-            slug
+            slug,
           }}
         >
           {({ error, loading, data }) => {

@@ -34,6 +34,7 @@
     "next-ga": "^2.3.4",
     "next-offline": "^3.3.6",
     "next-optimized-images": "^2.4.0",
+    "next-page-transitions": "^1.0.0-alpha.6",
     "next-seo": "^1.11.1",
     "next-with-apollo": "^3.4.0",
     "prism-react-renderer": "^0.1.6",
