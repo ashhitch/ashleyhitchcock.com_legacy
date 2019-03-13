@@ -1,5 +1,9 @@
 {
   "extends": [
     "config:base"
-  ]
+  ],
+  "packageRules": [{
+    "managers": ["composer"],
+    "enabled": false
+  }]
 }
