@@ -184,7 +184,7 @@ const GlobalStyle = createGlobalStyle`
     
 
     .page-transition-enter {
-            opacity: 0.5;
+            opacity: 0.8;
            /* transform: translate3d(0, 20px, 0); */
           }
           .page-transition-enter-active {
@@ -196,12 +196,12 @@ const GlobalStyle = createGlobalStyle`
             opacity: 1;
           }
           .page-transition-exit-active {
-            opacity: 0.5;
+            opacity: 0.8;
             transition: opacity ${TIMEOUT}ms;
           }
           .loading-indicator-appear,
           .loading-indicator-enter {
-            opacity: 0.5;
+            opacity: 0.8;
           }
           .loading-indicator-appear-active,
           .loading-indicator-enter-active {
