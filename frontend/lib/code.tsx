@@ -37,55 +37,67 @@ const parseCode = content => {
   const filteredContent = content.replace(/<p>[*]?(.*?)<\/p>/gi, '$1');
 
   // Test for highlighed code
-  const highlightDelimiterPattern = /\[([a-z]+)\]((.|\n|\r)*?)\[\/[a-z]+\]/gi;
-  const highlightTest = highlightDelimiterPattern.exec(filteredContent);
-  const updatedContent = filteredContent.split(highlightDelimiterPattern).map((token, i) => {
-    // hack out the group we need for the highlighter
-    // console.log(highlightTest);
-    if (highlightTest && token === highlightTest[1]) {
-      return;
-    }
 
-    if (highlightTest && token === highlightTest[2]) {
-      let code = highlightTest[2];
-      code = decodeHtml(code);
-      code = replaceAll(code, '<br />', '\n');
-      code = replaceAll(code, '<p>', '');
-      code = replaceAll(code, '</p>', '\n');
-      // console.log(code, highlightTest[1]);
-      return (
-        <Highlight {...defaultProps} code={code} language={highlightTest[1]} theme={theme} key={i}>
-          {({ className, style, tokens, getLineProps, getTokenProps }) => (
-            <pre className={className} style={style}>
-              {tokens.map((line, i) => (
-                <div {...getLineProps({ line, key: i })}>
-                  {line.map((token, key) => (
-                    <span {...getTokenProps({ token, key })} />
-                  ))}
-                </div>
-              ))}
-            </pre>
-          )}
-        </Highlight>
-      );
-    }
+  const highlightRequired23 = /\[[a-z]+\]((.|\n|\r)*?)\[\/[a-z]+\]/g;
+  const highlightRequired = /\[[a-z]+\]((.|\n)*?)\[\/[a-z]+\]/g;
+  const highlightDelimiterPatternPart = /\[([a-z]+)\]((.|\n|\r)*?)\[\/[a-z]+\]/g;
+  const highlightDelimiterPattern = /(\[[a-z]+\](.|\n|\r)*?\[\/[a-z]+\])/g;
 
-    // Also test for embeded gists
-    const delimiterPattern = /<script src="https:\/\/gist.github.com\/ashhitch\/(.*?).js"><\/script>/gi;
-    const test = delimiterPattern.exec(token);
+  // These are the 2 parts i need highlighting.
+  const highlightTest = filteredContent.match(highlightRequired);
 
-    const updatedContentGist = token.split(delimiterPattern).map((token, i) => {
-      if (test && token === test[1]) {
-        return <Gist id={test[1]} key={i} />;
+  const updatedContent = filteredContent
+    .split(highlightDelimiterPattern)
+    .filter(c => c.length > 1)
+    .map((codeToken, i) => {
+      console.log(codeToken);
+      if (highlightTest && highlightTest.includes(codeToken)) {
+        const codeParts = codeToken.split(highlightDelimiterPatternPart).filter(c => c.length > 1);
+        console.log(codeParts);
+        let [language, code] = codeParts;
+        if (!code) {
+          return;
+        }
+        code = decodeHtml(code);
+        code = replaceAll(code, '<br />', '\n');
+        code = replaceAll(code, '<p>', '');
+        code = replaceAll(code, '</p>', '\n');
+
+        // console.log(code, highlightTest[1]);
+        return (
+          <Highlight {...defaultProps} code={code} language={language} theme={theme} key={i}>
+            {({ className, style, tokens, getLineProps, getTokenProps }) => (
+              <pre className={className} style={style}>
+                {tokens.map((line, i) => (
+                  <div {...getLineProps({ line, key: i })}>
+                    {line.map((token, key) => (
+                      <span {...getTokenProps({ token, key })} />
+                    ))}
+                  </div>
+                ))}
+              </pre>
+            )}
+          </Highlight>
+        );
       }
 
-      // .replace(/(?:\r\n|\r|\n)+/g, '<br />')
-      return <React.Fragment key={i}>{renderHTML(token)}</React.Fragment>;
+      // Also test for embeded gists
+      const delimiterPattern = /<script src="https:\/\/gist.github.com\/ashhitch\/(.*?).js"><\/script>/gi;
+      const test = delimiterPattern.exec(codeToken);
+
+      const updatedContentGist = codeToken.split(delimiterPattern).map((token, i) => {
+        if (test && token === test[1]) {
+          return <Gist id={test[1]} key={i} />;
+        }
+
+        // .replace(/(?:\r\n|\r|\n)+/g, '<br />')
+        return <React.Fragment key={i}>{renderHTML(token)}</React.Fragment>;
+      });
+
+      return <React.Fragment key={i}>{updatedContentGist}</React.Fragment>;
     });
 
-    return <React.Fragment key={i}>{updatedContentGist}</React.Fragment>;
-  });
-
+  console.log({ updatedContent });
   return <>{updatedContent}</>;
 };
 
