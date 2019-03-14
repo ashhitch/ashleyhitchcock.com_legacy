@@ -20,6 +20,12 @@ export const SINGLE_POST_QUERY = gql`
       date
       content
       hero
+      categories {
+        nodes {
+          name
+          id
+        }
+      }
       seo {
         title
         metaDesc
@@ -37,6 +43,12 @@ export const SINGLE_WORK_QUERY = gql`
       date
       content
       hero
+      categories {
+        nodes {
+          name
+          id
+        }
+      }
       seo {
         title
         metaDesc

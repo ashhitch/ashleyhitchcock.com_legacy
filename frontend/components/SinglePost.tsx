@@ -8,7 +8,7 @@ import StyledPost from './styles/Post';
 import Categories from './categories';
 
 const SinglePost = ({ post }) => {
-  const { title, content, seo, hero } = post;
+  const { title, content, seo, hero, categories } = post;
 
   const heroBanner = hero || '/static/images/hero-placeholder.svg';
 
@@ -34,7 +34,7 @@ const SinglePost = ({ post }) => {
             <StyledContent className="post__content">{content ? parseCode(content) : null}</StyledContent>
             <aside className="post__aside">
               <SubHeading as="h3">Browse Categories</SubHeading>
-              <Categories />
+              <Categories current={categories.nodes} />
             </aside>
           </div>
         </div>

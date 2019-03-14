@@ -20,17 +20,19 @@ export const POST_CATEGORIES = gql`
     }
   }
 `;
-const Categories = () => (
+const Categories = ({ current }) => (
   <Query query={POST_CATEGORIES}>
     {({ error, loading, data }) => {
       if (error) return <ErrorMessage error={error} />;
       if (loading) return <Loader />;
       const { categories } = data;
 
+      const theIDs = !!current && current.length ? current.map(c => c.id) : [];
+
       return (
         <StyledCategories>
           {categories.edges.map(cat => (
-            <li key={cat.node.id}>
+            <li key={cat.node.id} className={cat.node.id.includes(theIDs) ? 'is-active' : ''}>
               <Link as={`/blog/category/${cat.node.slug}`} href={`/category?slug=${cat.node.slug}`}>
                 <a>{cat.node.name}</a>
               </Link>
