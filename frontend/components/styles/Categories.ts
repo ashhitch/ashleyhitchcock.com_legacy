@@ -18,7 +18,8 @@ const StyledCategories = styled.ul`
     transition: all 0.2s ease-in-out;
     border-radius: 2px;
 
-    &:hover {
+    &:hover,
+    &.is-active {
       background-color: ${props => props.theme.primary};
       color: ${props => props.theme.secondary};
     }
