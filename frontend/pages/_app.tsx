@@ -26,7 +26,7 @@ class MyApp extends App {
     return (
       <Container>
         <NextSeo config={SEO} />
-        <PageTransition
+        {/* <PageTransition
           timeout={TIMEOUT}
           classNames="page-transition"
           loadingComponent={<Loader />}
@@ -36,11 +36,11 @@ class MyApp extends App {
             exit: 0,
           }}
           loadingClassNames="loading-indicator"
-        >
-          <ApolloProvider client={apollo}>
-            <Component {...pageProps} />
-          </ApolloProvider>
-        </PageTransition>
+        > */}
+        <ApolloProvider client={apollo}>
+          <Component {...pageProps} />
+        </ApolloProvider>
+        {/* </PageTransition> */}
       </Container>
     );
   }
