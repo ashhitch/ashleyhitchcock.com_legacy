@@ -1,4 +1,7 @@
-<?php add_theme_support( 'post-thumbnails' ); 
+<?php 
+
+
+add_theme_support( 'post-thumbnails' ); 
 
 function ag_filter_post_json($response, $post, $context) {
   $tags = wp_get_post_tags($post->ID);
@@ -97,4 +100,13 @@ add_filter( 'register_post_type_args', function( $args, $post_type ) {
   
       } 
     }
+
+    // $post_type_object_preview = get_post_type_object( 'post');
+    // register_graphql_object_type( 'preview', [
+    //   'description' => __( sprintf( 'The %s type', 'preview' ), 'wp-graphql' ),
+    //   'interfaces'  => [ WPObjectType::node_interface() ],
+    //   'fields'      => get_post_object_fields( $post_type_object_preview ),
+    // ] );
   });
+
+

@@ -184,29 +184,29 @@ const GlobalStyle = createGlobalStyle`
     
 
     .page-transition-enter {
-            opacity: 0.8;
-           /* transform: translate3d(0, 20px, 0); */
+             /* opacity: 0.8;  */
+           transform: translate3d(0, 20px, 0);
           }
           .page-transition-enter-active {
-            opacity: 1;
-          /* transform: translate3d(0, 0, 0); */
-            transition: opacity ${TIMEOUT}ms, transform ${TIMEOUT}ms;
+            /* opacity: 1;  opacity ${TIMEOUT}ms, */
+           transform: translate3d(0, 0, 0); 
+            transition: transform ${TIMEOUT}ms;
           }
           .page-transition-exit {
-            opacity: 1;
+            /* opacity: 1; */
           }
           .page-transition-exit-active {
-            opacity: 0.8;
-            transition: opacity ${TIMEOUT}ms;
+            /* opacity: 0.8;
+            transition: opacity ${TIMEOUT}ms; */
           }
           .loading-indicator-appear,
           .loading-indicator-enter {
-            opacity: 0.8;
+            /* opacity: 0.8; */
           }
           .loading-indicator-appear-active,
           .loading-indicator-enter-active {
-            opacity: 1;
-            transition: opacity ${TIMEOUT}ms;
+            /* opacity: 1; */
+            /* transition: opacity ${TIMEOUT}ms; */
           }
 
 `;
