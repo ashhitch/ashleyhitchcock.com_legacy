@@ -68,8 +68,9 @@ class Blog extends Component {
               <Layout>
                 <StyledSection>
                   <Heading>The blog</Heading>
-                  <Grid cards={posts} linkType="post" />
+                  <Categories />
 
+                  <Grid cards={posts} linkType="post" />
                   <div className="actions">
                     <LoadMore
                       fetchMore={fetchMore}
@@ -80,8 +81,6 @@ class Blog extends Component {
                       Load More
                     </LoadMore>
                   </div>
-                  <SubHeading as="h2">Browse Categories</SubHeading>
-                  <Categories />
                 </StyledSection>
               </Layout>
             );

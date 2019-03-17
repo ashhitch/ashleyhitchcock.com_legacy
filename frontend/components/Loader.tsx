@@ -16,8 +16,8 @@ const StyledLoader = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
-  border: 8px solid #f3f3f3; /* Light grey */
-  border-top: 8px solid #3498db; /* Blue */
+  border: 8px solid ${props => props.theme.lightgrey};
+  border-top: 8px solid ${props => props.theme.highlight};
   border-radius: 50%;
   width: 40px;
   height: 40px;
