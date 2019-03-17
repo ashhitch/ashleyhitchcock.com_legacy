@@ -28,11 +28,12 @@ const Categories = ({ current }) => (
       const { categories } = data;
 
       const theIDs = !!current && current.length ? current.map(c => c.id) : [];
+      console.log({ theIDs });
 
       return (
         <StyledCategories>
           {categories.edges.map(cat => (
-            <li key={cat.node.id} className={cat.node.id.includes(theIDs) ? 'is-active' : ''}>
+            <li key={cat.node.id} className={theIDs.length && cat.node.id.includes(theIDs) ? 'is-active' : ''}>
               <Link as={`/blog/category/${cat.node.slug}`} href={`/category?slug=${cat.node.slug}`}>
                 <a>{cat.node.name}</a>
               </Link>

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledCategories = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 2rem 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
