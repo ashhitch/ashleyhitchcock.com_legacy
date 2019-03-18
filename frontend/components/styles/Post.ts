@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import media from "./media";
+import styled from 'styled-components';
+import media from './media';
 
 const StyledPost = styled.article`
   .post {
@@ -8,11 +8,13 @@ const StyledPost = styled.article`
     min-height: calc(100vh - 40px);
 
     &__banner {
-      height: 300px;
+      height: 220px;
       background-color: ${props => props.theme.secondary};
       position: relative;
       margin-left: -1rem;
       margin-right: -1rem;
+
+      ${media.md` height: 300px;`}
 
       &__src {
         width: 100%;
@@ -53,7 +55,8 @@ const StyledPost = styled.article`
       flex-grow: 1;
       height: 100%;
       z-index: 5;
-      padding: 1rem 1.5rem;
+      padding: 1rem 0.25rem;
+      ${media.md`padding: 1rem 1.5rem;`}
     }
     &__aside {
       background-color: ${props => props.theme.secondary};

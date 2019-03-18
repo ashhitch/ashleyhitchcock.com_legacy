@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from './media';
 
 const StyledCategories = styled.ul`
   list-style: none;
@@ -29,7 +30,9 @@ const StyledCategories = styled.ul`
       color: inherit;
       text-decoration: none;
       cursor: pointer;
-      padding: 1rem 2rem;
+      padding: 0.75rem 1rem;
+
+      ${media.md` padding: 1rem 2rem; `}
     }
   }
 `;
