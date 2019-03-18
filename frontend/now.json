@@ -21,12 +21,12 @@
       "dest": "/post?apiRoute=work&slug=$slug"
     },
     {
-      "src": "^/page/(?<slug>[^/]*)",
+      "src": "^/(?<slug>[^/]*)",
       "dest": "/page?apiRoute=page&slug=$slug"
     },
     {
-      "src": "^/(?<slug>[^/]*)",
-      "dest": "/page?apiRoute=page&slug=$slug"
+      "src": "^/",
+      "dest": "/index"
     },
     {
       "src": "^/service-worker.js$",

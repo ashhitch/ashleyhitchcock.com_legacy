@@ -7,12 +7,13 @@ import Header from './Header';
 import { MaxWidthLayout } from './styles/Layout';
 import PageHead from './Head';
 import media from './styles/media';
+import GitHub from './GitHub';
 
 const TIMEOUT = 400;
 
 const theme = {
   darkMode: false,
-  primary: 'var(--primary-color, #393939)',
+  primary: 'var(--primary-color, #222222)',
   secondary: 'var(--secondary-color, #fff)',
   highlight: '#BADA55',
   blue: '#1c46f2',
@@ -53,7 +54,7 @@ const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Cardo');
 
   :root {
-  --primary-color: #393939;
+  --primary-color: #222222;
   --secondary-color: #fff;
 
   @media (prefers-color-scheme: dark) {
@@ -221,6 +222,7 @@ export default class Layout extends Component {
           <GlobalStyle />
           <StyledPage>
             <PageHead />
+            <GitHub />
             <Header />
             <MaxWidthLayout>{children}</MaxWidthLayout>
             <Footer />
