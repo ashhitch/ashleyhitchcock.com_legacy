@@ -67,7 +67,7 @@ const StyledHeader = styled.header`
   margin: 0 auto;
 
   .bar {
-    padding: 1rem 0;
+    padding: 1rem 0 0 0;
 
     ${media.md`
     display: grid;
