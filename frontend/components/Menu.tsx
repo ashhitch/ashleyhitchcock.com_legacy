@@ -167,7 +167,10 @@ const Menu = (props: IMenuProps) => {
                 const actualPage = object;
                 return (
                   <li key={id}>
-                    <Link as={`/${object}/${slug}`} href={`/${actualPage}?slug=${slug}&apiRoute=${object}`}>
+                    <Link
+                      as={`/${object === 'page' ? '' : `${object}/`}${slug}`}
+                      href={`/${actualPage}?slug=${slug}&apiRoute=${object}`}
+                    >
                       <a>{title || label}</a>
                     </Link>
                   </li>
