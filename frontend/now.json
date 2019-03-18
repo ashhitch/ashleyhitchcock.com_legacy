@@ -1,17 +1,14 @@
 {
   "version": 2,
   "name": "ashhitch",
-  "builds": [
-    {
-      "src": "next.config.js",
-      "use": "@now/next",
-      "config": {
-        "newPipeline": true
-      }
+  "builds": [{
+    "src": "next.config.js",
+    "use": "@now/next",
+    "config": {
+      "newPipeline": true
     }
-  ],
-  "routes": [
-    {
+  }],
+  "routes": [{
       "src": "^/blog/category/(?<slug>[^/]*)",
       "dest": "/category?apiRoute=category&slug=$slug"
     },
@@ -25,6 +22,10 @@
     },
     {
       "src": "^/page/(?<slug>[^/]*)",
+      "dest": "/page?apiRoute=page&slug=$slug"
+    },
+    {
+      "src": "^/(?<slug>[^/]*)",
       "dest": "/page?apiRoute=page&slug=$slug"
     },
     {

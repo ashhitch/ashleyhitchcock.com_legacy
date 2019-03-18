@@ -13,14 +13,14 @@ app
   .then(() => {
     const server = express();
 
-    server.get('/page/:slug', (req, res) => {
-      const actualPage = '/page';
-      const queryParams = {
-        slug: req.params.slug,
-        apiRoute: 'page',
-      };
-      app.render(req, res, actualPage, queryParams);
-    });
+    // server.get('/page/:slug', (req, res) => {
+    //   const actualPage = '/page';
+    //   const queryParams = {
+    //     slug: req.params.slug,
+    //     apiRoute: 'page',
+    //   };
+    //   app.render(req, res, actualPage, queryParams);
+    // });
 
     server.get('/blog/category/:slug', (req, res) => {
       const actualPage = '/category';
@@ -53,6 +53,15 @@ app
       const queryParams = {
         id: req.params.id,
         wpnonce: req.params.wpnonce,
+      };
+      app.render(req, res, actualPage, queryParams);
+    });
+
+    server.get('/:slug', (req, res) => {
+      const actualPage = '/page';
+      const queryParams = {
+        slug: req.params.slug,
+        apiRoute: 'page',
       };
       app.render(req, res, actualPage, queryParams);
     });
