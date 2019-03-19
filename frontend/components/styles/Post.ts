@@ -15,6 +15,7 @@ const StyledPost = styled.article`
       margin-right: -1rem;
 
       ${media.md` height: 300px;`}
+      ${media.lg` height: 400px;`}
 
       &__src {
         width: 100%;

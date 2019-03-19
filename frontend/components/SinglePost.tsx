@@ -1,6 +1,7 @@
 import NextSeo from 'next-seo';
 
 import React from 'react';
+import { createMarkup } from '../lib/helpers';
 import parseCode from '../lib/code';
 import StyledContent from './styles/Content';
 import { Heading, SubHeading } from './styles/Headings';
@@ -27,7 +28,7 @@ const SinglePost = ({ post }) => {
           </div>
 
           <header className="post__heading">
-            <Heading>{title}</Heading>
+            <Heading dangerouslySetInnerHTML={createMarkup(title)} />
           </header>
 
           <div className="post__main">

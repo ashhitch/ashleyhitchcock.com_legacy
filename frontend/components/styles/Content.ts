@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 const StyledContent = styled.div`
+  line-height: 1.2;
+
   a {
     color: ${props => props.theme.primary};
     position: relative;
