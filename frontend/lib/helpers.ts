@@ -1,5 +1,5 @@
 const createMarkup = markup => ({
-  __html: markup,
+  __html: markup || '',
 });
 
 export { createMarkup };
