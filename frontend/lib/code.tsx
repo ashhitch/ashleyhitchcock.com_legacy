@@ -92,13 +92,12 @@ const parseCode = content => {
         }
 
         // .replace(/(?:\r\n|\r|\n)+/g, '<br />')
-        return <React.Fragment key={i} dangerouslySetInnerHTML={createMarkup(token)} />;
+        return <div dangerouslySetInnerHTML={createMarkup(token)} key={i} />;
       });
 
       return <React.Fragment key={i}>{updatedContentGist}</React.Fragment>;
     });
 
-  console.log({ updatedContent });
   return <>{updatedContent}</>;
 };
 
