@@ -3,6 +3,7 @@ import renderHTML from 'react-render-html';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/vsDarkPlus';
 import Gist from 'react-gist';
+import { createMarkup } from './helpers';
 
 const replaceAll = (target, search, replacement) => target.replace(new RegExp(search, 'g'), replacement);
 
@@ -91,7 +92,7 @@ const parseCode = content => {
         }
 
         // .replace(/(?:\r\n|\r|\n)+/g, '<br />')
-        return <React.Fragment key={i}>{renderHTML(token)}</React.Fragment>;
+        return <React.Fragment key={i} dangerouslySetInnerHTML={createMarkup(token)} />;
       });
 
       return <React.Fragment key={i}>{updatedContentGist}</React.Fragment>;

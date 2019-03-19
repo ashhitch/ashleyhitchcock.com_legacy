@@ -24,6 +24,10 @@
       "dest": "/post?apiRoute=post&slug=$slug"
     },
     {
+      "src": "^/blog",
+      "dest": "/blog"
+    },
+    {
       "src": "^/work/(?<slug>[^/]*)",
       "dest": "/post?apiRoute=work&slug=$slug"
     },
