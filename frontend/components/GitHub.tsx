@@ -22,8 +22,8 @@ const Git = styled.div`
   right: -0.75rem;
   z-index: 90;
   .github-svg {
-    fill: ${props => props.theme.primary};
-    color: ${props => props.theme.secondary};
+    fill: ${props => props.theme.black};
+    color: ${props => props.theme.white};
     z-index: 95;
   }
   .github-corner:hover .octo-arm {

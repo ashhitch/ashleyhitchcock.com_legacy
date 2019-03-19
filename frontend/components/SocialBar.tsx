@@ -1,11 +1,11 @@
-import React from "react";
-import Github from "./icons/github.svg";
-import Instagram from "./icons/instagram.svg";
-import Linkedin from "./icons/linkedin.svg";
-import Twitter from "./icons/twitter.svg";
-import media from "./styles/media";
+import React from 'react';
+import styled from 'styled-components';
+import Github from './icons/github.svg';
+import Instagram from './icons/instagram.svg';
+import Linkedin from './icons/linkedin.svg';
+import Twitter from './icons/twitter.svg';
+import media from './styles/media';
 // import Link from 'next/link';
-import styled from "styled-components";
 
 const SocialStyle = styled.nav`
   ul {
@@ -32,13 +32,14 @@ const SocialStyle = styled.nav`
         transition: transform 0.2s ease-in;
         path {
           transition: fill 0.2s ease-in;
+          fill: ${props => props.theme.primary};
         }
       }
       a:hover svg {
         transform: scale(1.1);
       }
       a:hover svg path {
-        fill: ${props => props.theme.primary};
+        fill: ${props => props.theme.highlight};
       }
     }
   }
