@@ -38,6 +38,8 @@ const formatDate = inputDate => {
 const Card = (props: ICardProps) => {
   const { tags, linkType, featuredImage, slug, title, excerpt, date } = props;
 
+  console.log(props);
+
   const tagsElms =
     !!tags && tags.nodes.length
       ? tags.nodes.map((tag, index) => (

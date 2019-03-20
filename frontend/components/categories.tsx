@@ -28,7 +28,7 @@ const Categories = ({ current }) => (
       const { categories } = data;
 
       const theIDs = !!current && current.length ? current.map(c => c.id) : [];
-      console.log({ theIDs });
+
 
       return (
         <StyledCategories>

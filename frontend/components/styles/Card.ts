@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const CardArticle = styled.article`
   background-color: ${props => props.theme.white};
@@ -9,6 +9,8 @@ const CardArticle = styled.article`
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  border-radius: 2px;
+
   @media (prefers-color-scheme: dark) {
     background-color: ${props => props.theme.grey};
     color: ${props => props.theme.white};
