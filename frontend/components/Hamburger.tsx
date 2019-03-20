@@ -1,7 +1,7 @@
-import { Mutation } from "react-apollo";
-import React from "react";
-import styled from "styled-components";
-import { LOCAL_STATE_QUERY, TOGGLE_MENU_MUTATION } from "../state/resolvers";
+import { Mutation } from 'react-apollo';
+import React from 'react';
+import styled from 'styled-components';
+import { LOCAL_STATE_QUERY, TOGGLE_MENU_MUTATION } from '../state/resolvers';
 
 interface IHamburgerProps {
   active: boolean;
@@ -59,11 +59,7 @@ const Hamburger = (props: IHamburgerProps) => (
   <StyledHamburger>
     <Mutation mutation={TOGGLE_MENU_MUTATION}>
       {toggleMenu => (
-        <button
-          type="button"
-          className={`menu-toggle ${props.active ? "is-active" : ""}`}
-          onClick={toggleMenu}
-        >
+        <button type="button" className={`menu-toggle ${props.active ? 'is-active' : ''}`} onClick={toggleMenu}>
           <span />
           <span />
           <span />

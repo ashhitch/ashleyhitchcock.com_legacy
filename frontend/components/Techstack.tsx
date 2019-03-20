@@ -1,15 +1,15 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import styled from "styled-components";
-import AngularIcon from "./icons/angular.svg";
-import CssIcon from "./icons/css.svg";
-import IntroWrap from "./styles/Intro";
-import JavascriptIcon from "./icons/javascript.svg";
-import NodeIcon from "./icons/node.svg";
-import ReactIcon from "./icons/react.svg";
-import { SubHeading } from "./styles/Headings";
-import WordPressIcon from "./icons/wordpress.svg";
-import media from "./styles/media";
+import styled from 'styled-components';
+import AngularIcon from './icons/angular.svg';
+import CssIcon from './icons/css.svg';
+import IntroWrap from './styles/Intro';
+import JavascriptIcon from './icons/javascript.svg';
+import NodeIcon from './icons/node.svg';
+import ReactIcon from './icons/react.svg';
+import { SubHeading } from './styles/Headings';
+import WordPressIcon from './icons/wordpress.svg';
+import media from './styles/media';
 
 const IconGridStyle = styled.div`
   display: grid;

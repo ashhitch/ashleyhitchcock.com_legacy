@@ -10,7 +10,7 @@ export const mediaSizes: IMediaSizes = {
   xl: 1200,
   lg: 992,
   md: 768,
-  sm: 576
+  sm: 576,
 };
 
 // Iterate through the sizes and create a media template

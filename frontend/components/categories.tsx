@@ -29,7 +29,6 @@ const Categories = ({ current }) => (
 
       const theIDs = !!current && current.length ? current.map(c => c.id) : [];
 
-
       return (
         <StyledCategories>
           {categories.edges.map(cat => (

@@ -110,3 +110,7 @@ add_filter( 'register_post_type_args', function( $args, $post_type ) {
   });
 
 
+  function custom_excerpt_length( $length ) {
+    return 35;
+    }
+    add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );

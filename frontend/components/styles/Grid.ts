@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import media from "./media";
+import styled from 'styled-components';
+import media from './media';
 
 const GridWrapper = styled.section`
   display: grid;
