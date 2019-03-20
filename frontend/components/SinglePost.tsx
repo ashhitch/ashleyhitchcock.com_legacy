@@ -1,6 +1,6 @@
 import NextSeo from 'next-seo';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { createMarkup } from '../lib/helpers';
 import parseCode from '../lib/code';
 import StyledContent from './styles/Content';
@@ -18,6 +18,8 @@ const SinglePost = ({ post }) => {
     description: seo.metaDesc,
   };
 
+  const bodyContent = useMemo(() => parseCode(content), [content]);
+
   return (
     <>
       <NextSeo config={seoData} />
@@ -32,7 +34,7 @@ const SinglePost = ({ post }) => {
           </header>
 
           <div className="post__main">
-            <StyledContent className="post__content">{content ? parseCode(content) : null}</StyledContent>
+            <StyledContent className="post__content">{bodyContent}</StyledContent>
             <aside className="post__aside">
               <SubHeading as="h3">Browse Categories</SubHeading>
               <Categories current={categories.nodes} />

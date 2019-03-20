@@ -1,10 +1,11 @@
 import NextSeo from 'next-seo';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { createMarkup } from '../lib/helpers';
 import StyledContent from './styles/Content';
 import { Heading } from './styles/Headings';
 import StyledPost from './styles/Post';
+import parseCode from "../lib/code";
 // Parse square braket costent to use prism-react-renderer
 // \[.*?\]
 
@@ -17,6 +18,8 @@ const SinglePost = ({ post }) => {
     title: seo && !!seo.title ? seo.title : title,
     description: seo.metaDesc,
   };
+
+  const bodyContent = useMemo(() => parseCode(content), [content]);
 
   return (
     <>
@@ -31,7 +34,7 @@ const SinglePost = ({ post }) => {
             <Heading dangerouslySetInnerHTML={createMarkup(title)} />
           </header>
 
-          <StyledContent className="post__content" dangerouslySetInnerHTML={createMarkup(content)} />
+          <StyledContent className="post__content">{bodyContent}</StyledContent>
         </div>
       </StyledPost>
     </>

@@ -31,7 +31,7 @@ const decodeHtml = text => {
 const parseCode = content => {
   // If no content then return
   if (!content) {
-    return;
+    return '';
   }
 
   // Remove p tags from [] blocks
@@ -51,10 +51,9 @@ const parseCode = content => {
     .split(highlightDelimiterPattern)
     .filter(c => c.length > 1)
     .map((codeToken, i) => {
-      console.log(codeToken);
       if (highlightTest && highlightTest.includes(codeToken)) {
         const codeParts = codeToken.split(highlightDelimiterPatternPart).filter(c => c.length > 1);
-        console.log(codeParts);
+
         let [language, code] = codeParts;
         if (!code) {
           return;
@@ -64,7 +63,6 @@ const parseCode = content => {
         code = replaceAll(code, '<p>', '');
         code = replaceAll(code, '</p>', '\n');
 
-        // console.log(code, highlightTest[1]);
         return (
           <Highlight {...defaultProps} code={code} language={language} theme={theme} key={i}>
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
