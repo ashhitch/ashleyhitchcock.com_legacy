@@ -48,22 +48,22 @@ const SocialBar = () => (
   <SocialStyle>
     <ul>
       <li>
-        <a href="https://github.com/ashhitch" target="_blank">
+        <a href="https://github.com/ashhitch" target="_blank" rel="noopener noreferrer">
           <Github />
         </a>
       </li>
       <li>
-        <a href="https://twitter.com/Ash_Hitchcock" target="_blank">
+        <a href="https://twitter.com/Ash_Hitchcock" target="_blank" rel="noopener noreferrer">
           <Twitter />
         </a>
       </li>
       <li>
-        <a href="https://www.linkedin.com/in/ashhitchcock/" target="_blank">
+        <a href="https://www.linkedin.com/in/ashhitchcock/" target="_blank" rel="noopener noreferrer">
           <Linkedin />
         </a>
       </li>
       <li>
-        <a href="https://www.instagram.com/ash_hitch/" target="_blank">
+        <a href="https://www.instagram.com/ash_hitch/" target="_blank" rel="noopener noreferrer">
           <Instagram />
         </a>
       </li>

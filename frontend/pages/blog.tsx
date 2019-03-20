@@ -4,7 +4,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import ErrorMessage from '../components/ErrorMessage';
 import Grid from '../components/Grid';
-import { Heading, SubHeading } from '../components/styles/Headings';
+import { Heading } from '../components/styles/Headings';
 import Layout from '../components/Layout';
 import LoadMore from '../components/LoadMore';
 import Loader from '../components/Loader';

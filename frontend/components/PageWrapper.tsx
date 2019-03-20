@@ -1,6 +1,6 @@
-import { ApolloConsumer } from "react-apollo";
-import React from "react";
-import Router from "next/router";
+import { ApolloConsumer } from 'react-apollo';
+import React from 'react';
+import Router from 'next/router';
 
 const PageWrapper = Comp =>
   class extends React.Component {
@@ -25,15 +25,13 @@ const PageWrapper = Comp =>
     }
 
     setLoading = (loading: boolean) => {
-      <ApolloConsumer>
-        {client => client.writeData({ data: { isLoading: loading } })}
-      </ApolloConsumer>;
+      <ApolloConsumer>{client => client.writeData({ data: { isLoading: loading } })}</ApolloConsumer>;
     };
 
     static async getInitialProps(args) {
       return {
         // headerMenu,
-        ...(Comp.getInitialProps ? await Comp.getInitialProps(args) : null)
+        ...(Comp.getInitialProps ? await Comp.getInitialProps(args) : null),
       };
     }
 

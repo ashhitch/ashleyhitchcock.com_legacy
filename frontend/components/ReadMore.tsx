@@ -1,10 +1,12 @@
-export default ({ fetchMore, endCursor }) => (
+import React from 'react';
+
+const ReadMore = ({ fetchMore, endCursor }) => (
   <button
     type="button"
     onClick={() =>
       fetchMore({
         variables: {
-          cursor: endCursor
+          cursor: endCursor,
         },
         updateQuery: (previousResult, { fetchMoreResult }) => {
           const { edges: newEdges, pageInfo } = fetchMoreResult.posts;
@@ -16,14 +18,16 @@ export default ({ fetchMore, endCursor }) => (
                 posts: {
                   __typename: previousResult.posts.pageInfo.__typename,
                   edges: [...previousResult.posts.edges, ...newEdges],
-                  pageInfo
-                }
+                  pageInfo,
+                },
               }
             : previousResult;
-        }
+        },
       })
     }
   >
     More
   </button>
 );
+
+export default ReadMore;

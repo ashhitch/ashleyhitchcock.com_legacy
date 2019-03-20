@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledPagination = styled.div`
   text-align: center;
@@ -18,7 +18,7 @@ const StyledPagination = styled.div`
       border-right: 0;
     }
   }
-  a[aria-disabled="true"] {
+  a[aria-disabled='true'] {
     color: grey;
     pointer-events: none;
   }

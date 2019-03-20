@@ -81,7 +81,7 @@ class Index extends Component {
         <Query
           query={HOME_QUERY}
           variables={{
-            slug: 'welcome'
+            slug: 'welcome',
           }}
         >
           {({ error, loading, data }) => {

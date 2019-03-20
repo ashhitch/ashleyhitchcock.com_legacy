@@ -1,4 +1,4 @@
-import { StyledButton } from "./styles/Button";
+import { StyledButton } from './styles/Button';
 
 export default ({ fetchMore, endCursor, query, children, hasNextPage }) =>
   hasNextPage && (
@@ -8,7 +8,7 @@ export default ({ fetchMore, endCursor, query, children, hasNextPage }) =>
         fetchMore({
           variables: {
             cursor: endCursor,
-            perPage: 6
+            perPage: 6,
           },
           updateQuery: (previousResult, { fetchMoreResult }) => {
             const { edges: newEdges, pageInfo } = fetchMoreResult.posts;
@@ -20,11 +20,11 @@ export default ({ fetchMore, endCursor, query, children, hasNextPage }) =>
                   [query]: {
                     __typename: previousResult.posts.pageInfo.__typename,
                     edges: [...previousResult.posts.edges, ...newEdges],
-                    pageInfo
-                  }
+                    pageInfo,
+                  },
                 }
               : previousResult;
-          }
+          },
         })
       }
     >
