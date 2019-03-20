@@ -5,7 +5,7 @@ import { createMarkup } from '../lib/helpers';
 import StyledContent from './styles/Content';
 import { Heading } from './styles/Headings';
 import StyledPost from './styles/Post';
-import parseCode from "../lib/code";
+
 // Parse square braket costent to use prism-react-renderer
 // \[.*?\]
 
@@ -19,7 +19,7 @@ const SinglePost = ({ post }) => {
     description: seo.metaDesc,
   };
 
-  const bodyContent = useMemo(() => parseCode(content), [content]);
+  const bodyContent = createMarkup(content);
 
   return (
     <>
@@ -34,7 +34,7 @@ const SinglePost = ({ post }) => {
             <Heading dangerouslySetInnerHTML={createMarkup(title)} />
           </header>
 
-          <StyledContent className="post__content">{bodyContent}</StyledContent>
+          <StyledContent className="post__content" dangerouslySetInnerHTML={bodyContent} />
         </div>
       </StyledPost>
     </>
