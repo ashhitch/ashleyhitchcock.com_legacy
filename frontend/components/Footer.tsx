@@ -1,8 +1,8 @@
-import Link from "next/link";
-import styled from "styled-components";
-import { Center, MaxWidthLayout } from "./styles/Layout";
+import Link from 'next/link';
+import styled from 'styled-components';
+import { Center, MaxWidthLayout } from './styles/Layout';
 
-import SocialBar from "./SocialBar";
+import SocialBar from './SocialBar';
 
 const StyledFooter = styled.footer`
   padding: 2rem 0 1rem 0;
@@ -13,7 +13,7 @@ const Footer = () => (
     <MaxWidthLayout>
       <Center>
         <SocialBar />
-        <p>© {dt.getFullYear()} Ashley Hitchcock</p>
+        <p>© {dt.getFullYear()} Ash Hitchcock</p>
       </Center>
     </MaxWidthLayout>
   </StyledFooter>
