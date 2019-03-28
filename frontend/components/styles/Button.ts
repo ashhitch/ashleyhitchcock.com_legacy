@@ -6,28 +6,49 @@ const BaseLink = css`
   display: inline-block;
   text-decoration: none;
   z-index: 1;
-  padding: 2px 5px;
+  padding: 1rem 2rem;
   cursor: pointer;
 
   &:after {
     display: block;
     content: '';
     background: ${props => props.theme.highlight};
-    height: 20px;
     width: 100%;
     position: absolute;
+    right: 0;
     left: 0;
-    bottom: 10px;
+    top: 5px;
+    bottom: 5px;
     z-index: -1;
     transition: all 0.2s ease-in-out;
     bottom: 0;
-    transform: rotate(4deg);
+    transform: rotate(5deg);
     border-radius: 2px;
   }
 
-  &:hover:after {
-    transform: rotate(6deg);
+  &:before {
+    display: block;
+    content: '';
+    border: 3px solid ${props => props.theme.primary};
+
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
     bottom: 0;
+    z-index: -1;
+    transition: all 0.2s ease-in-out;
+    bottom: 0;
+    transform: rotate(-2deg);
+    border-radius: 2px;
+  }
+
+  &:hover:before {
+    transform: rotate(-6deg);
+  }
+  &:hover:after {
+    transform: rotate(7deg);
   }
 `;
 export const StyledLink = styled.a`
