@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import media from './media';
 
 const CardArticle = styled.article`
-  background-color: ${props => props.theme.white};
   text-decoration: none;
   color: #333;
   transition: transform 0.2s ease-in;
@@ -12,7 +11,6 @@ const CardArticle = styled.article`
   border-radius: 2px;
 
   @media (prefers-color-scheme: dark) {
-    background-color: ${props => props.theme.grey};
     color: ${props => props.theme.white};
   }
 
@@ -44,7 +42,7 @@ const CardArticle = styled.article`
       content: '';
       width: 100%;
       height: 100%;
-      background: ${props => props.theme.offWhite};
+      background-color: ${props => props.theme.offWhite};
       position: absolute;
       top: 0;
       left: 0;
@@ -52,6 +50,10 @@ const CardArticle = styled.article`
       transition: 1350ms cubic-bezier(0.23, 1, 0.32, 1);
       transition-delay: 400ms;
       border-radius: 2px;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: ${props => props.theme.grey};
+      }
     }
   }
 

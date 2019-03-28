@@ -55,34 +55,32 @@ const Card = (props: ICardProps) => {
 
   return (
     <CardArticle>
-      <div className="card">
-        <div className="card__image">
-          <Link as={linkAs} href={linkHref}>
-            <img
-              className="card__image__src"
-              src={featuredImage ? featuredImage.mediaDetails.sizes[2].sourceUrl : `/static/images/placeholder.svg`}
-              alt="{title ? title : null}"
-            />
-          </Link>
-        </div>
-        <div className="card__content">
-          <h2 className="card__title">
-            <Link as={linkAs} href={linkHref}>
-              <a className="card__title__link">{title}</a>
-            </Link>
-          </h2>
-
-          {date ? <span className="card__meta">{formatDate(date)}</span> : null}
-
-          <div
-            className="card__body"
-            dangerouslySetInnerHTML={{
-              __html: excerpt || null,
-            }}
+      <div className="card__image">
+        <Link as={linkAs} href={linkHref}>
+          <img
+            className="card__image__src"
+            src={featuredImage ? featuredImage.mediaDetails.sizes[2].sourceUrl : `/static/images/placeholder.svg`}
+            alt="{title ? title : null}"
           />
+        </Link>
+      </div>
+      <div className="card__content">
+        <h2 className="card__title">
+          <Link as={linkAs} href={linkHref}>
+            <a className="card__title__link">{title}</a>
+          </Link>
+        </h2>
 
-          {!!tagsElms && tagsElms.length ? <div className="card__footer">{tagsElms}</div> : null}
-        </div>
+        {date ? <span className="card__meta">{formatDate(date)}</span> : null}
+
+        <div
+          className="card__body"
+          dangerouslySetInnerHTML={{
+            __html: excerpt || null,
+          }}
+        />
+
+        {!!tagsElms && tagsElms.length ? <div className="card__footer">{tagsElms}</div> : null}
       </div>
     </CardArticle>
   );

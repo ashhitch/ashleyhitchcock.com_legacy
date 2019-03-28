@@ -27,7 +27,7 @@ const IntroWrap = styled.div`
     content: '';
     width: 100%;
     height: 100%;
-    background: ${props => props.theme.offWhite};
+    background-color: ${props => props.theme.offWhite};
     position: absolute;
     top: 0;
     left: 0;
@@ -35,6 +35,10 @@ const IntroWrap = styled.div`
     transition: 1350ms cubic-bezier(0.23, 1, 0.32, 1);
     transition-delay: 400ms;
     border-radius: 2px;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: ${props => props.theme.grey};
+    }
   }
 `;
 

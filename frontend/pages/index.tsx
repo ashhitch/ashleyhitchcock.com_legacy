@@ -7,7 +7,6 @@ import { gql } from 'apollo-boost';
 
 import dynamic from 'next/dynamic';
 import ErrorMessage from '../components/ErrorMessage';
-import Grid from '../components/Grid';
 import Intro from '../components/Intro';
 import Layout from '../components/Layout';
 import Loader from '../components/Loader';
@@ -16,6 +15,7 @@ import StyledLink from '../components/styles/Button';
 import StyledSection from '../components/styles/Section';
 import { SubHeading } from '../components/styles/Headings';
 import Techstack from '../components/Techstack';
+import BrandStack from '../components/BrandStack';
 import Card from '../components/Card';
 
 const GridSlider = dynamic(() => import('../components/GridSlider'), {
@@ -125,6 +125,9 @@ class Index extends Component {
                         <StyledLink>Read more</StyledLink>
                       </Link>
                     </div>
+                  </StyledSection>
+                  <StyledSection>
+                    <BrandStack />
                   </StyledSection>
                 </Layout>
               </>
