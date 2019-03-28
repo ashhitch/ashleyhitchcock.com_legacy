@@ -118,6 +118,7 @@ const StyledMenu = styled.div`
         z-index: -1;
         transition: all 0.2s ease-in-out;
         transform: rotate(2deg);
+        border-radius: 2px;
       }
       &.is-active:after {
         background: ${props => props.theme.highlight};

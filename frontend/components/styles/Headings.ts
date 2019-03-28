@@ -27,6 +27,7 @@ const baseHeadingStyles = css`
     transition: all 0.2s ease-in-out;
     bottom: 0;
     transform: rotate(2deg);
+    border-radius: 2px;
   }
 `;
 

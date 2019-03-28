@@ -15,6 +15,7 @@ const GridWrapper = styled.section`
   `}
   ${media.lg`
   grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2.5rem;
   `}
 `;
 

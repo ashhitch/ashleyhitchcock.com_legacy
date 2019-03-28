@@ -1,10 +1,10 @@
 import styled from 'styled-components';
+import media from './media';
 
 const CardArticle = styled.article`
   background-color: ${props => props.theme.white};
   text-decoration: none;
   color: #333;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   transition: transform 0.2s ease-in;
   display: flex;
   flex-direction: column;
@@ -18,9 +18,9 @@ const CardArticle = styled.article`
 
   &:hover,
   &:focus {
-    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.6);
     transform: scale(1.01);
   }
+
   .card__image {
     &__src {
       width: 100%;
@@ -30,10 +30,29 @@ const CardArticle = styled.article`
   }
 
   .card__content {
-    padding: 1rem;
+    position: relative;
+    padding: 1.5rem 1rem 1rem 1rem;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    flex-grow: 1;
+    z-index: 1;
+    ${media.lg`
+    padding: 2.5rem 1.5rem;
+    `}
+    &:before {
+      transform: rotate(-1.75deg);
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: ${props => props.theme.offWhite};
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      transition: 1350ms cubic-bezier(0.23, 1, 0.32, 1);
+      transition-delay: 400ms;
+      border-radius: 2px;
+    }
   }
 
   .card__meta {

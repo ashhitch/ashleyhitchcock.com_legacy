@@ -14,16 +14,16 @@ const GridWSliderWrapper = styled.section`
     padding: 0;
     list-style-type: none;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    grid-gap: 2rem;
+    grid-gap: 2.5rem;
   `}
 `;
 
 const GridSliderItem = styled.div`
-  ${media.lg`
+  /* ${media.lg`
     
     ${props => (props.position ? 'grid-column: span 3;' : '')}
      
-    `}
+    `} */
 `;
 
 const GridSlider = ({ children }) => {

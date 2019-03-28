@@ -1,7 +1,12 @@
 import styled from 'styled-components';
+import media from './media';
 
 const StyledContent = styled.div`
   line-height: 1.5;
+
+  ${media.lg`
+  line-height: 1.6;
+  `};
 
   a {
     color: ${props => props.theme.primary};
@@ -25,6 +30,7 @@ const StyledContent = styled.div`
       transition: all 0.2s ease-in-out;
       bottom: 0;
       transform: rotate(3deg);
+      border-radius: 2px;
     }
 
     &:hover:after {
