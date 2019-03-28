@@ -22,6 +22,7 @@ const BaseLink = css`
     transition: all 0.2s ease-in-out;
     bottom: 0;
     transform: rotate(4deg);
+    border-radius: 2px;
   }
 
   &:hover:after {

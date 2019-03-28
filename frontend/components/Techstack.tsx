@@ -51,7 +51,7 @@ const IconGridItemStyle = styled.div`
 `;
 
 const Techstack = () => (
-  <IntroWrap>
+  <>
     <SubHeading>Technologies I love</SubHeading>
     <IconGridStyle>
       <IconGridItemStyle brandbg="#F7DF1E">
@@ -73,7 +73,7 @@ const Techstack = () => (
         <CssIcon />
       </IconGridItemStyle>
     </IconGridStyle>
-  </IntroWrap>
+  </>
 );
 
 export default Techstack;
