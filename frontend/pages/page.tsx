@@ -19,6 +19,14 @@ export const SINGLE_PAGE_QUERY = gql`
       date
       content
       hero
+      featuredImage {
+        mediaDetails {
+          sizes {
+            name
+            sourceUrl
+          }
+        }
+      }
       seo {
         title
         metaDesc
