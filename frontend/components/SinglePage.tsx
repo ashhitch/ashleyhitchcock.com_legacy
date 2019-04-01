@@ -5,14 +5,22 @@ import { createMarkup } from '../lib/helpers';
 import StyledContent from './styles/Content';
 import { Heading } from './styles/Headings';
 import StyledPost from './styles/Post';
+import FeaturedImage from './styles/FeaturedImage';
 
 // Parse square braket costent to use prism-react-renderer
 // \[.*?\]
 
 const SinglePost = ({ post }) => {
-  const { title, content, seo, hero } = post;
+  const { title, content, seo, hero, featuredImage } = post;
+  console.log({ featuredImage });
 
   const heroBanner = hero || '/static/images/hero-placeholder.svg';
+  const image =
+    !!featuredImage && !!featuredImage.mediaDetails
+      ? featuredImage.mediaDetails.sizes.filter(media => media.name === 'medium')
+      : null;
+
+  console.log({ image });
 
   const seoData = {
     title: seo && !!seo.title ? seo.title : title,
@@ -34,7 +42,18 @@ const SinglePost = ({ post }) => {
             <Heading dangerouslySetInnerHTML={createMarkup(title)} />
           </header>
 
-          <StyledContent className="post__content" dangerouslySetInnerHTML={bodyContent} />
+          {image ? (
+            <div className="post__main post__main--flip">
+              <aside className="post__aside post__aside--flip">
+                <FeaturedImage>
+                  <img className="post__thumb" src={image[0].sourceUrl} alt={title} />
+                </FeaturedImage>
+              </aside>
+              <StyledContent className="post__content" dangerouslySetInnerHTML={bodyContent} />
+            </div>
+          ) : (
+            <StyledContent className="post__content" dangerouslySetInnerHTML={bodyContent} />
+          )}
         </div>
       </StyledPost>
     </>
