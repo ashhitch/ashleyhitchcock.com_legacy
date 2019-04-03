@@ -42,6 +42,8 @@ const Card = (props: ICardProps) => {
 
   console.log(props);
 
+  console.log(props);
+
   const tagsElms =
     !!tags && tags.nodes.length
       ? tags.nodes.map((tag, index) => (

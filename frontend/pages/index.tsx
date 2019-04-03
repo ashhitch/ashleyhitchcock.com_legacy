@@ -120,6 +120,7 @@ class Index extends Component {
                         ? postItems.map((card, index) => (
                             <Card {...card.node} linkType="post" key={index} position={index} />
                           ))
+
                         : null}
                     </GridSlider>
                     <div className="actions">

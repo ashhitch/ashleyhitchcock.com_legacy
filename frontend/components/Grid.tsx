@@ -13,6 +13,7 @@ const Grid = props => {
               <Card {...card.node} linkType={linkType} position={index} />
             </GridItem>
           ))
+
         : null}
     </GridWrapper>
   );
