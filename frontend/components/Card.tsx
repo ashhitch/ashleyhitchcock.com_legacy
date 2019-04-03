@@ -16,6 +16,8 @@ interface ICardProps {
   date: Date;
   title: ICardTitleProps;
   excerpt: ICardExcerptProps;
+  position: number;
+  router: any;
 }
 
 interface INode {
@@ -36,7 +38,9 @@ const formatDate = inputDate => {
 };
 
 const Card = (props: ICardProps) => {
-  const { tags, linkType, featuredImage, slug, title, excerpt, date } = props;
+  const { tags, linkType, featuredImage, slug, title, excerpt, date, router } = props;
+
+  console.log(props);
 
   console.log(props);
 
@@ -75,6 +79,7 @@ const Card = (props: ICardProps) => {
 
         <div
           className="card__body"
+          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: excerpt || null,
           }}

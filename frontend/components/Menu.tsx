@@ -184,7 +184,7 @@ const Menu = (props: IMenuProps) => {
             <nav className="menu">
               <ul className="nav">
                 <li>
-                  <Link href="/">
+                  <Link prefetch href="/">
                     <a>Home</a>
                   </Link>
                 </li>
