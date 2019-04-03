@@ -46,8 +46,12 @@ const StyledPost = styled.article`
     &__main {
       ${media.lg` 
         display: grid;
-        grid-template-columns: 5fr 2fr;
+        grid-template-columns: 4fr 2fr;
         grid-gap: 1rem;
+       `}
+      ${media.xl` 
+        grid-template-columns: 5fr 2fr;
+
        `}
     }
 
@@ -66,6 +70,21 @@ const StyledPost = styled.article`
       padding: 1rem 1.5rem;
       position: relative;
       overflow: visible;
+    }
+    &__main--flip {
+      ${media.lg` 
+
+      .post__aside {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .post__content {
+        grid-column: 1;
+        grid-row: 1;
+      }
+        
+       `}
     }
   }
 `;
