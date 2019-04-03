@@ -16,10 +16,10 @@ const octocatWave = keyframes`
     }
 `;
 const Git = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   border: 0;
-  right: -0.75rem;
+  right: 0;
   z-index: 90;
   .github-svg {
     fill: ${props => props.theme.black};

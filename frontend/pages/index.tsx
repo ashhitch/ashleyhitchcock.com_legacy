@@ -117,11 +117,13 @@ class Index extends Component {
                     <SubHeading>Latest from the blog</SubHeading>
                     <GridSlider>
                       {!!postItems && postItems.length
-                        ? postItems.map((card, index) => <Card {...card.node} linkType="post" key={index} />)
+                        ? postItems.map((card, index) => (
+                            <Card {...card.node} linkType="post" key={index} position={index} />
+                          ))
                         : null}
                     </GridSlider>
                     <div className="actions">
-                      <Link href="/blog">
+                      <Link prefetch href="/blog">
                         <StyledLink>Read more</StyledLink>
                       </Link>
                     </div>

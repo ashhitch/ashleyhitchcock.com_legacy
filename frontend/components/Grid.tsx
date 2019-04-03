@@ -9,10 +9,10 @@ const Grid = props => {
     <GridWrapper>
       {!!cards && cards.length
         ? cards.map((card, index) => (
-          <GridItem key={index}>
-            <Card {...card.node} linkType={linkType} />
-          </GridItem>
-        ))
+            <GridItem key={index}>
+              <Card {...card.node} linkType={linkType} position={index} />
+            </GridItem>
+          ))
         : null}
     </GridWrapper>
   );
