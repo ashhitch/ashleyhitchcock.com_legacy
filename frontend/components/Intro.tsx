@@ -8,10 +8,12 @@ import { createMarkup } from '../lib/helpers';
 
 const Intro = ({ title, content }) => (
   <IntroWrap>
-    <Heading>{title}</Heading>
-    <StyledContent>
-      <div dangerouslySetInnerHTML={createMarkup(content)} />
-    </StyledContent>
+    <div className="content">
+      <Heading>{title}</Heading>
+      <StyledContent>
+        <div dangerouslySetInnerHTML={createMarkup(content)} />
+      </StyledContent>
+    </div>
   </IntroWrap>
 );
 

@@ -34,6 +34,7 @@ const StyledLogo = styled.span`
     padding: 0 0.5ex 0 0;
     background: ${props => props.theme.secondary};
     color: ${props => props.theme.primary};
+    font-family: ${props => props.theme.headingFont};
     text-transform: uppercase;
     text-decoration: none;
     position: relative;
@@ -63,7 +64,7 @@ const StyledLogo = styled.span`
 `;
 const StyledHeader = styled.header`
   position: relative;
-  max-width: ${props => props.theme.maxWidth};
+  max-width: 95%;
   margin: 0 auto;
 
   .bar {

@@ -7,6 +7,7 @@ import { Heading } from './styles/Headings';
 import StyledPost from './styles/Post';
 import FeaturedImage from './styles/FeaturedImage';
 
+
 // Parse square braket costent to use prism-react-renderer
 // \[.*?\]
 
@@ -38,9 +39,11 @@ const SinglePost = ({ post }) => {
             <img className="post__banner__src" src={heroBanner} alt={title} />
           </div>
 
+
           <header className="post__heading">
             <Heading dangerouslySetInnerHTML={createMarkup(title)} />
           </header>
+
 
           {image ? (
             <div className="post__main post__main--flip">
@@ -52,8 +55,9 @@ const SinglePost = ({ post }) => {
               <StyledContent className="post__content" dangerouslySetInnerHTML={bodyContent} />
             </div>
           ) : (
-            <StyledContent className="post__content" dangerouslySetInnerHTML={bodyContent} />
-          )}
+              <StyledContent className="post__content" dangerouslySetInnerHTML={bodyContent} />
+            )}
+
         </div>
       </StyledPost>
     </>

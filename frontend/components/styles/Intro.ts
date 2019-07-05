@@ -13,9 +13,12 @@ const IntroWrap = styled.div`
 
   `}
   ${media.lg`
-  font-size: 1.25rem;
-  padding: 5rem 2.5rem;
-  
+    margin: 0 auto;
+    font-size: 1.25rem;
+    padding: 5rem 2.5rem;
+    max-width: 95%;
+    position: relative;
+
   `}
 
   h1 {
@@ -39,6 +42,14 @@ const IntroWrap = styled.div`
     @media (prefers-color-scheme: dark) {
       background-color: ${props => props.theme.grey};
     }
+  }
+
+  .content {
+    position: relative;
+  margin: 0 auto;
+    ${media.lg`
+      max-width: 80%;
+    `}
   }
 `;
 

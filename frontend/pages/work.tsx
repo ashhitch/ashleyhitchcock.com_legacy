@@ -46,7 +46,7 @@ class Work extends Component {
       <Query
         query={WORK_ITEMS_QUERY}
         variables={{
-          perPage: 7
+          perPage: 6
         }}
       >
         {({ error, loading, data, fetchMore }) => {

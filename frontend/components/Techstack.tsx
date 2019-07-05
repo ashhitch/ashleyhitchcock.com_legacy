@@ -16,11 +16,11 @@ const Techstack = () => (
       <IconGridItemStyle brandbg="#F7DF1E">
         <JavascriptIcon />
       </IconGridItemStyle>
-      <IconGridItemStyle brandbg="#DD0031">
-        <AngularIcon />
-      </IconGridItemStyle>
       <IconGridItemStyle brandbg="#61DAFB">
         <ReactIcon />
+      </IconGridItemStyle>
+      <IconGridItemStyle brandbg="#DD0031">
+        <AngularIcon />
       </IconGridItemStyle>
       <IconGridItemStyle brandbg="#21759B">
         <WordPressIcon />
