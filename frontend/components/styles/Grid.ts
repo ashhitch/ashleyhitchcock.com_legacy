@@ -20,7 +20,7 @@ const GridWrapper = styled.section`
 `;
 
 const GridItem = styled.div`
-  ${media.md`
+  /* ${media.md`
     &:first-child {
       grid-column: span 2;
     }
@@ -30,7 +30,7 @@ const GridItem = styled.div`
     &:first-child {
       grid-column: span 3;
     }
-    `}
+    `} */
 `;
 
 export { GridWrapper, GridItem };

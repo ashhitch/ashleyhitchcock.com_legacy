@@ -11,6 +11,7 @@ import Loader from '../components/Loader';
 import PageWrapper from '../components/PageWrapper';
 import StyledSection from '../components/styles/Section';
 import Categories from '../components/categories';
+import { MaxWidthLayout } from '../components/styles';
 
 export const BLOG_QUERY = gql`
   query posts($cursor: String, $perPage: Int!) {
@@ -54,7 +55,7 @@ class Blog extends Component {
         <Query
           query={BLOG_QUERY}
           variables={{
-            perPage: 7,
+            perPage: 6,
           }}
         >
           {({ error, loading, data, fetchMore }) => {
@@ -66,22 +67,25 @@ class Blog extends Component {
 
             return (
               <Layout>
-                <StyledSection>
-                  <Heading>The blog</Heading>
-                  <Categories />
+                <MaxWidthLayout>
+                  <StyledSection>
+                    <Heading>The blog</Heading>
+                    <Categories />
 
-                  <Grid cards={posts} linkType="post" />
-                  <div className="actions">
-                    <LoadMore
-                      fetchMore={fetchMore}
-                      endCursor={pageInfo.endCursor}
-                      hasNextPage={pageInfo.hasNextPage}
-                      query="posts"
-                    >
-                      Load More
-                    </LoadMore>
-                  </div>
-                </StyledSection>
+                    <Grid cards={posts} linkType="post" />
+                    <div className="actions">
+                      <LoadMore
+                        fetchMore={fetchMore}
+                        endCursor={pageInfo.endCursor}
+                        hasNextPage={pageInfo.hasNextPage}
+                        query="posts"
+                      >
+                        Load More
+                      </LoadMore>
+                    </div>
+                  </StyledSection>
+
+                </MaxWidthLayout>
               </Layout>
             );
           }}

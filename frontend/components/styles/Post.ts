@@ -35,6 +35,10 @@ const StyledPost = styled.article`
       margin: -60px 0 0 0;
       padding: 1rem;
       z-index: 5;
+      position: relative;
+      width: 100%;
+      margin: -60px auto 0 auto;
+      max-width: ${props => props.theme.maxWidth};
       ${media.lg` padding: 1.5rem 2rem; `}
 
       h1 {
@@ -44,6 +48,10 @@ const StyledPost = styled.article`
     }
 
     &__main {
+      position: relative;
+      margin: 0 auto;
+      max-width: ${props => props.theme.maxWidth};
+      width: 100%;
       ${media.lg` 
         display: grid;
         grid-template-columns: 4fr 2fr;
@@ -56,6 +64,10 @@ const StyledPost = styled.article`
     }
 
     &__content {
+      position: relative;
+      margin: 0 auto;
+      max-width: ${props => props.theme.maxWidth};
+      width: 100%;
       background-color: ${props => props.theme.secondary};
       flex-grow: 1;
       height: 100%;

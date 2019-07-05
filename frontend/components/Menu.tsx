@@ -151,37 +151,37 @@ const Menu = (props: IMenuProps) => {
         const menuItems =
           !!menu && menu.length
             ? menu.map(item => {
-                const { id, url, title, label, connectedObject } = item.node;
-                const object = connectedObject.__typename.toLowerCase();
+              const { id, url, title, label, connectedObject } = item.node;
+              const object = connectedObject.__typename.toLowerCase();
 
-                if (object === 'menuitem') {
-                  return (
-                    <li key={id}>
-                      <Link href={url}>
-                        <a>{title || label}</a>
-                      </Link>
-                    </li>
-                  );
-                }
-                const slug = getSlug(url);
-
-                const actualPage = object;
+              if (object === 'menuitem') {
                 return (
                   <li key={id}>
-                    <Link
-                      as={`/${object === 'page' ? '' : `${object}/`}${slug}`}
-                      href={`/${actualPage}?slug=${slug}&apiRoute=${object}`}
-                    >
+                    <Link href={url}>
                       <a>{title || label}</a>
                     </Link>
                   </li>
                 );
-              })
+              }
+              const slug = getSlug(url);
+
+              const actualPage = object;
+              return (
+                <li key={id}>
+                  <Link
+                    as={`/${object === 'page' ? '' : `${object}/`}${slug}`}
+                    href={`/${actualPage}?slug=${slug}&apiRoute=${object}`}
+                  >
+                    <a>{title || label}</a>
+                  </Link>
+                </li>
+              );
+            })
             : null;
 
         return (
           <StyledMenu>
-            <nav className="menu">
+            <nav className="menu" aria-label="Main navigation">
               <ul className="nav">
                 <li>
                   <Link prefetch href="/">

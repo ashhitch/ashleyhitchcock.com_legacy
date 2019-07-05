@@ -30,7 +30,7 @@ const theme = {
   bgAni: 'backgroundAni 5s ease infinite',
   font:
     '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-  headingFont: '"Cardo", serif',
+  headingFont: '"Fira Sans", sans-serif',
   backgroundAni: `
   0%{background-position:0% 50%}
   50%{background-position:100% 50%}
@@ -51,7 +51,7 @@ const StyledPage = styled.main`
 `;
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Cardo');
+  @import url('https://fonts.googleapis.com/css?family=Fira+Sans:800&display=swap');
 
   :root {
   --primary-color: #222222;
@@ -63,6 +63,10 @@ const GlobalStyle = createGlobalStyle`
   }
 }
 
+::selection {
+    background-color: ${theme.highlight};
+    color: ${theme.black};
+  }
 
   html {
     box-sizing: border-box;
@@ -107,6 +111,8 @@ const GlobalStyle = createGlobalStyle`
   &.menu-open {
     position: fixed;
   }
+
+
    
   }
   a {
@@ -120,7 +126,8 @@ const GlobalStyle = createGlobalStyle`
   h3 {
       color: ${theme.primary};
       font-family: ${theme.headingFont};
-      font-weight: 400;
+      font-weight: 800;
+      letter-spacing: 1.2px;
   }
 
   h1 {
@@ -224,7 +231,7 @@ export default class Layout extends Component {
             <PageHead />
             <GitHub />
             <Header />
-            <MaxWidthLayout>{children}</MaxWidthLayout>
+            {children}
             <Footer />
           </StyledPage>
         </>

@@ -38,19 +38,16 @@ const formatDate = inputDate => {
 };
 
 const Card = (props: ICardProps) => {
-  const { tags, linkType, featuredImage, slug, title, excerpt, date, router } = props;
+  const { tags, linkType, featuredImage, slug, title, excerpt, date } = props;
 
-  console.log(props);
-
-  console.log(props);
 
   const tagsElms =
     !!tags && tags.nodes.length
       ? tags.nodes.map((tag, index) => (
-          <span className="card__tag" key={index}>
-            {tag.name}
-          </span>
-        ))
+        <span className="card__tag" key={index}>
+          {tag.name}
+        </span>
+      ))
       : null;
 
   const linkPrefix = linkType === 'post' ? 'blog' : linkType || `page`;

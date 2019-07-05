@@ -10,6 +10,7 @@ import LoadMore from '../components/LoadMore';
 import Loader from '../components/Loader';
 import PageWrapper from '../components/PageWrapper';
 import StyledSection from '../components/styles/Section';
+import { MaxWidthLayout } from '../components/styles';
 
 export const CAT_QUERY = gql`
   query catBy($cursor: String, $perPage: Int!, $slug: String!) {
@@ -55,7 +56,7 @@ const CatPosts = ({ query }) => {
       <Query
         query={CAT_QUERY}
         variables={{
-          perPage: 7,
+          perPage: 6,
           slug,
         }}
       >
@@ -68,21 +69,23 @@ const CatPosts = ({ query }) => {
 
           return (
             <Layout>
-              <StyledSection>
-                <Heading>{slug}</Heading>
-                <Grid cards={posts} linkType="post" />
+              <MaxWidthLayout>
+                <StyledSection>
+                  <Heading>{slug}</Heading>
+                  <Grid cards={posts} linkType="post" />
 
-                <div className="actions">
-                  <LoadMore
-                    fetchMore={fetchMore}
-                    endCursor={pageInfo.endCursor}
-                    hasNextPage={pageInfo.hasNextPage}
-                    query="posts"
-                  >
-                    Load More
-                  </LoadMore>
-                </div>
-              </StyledSection>
+                  <div className="actions">
+                    <LoadMore
+                      fetchMore={fetchMore}
+                      endCursor={pageInfo.endCursor}
+                      hasNextPage={pageInfo.hasNextPage}
+                      query="posts"
+                    >
+                      Load More
+                    </LoadMore>
+                  </div>
+                </StyledSection>
+              </MaxWidthLayout>
             </Layout>
           );
         }}

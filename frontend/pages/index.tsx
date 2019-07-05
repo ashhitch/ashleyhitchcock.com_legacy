@@ -17,6 +17,7 @@ import { SubHeading } from '../components/styles/Headings';
 import Techstack from '../components/Techstack';
 import BrandStack from '../components/BrandStack';
 import Card from '../components/Card';
+import { MaxWidthLayout } from '../components/styles';
 
 const GridSlider = dynamic(() => import('../components/GridSlider'), {
   ssr: false,
@@ -110,28 +111,31 @@ class Index extends Component {
                       content={page.content ? page.content : null}
                     />
                   </StyledSection>
-                  <StyledSection>
-                    <Techstack />
-                  </StyledSection>
-                  <StyledSection>
-                    <SubHeading>Latest from the blog</SubHeading>
-                    <GridSlider>
-                      {!!postItems && postItems.length
-                        ? postItems.map((card, index) => (
+                  <MaxWidthLayout>
+                    <StyledSection>
+                      <Techstack />
+                    </StyledSection>
+                    <StyledSection>
+                      <SubHeading>Latest from the blog</SubHeading>
+                      <GridSlider>
+                        {!!postItems && postItems.length
+                          ? postItems.map((card, index) => (
                             <Card {...card.node} linkType="post" key={index} position={index} />
                           ))
 
-                        : null}
-                    </GridSlider>
-                    <div className="actions">
-                      <Link prefetch href="/blog">
-                        <StyledLink>Read more</StyledLink>
-                      </Link>
-                    </div>
-                  </StyledSection>
-                  <StyledSection>
-                    <BrandStack />
-                  </StyledSection>
+                          : null}
+                      </GridSlider>
+                      <div className="actions">
+                        <Link prefetch href="/blog">
+                          <StyledLink>Read more</StyledLink>
+                        </Link>
+                      </div>
+                    </StyledSection>
+                    <StyledSection>
+                      <BrandStack />
+                    </StyledSection>
+
+                  </MaxWidthLayout>
                 </Layout>
               </>
             );
